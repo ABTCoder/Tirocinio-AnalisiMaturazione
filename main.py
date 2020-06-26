@@ -9,12 +9,6 @@ import cv2 as cv
 # cv.waitKey(0)
 # cv.destroyAllWindows()
 
-# matrix = np.arange(21).reshape(3, 7)
-# print(matrix)
-# fig, axis = plt.subplots()
-# axis.plot([1,2,3,4], [4,7,8,4])
-# plt.show()
-
 # LETTURA DEI BOUNDING BOX
 def read_boxes(filename):
     bb_list = np.loadtxt(filename, int)
@@ -33,17 +27,21 @@ def read_boxes(filename):
 
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
-def extract_images(filename):
+def extract_hsv_images(filename):
     images = []
     boxes = read_boxes("bboxes.txt")
     img = cv.imread(filename, cv.IMREAD_UNCHANGED)
     for box in boxes:
         subimg = img[box[2]:box[3], box[0]:box[1]]
-        images.append(subimg)
+        images.append(cv.cvtColor(subimg, cv.COLOR_BGR2HSV))
     return images
 
 
-cv.imshow("PROVA", extract_images("olive.jpg")[0])
+test = extract_hsv_images("olive.jpg")[0]
+(n, bins) = np.histogram(test, bins=80, density=True)  # NumPy version (no plot)
+plt.plot(.5*(bins[1:]+bins[:-1]), n)
+plt.show()
+cv.imshow("PROVA", test)
 cv.waitKey(0)
 cv.destroyAllWindows()
 
