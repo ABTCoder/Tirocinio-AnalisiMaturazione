@@ -11,8 +11,8 @@ def read_boxes(filename):
     # CONVERSIONE DAL FORMATO XCENTER, YCENTER, WIDTH , HEIGHT
     # A XSTART , XSTOP, YSTART, YSTOP
     for box in bb_list:
-        half_width = math.floor(box[2]/2)
-        half_height = math.floor(box[3]/2)
+        half_width = math.floor(box[2] / 2)
+        half_height = math.floor(box[3] / 2)
         xstart = box[0] - half_width
         xstop = box[0] + half_width + 1
         ystart = box[1] - half_height
@@ -28,6 +28,7 @@ def extract_hsv_images(filename):
     img = cv.imread(filename, cv.IMREAD_UNCHANGED)
     for box in boxes:
         subimg = img[box[2]:box[3], box[0]:box[1]]
+        subimg = detect_circle(subimg)
         images.append(cv.cvtColor(subimg, cv.COLOR_BGR2HSV))
     return images
 
@@ -37,7 +38,7 @@ def detect_circle(image):
     height, width = image.shape[0:2]
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, max(height, width),
-                               param1=50, param2=30, minRadius=0, maxRadius=math.floor(max(height, width)/2))
+                              param1=50, param2=30, minRadius=0, maxRadius=math.floor(max(height, width) * 1.2 / 2))
 
     circles = np.uint16(np.around(circles))
     for i in circles[0, :]:
@@ -48,14 +49,15 @@ def detect_circle(image):
     return image
 
 
-test = extract_hsv_images("olive.jpg")[1]
-test = detect_circle(test)
+result = extract_hsv_images("olive.jpg")
+test = result[1]
 (n, bins) = np.histogram(test, bins=80, density=True)  # NumPy version (no plot)
-plt.plot(.5*(bins[1:]+bins[:-1]), n)
+plt.plot(.5 * (bins[1:] + bins[:-1]), n)
 plt.show()
 
+# test = test[:, :, 0]
+for im in result:
+    cv.imshow("PROVA", im)
+    cv.waitKey(0)
 
-cv.imshow("PROVA", test)
-cv.waitKey(0)
 cv.destroyAllWindows()
-
