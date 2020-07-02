@@ -49,11 +49,27 @@ def detect_circle(image):
     return image
 
 
+# CALCOLA E STAMPA L'ISTOGRAMMA
+def plot_histogram(axis, mat, label=""):
+    (n, bins) = np.histogram(mat, bins=80, density=True)  # NumPy version (no plot)
+    axis.plot(.5 * (bins[1:] + bins[:-1]), n, label=label)
+
+
 result = extract_hsv_images("olive.jpg")
 test = result[1]
-(n, bins) = np.histogram(test, bins=80, density=True)  # NumPy version (no plot)
-plt.plot(.5 * (bins[1:] + bins[:-1]), n)
+fig1, ax1 = plt.subplots()
+plot_histogram(ax1, test)
 plt.show()
+
+
+h, s, v = cv.split(test)
+fig2, ax2 = plt.subplots()
+plot_histogram(ax2, h, "HUE")
+plot_histogram(ax2, s, "SATURATION")
+plot_histogram(ax2, v, "VALUE")
+ax2.legend()
+plt.show()
+
 
 # test = test[:, :, 0]
 for im in result:
