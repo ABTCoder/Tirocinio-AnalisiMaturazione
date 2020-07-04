@@ -39,7 +39,6 @@ def extract_histograms(filename):
         if skip_mask:
             bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR")
             hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV")
-            ax.plot(np.arange(256), hh, label="test")
             ax.legend()
             plt.show()
         else:
@@ -56,18 +55,22 @@ def extract_histograms(filename):
 # TEST RILEVAMENTO DEI CERCHI
 def detect_ellipse(image):
     skip_mask = False
-    cv.imshow("DEF", image)
-    cv.waitKey(0)
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # gray = cv.bilateralFilter(gray, 9, 75, 75)
     # gray = cv.GaussianBlur(gray, (5, 5), 0)
     cv.imshow("BLUR", gray)
     cv.waitKey(0)
     # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
-    gray = cv.Canny(gray, 90, 220)
+    sigma = 0.33
+    v = np.median(gray)
+    # apply automatic Canny edge detection using the computed median
+    lower = int(max(0, (1.0 - sigma) * v))
+    upper = int(min(255, (1.0 + sigma) * v))
+    gray = cv.Canny(gray, lower, upper)
     cv.imshow("CANNY", img_as_ubyte(gray))
     cv.waitKey(0)
     cv.destroyAllWindows()
+
     height, width = image.shape[0:2]
     mask = np.zeros((height, width), np.uint8)
     ellipses = hough_ellipse(gray, threshold=4, accuracy=100, min_size=round(max(height, width)/2))
@@ -93,11 +96,11 @@ def detect_ellipse(image):
 # CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
 def plot_histogram(axis, image, label="123", mask=None):
     c1, c2, c3 = cv.split(image)
-    r1 = cv.calcHist([c1], [0], None, [256], [0, 256],) #Istogramma di opencv è 10x più veloce di numpy
+    r1 = cv.calcHist([c1], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
     axis.hist(c1.ravel(), bins=256, range=[0, 256], label=label[0])
-    r2 = cv.calcHist([c2], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
+    r2 = cv.calcHist([c2], [0], None, [256], [0, 256],)
     axis.hist(c2.ravel(), bins=256, range=[0, 256], label=label[1])
-    r3 = cv.calcHist([c3], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
+    r3 = cv.calcHist([c3], [0], None, [256], [0, 256],)
     axis.hist(c3.ravel(), bins=256, range=[0, 256], label=label[2])
     return r1, r2, r3
 
