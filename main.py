@@ -26,10 +26,10 @@ def read_boxes(filename):
 
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
-def extract_histograms(filename):
+def extract_histograms(filename, boxes_name):
     hsv_hists = []
     bgr_hists = []
-    boxes = read_boxes("bboxes2.txt")
+    boxes = read_boxes(boxes_name)
     fruits = cv.imread(filename)
     for box in boxes:
         sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
@@ -57,7 +57,8 @@ def detect_ellipse(image):
     skip_mask = False
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # gray = cv.bilateralFilter(gray, 9, 75, 75)
-    # gray = cv.GaussianBlur(gray, (5, 5), 0)
+    gray = cv.GaussianBlur(gray, (5, 5), 0)
+    # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
     cv.imshow("BLUR", gray)
     cv.waitKey(0)
     # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
@@ -73,18 +74,20 @@ def detect_ellipse(image):
 
     height, width = image.shape[0:2]
     mask = np.zeros((height, width), np.uint8)
-    ellipses = hough_ellipse(gray, threshold=4, accuracy=100, min_size=round(max(height, width)/2))
+    ellipses = hough_ellipse(gray, threshold=4, accuracy=100, min_size=round(max(height, width)/2),
+                             max_size=round(min(height, width)))
     if ellipses.size > 0:
         ellipses.sort(order='accumulator')
         print(ellipses)
         best = list(ellipses[-1])
         yc, xc, a, b = [int(round(x)) for x in best[1:5]]
+        rotation = best[5]
         print(yc, xc, a, b)
         if a == 0 or b == 0:
             skip_mask = True
         else:
-            rr, cc = fill_ellipse(yc, xc, a, b, mask.shape)
-            mask[rr, cc] = 1
+            rr, cc = fill_ellipse(yc, xc, b, a, mask.shape, rotation)
+            mask[rr, cc] = 255
             cv.imshow("MASK", mask)
             cv.waitKey(0)
             cv.destroyAllWindows()
@@ -105,7 +108,7 @@ def plot_histogram(axis, image, label="123", mask=None):
     return r1, r2, r3
 
 
-hsv, bgr = extract_histograms("olive2.jpg")
+hsv, bgr = extract_histograms("olive.jpg", "bboxes.txt")
 
 img = cv.imread("olive2.jpg")
 fig1, ax1 = plt.subplots()
