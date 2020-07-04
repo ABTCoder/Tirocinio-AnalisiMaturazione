@@ -8,7 +8,6 @@ from skimage.feature import canny
 from skimage.util import img_as_float, img_as_ubyte
 
 
-
 # LETTURA DEI BOUNDING BOX
 def read_boxes(filename):
     bb_list = np.loadtxt(filename, int)
@@ -27,63 +26,88 @@ def read_boxes(filename):
 
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
-def extract_hsv_images(filename):
-    hsv_images = []
-    bgr_images = []
-    masks = []
-    boxes = read_boxes("bboxes.txt")
-    img = cv.imread(filename)
+def extract_histograms(filename):
+    hsv_hists = []
+    bgr_hists = []
+    boxes = read_boxes("bboxes2.txt")
+    fruits = cv.imread(filename)
     for box in boxes:
-        subimg = img[box[2]:box[3], box[0]:box[1]]
-        mask = detect_ellipse(subimg)
-        bgr_images.append(subimg)
-        hsv_images.append(cv.cvtColor(subimg, cv.COLOR_BGR2HSV_FULL))
-        masks.append(mask)
-    return hsv_images, bgr_images, masks
+        sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
+        sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
+        mask, skip_mask = detect_ellipse(sub_img_bgr)
+        fig, ax = plt.subplots()
+        if skip_mask:
+            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR")
+            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV")
+            ax.plot(np.arange(256), hh, label="test")
+            ax.legend()
+            plt.show()
+        else:
+            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
+            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+            ax.legend()
+            plt.show()
+
+        bgr_hists.append([bh, gh, rh])
+        hsv_hists.append([hh, sh, vh])
+    return hsv_hists, bgr_hists
 
 
 # TEST RILEVAMENTO DEI CERCHI
 def detect_ellipse(image):
+    skip_mask = False
+    cv.imshow("DEF", image)
+    cv.waitKey(0)
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    gray = canny(gray, sigma=4.0, low_threshold=0.3, high_threshold=0.8)
+    # gray = cv.bilateralFilter(gray, 9, 75, 75)
+    # gray = cv.GaussianBlur(gray, (5, 5), 0)
+    cv.imshow("BLUR", gray)
+    cv.waitKey(0)
+    # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
+    gray = cv.Canny(gray, 90, 220)
+    cv.imshow("CANNY", img_as_ubyte(gray))
+    cv.waitKey(0)
+    cv.destroyAllWindows()
     height, width = image.shape[0:2]
     mask = np.zeros((height, width), np.uint8)
-    ellipse = hough_ellipse(gray, threshold=100, min_size=math.floor(max(height, width)/2))
-    params = ellipse.tolist()
-    rr, cc = fill_ellipse(params[1], params[2], params[3], params[4], mask.shape)
-    mask[rr, cc] = 1
-    return mask
+    ellipses = hough_ellipse(gray, threshold=4, accuracy=100, min_size=round(max(height, width)/2))
+    if ellipses.size > 0:
+        ellipses.sort(order='accumulator')
+        print(ellipses)
+        best = list(ellipses[-1])
+        yc, xc, a, b = [int(round(x)) for x in best[1:5]]
+        print(yc, xc, a, b)
+        if a == 0 or b == 0:
+            skip_mask = True
+        else:
+            rr, cc = fill_ellipse(yc, xc, a, b, mask.shape)
+            mask[rr, cc] = 1
+            cv.imshow("MASK", mask)
+            cv.waitKey(0)
+            cv.destroyAllWindows()
+    else:
+        skip_mask = True
+    return mask, skip_mask
 
 
-# CALCOLA E STAMPA L'ISTOGRAMMA
-def plot_histogram(axis, mat, label=""):
-    hist = cv.calcHist([mat], [0], None, [256], [0, 256]) #Istogramma di opencv è 10x più veloce di numpy
-    axis.hist(mat.ravel(), bins=256, range=[0, 256], label=label)
-    return hist
+# CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
+def plot_histogram(axis, image, label="123", mask=None):
+    c1, c2, c3 = cv.split(image)
+    r1 = cv.calcHist([c1], [0], None, [256], [0, 256],) #Istogramma di opencv è 10x più veloce di numpy
+    axis.hist(c1.ravel(), bins=256, range=[0, 256], label=label[0])
+    r2 = cv.calcHist([c2], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
+    axis.hist(c2.ravel(), bins=256, range=[0, 256], label=label[1])
+    r3 = cv.calcHist([c3], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
+    axis.hist(c3.ravel(), bins=256, range=[0, 256], label=label[2])
+    return r1, r2, r3
 
 
-hsv, bgr, masks = extract_hsv_images("olive.jpg")
-test = hsv[1]
-img = cv.imread("olive.jpg")
-b, g, r = cv.split(img)
+hsv, bgr = extract_histograms("olive2.jpg")
+
+img = cv.imread("olive2.jpg")
 fig1, ax1 = plt.subplots()
-vals = plot_histogram(ax1, r)
-plt.show()
-
-# restituire anche gli istogrammi r g b
-h, s, v = cv.split(test)
-fig2, ax2 = plt.subplots()
-plot_histogram(ax2, h, "HUE")
-plot_histogram(ax2, s, "SATURATION")
-plot_histogram(ax2, v, "VALUE")
-ax2.legend()
+vals = plot_histogram(ax1, img)
 plt.show()
 
 
-# test = test[:, :, 0]
-for im in hsv:
-    cv.imshow("PROVA", im)
-    cv.waitKey(0)
-cv.imshow("PROVA", masks[3])
-cv.waitKey(0)
 cv.destroyAllWindows()
