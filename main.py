@@ -37,16 +37,11 @@ def extract_histograms(filename, boxes_name):
         # mask = detect_ellipse(sub_img_bgr)
         mask = detect_contours(sub_img_bgr)
         fig, ax = plt.subplots()
-        if mask is None:
-            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR")
-            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV")
-            ax.legend()
-            plt.show()
-        else:
-            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
-            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
-            ax.legend()
-            plt.show()
+
+        bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
+        hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+        ax.legend()
+        plt.show()
 
         bgr_hists.append([bh, gh, rh])
         hsv_hists.append([hh, sh, vh])
@@ -103,12 +98,12 @@ def detect_ellipse(image):
 def detect_contours(image):
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # gray = cv.bilateralFilter(gray, 9, 75, 75)
-    # gray = cv.GaussianBlur(gray, (5, 5), 0)
+    gray = cv.GaussianBlur(gray, (5, 5), 0)
     # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
     cv.imshow("BLUR", gray)
     cv.waitKey(0)
     # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
-    sigma = 0.99
+    sigma = 0.33
     v = np.median(image)
     # apply automatic Canny edge detection using the computed median
     lower = int(max(0, (1.0 - sigma) * v))
@@ -117,10 +112,10 @@ def detect_contours(image):
     cv.imshow("CANNY", img_as_ubyte(gray))
     cv.waitKey(0)
     se = np.ones((7, 7), dtype='uint8')
-    gray = cv.morphologyEx(gray, cv.MORPH_CLOSE, se)
+    gray = cv.morphologyEx(gray, cv.MORPH_CLOSE, se, iterations=2)
     cv.imshow("MORP", img_as_ubyte(gray))
     cv.waitKey(0)
-    contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
+    contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
     # mask = cv.drawContours(gray, contours, -1, 255, 3)
     cv.imshow("CONT", img_as_ubyte(gray))
     cv.waitKey(0)
@@ -134,17 +129,23 @@ def detect_contours(image):
 
 # CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
 def plot_histogram(axis, image, label="123", mask=None):
+    if mask is None:
+        mask = np.full(image.shape[0:2], 255, np.uint8)
+        
     c1, c2, c3 = cv.split(image)
-    r1 = cv.calcHist([c1], [0], None, [256], [0, 256],)  # Istogramma di opencv è 10x più veloce di numpy
-    axis.hist(c1.ravel(), bins=256, range=[0, 256], label=label[0])
-    r2 = cv.calcHist([c2], [0], None, [256], [0, 256],)
-    axis.hist(c2.ravel(), bins=256, range=[0, 256], label=label[1])
-    r3 = cv.calcHist([c3], [0], None, [256], [0, 256],)
-    axis.hist(c3.ravel(), bins=256, range=[0, 256], label=label[2])
+    r1 = cv.calcHist([c1], [0], mask, [256], [0, 256])  # Istogramma di opencv è 10x più veloce di numpy
+    # axis.hist(c1.ravel(), bins=256, range=[0, 256], label=label[0])
+    axis.bar(np.arange(256), r1.ravel(), label=label[0])
+    r2 = cv.calcHist([c2], [0], mask, [256], [0, 256])
+    # axis.hist(c2.ravel(), bins=256, range=[0, 256], label=label[1])
+    axis.bar(np.arange(256), r2.ravel(), label=label[1])
+    r3 = cv.calcHist([c3], [0], mask, [256], [0, 256])
+    # axis.hist(c3.ravel(), bins=256, range=[0, 256], label=label[2])
+    axis.bar(np.arange(256), r3.ravel(), label=label[2])
     return r1, r2, r3
 
 
-hsv, bgr = extract_histograms("olive.jpg", "bboxes.txt")
+hsv, bgr = extract_histograms("mele.jpg", "bboxes3.txt")
 
 img = cv.imread("olive2.jpg")
 fig1, ax1 = plt.subplots()
