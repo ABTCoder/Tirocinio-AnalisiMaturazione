@@ -34,9 +34,10 @@ def extract_histograms(filename, boxes_name):
     for box in boxes:
         sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
         sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
-        mask, skip_mask = detect_ellipse(sub_img_bgr)
+        # mask = detect_ellipse(sub_img_bgr)
+        mask = detect_contours(sub_img_bgr)
         fig, ax = plt.subplots()
-        if skip_mask:
+        if mask is None:
             bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR")
             hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV")
             ax.legend()
@@ -52,9 +53,9 @@ def extract_histograms(filename, boxes_name):
     return hsv_hists, bgr_hists
 
 
-# TEST RILEVAMENTO DEI CERCHI
+# FUNZIONE DI RILEVAMENTO DELLE ELLISSI
+# RESTITUISCE LA MASCHERA , None SE NON E' STATA GENERATA
 def detect_ellipse(image):
-    skip_mask = False
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
     # gray = cv.bilateralFilter(gray, 9, 75, 75)
     gray = cv.GaussianBlur(gray, (5, 5), 0)
@@ -68,13 +69,14 @@ def detect_ellipse(image):
     lower = int(max(0, (1.0 - sigma) * v))
     upper = int(min(255, (1.0 + sigma) * v))
     gray = cv.Canny(gray, lower, upper)
+
     cv.imshow("CANNY", img_as_ubyte(gray))
     cv.waitKey(0)
     cv.destroyAllWindows()
 
     height, width = image.shape[0:2]
     mask = np.zeros((height, width), np.uint8)
-    ellipses = hough_ellipse(gray, threshold=4, accuracy=100, min_size=round(max(height, width)/2),
+    ellipses = hough_ellipse(gray, threshold=200, accuracy=100, min_size=round(max(height, width)/2),
                              max_size=round(min(height, width)))
     if ellipses.size > 0:
         ellipses.sort(order='accumulator')
@@ -84,16 +86,50 @@ def detect_ellipse(image):
         rotation = best[5]
         print(yc, xc, a, b)
         if a == 0 or b == 0:
-            skip_mask = True
+            mask = None
         else:
-            rr, cc = fill_ellipse(yc, xc, b, a, mask.shape, rotation)
+            rr, cc = fill_ellipse(yc, xc, a, b, mask.shape, rotation)
             mask[rr, cc] = 255
             cv.imshow("MASK", mask)
             cv.waitKey(0)
             cv.destroyAllWindows()
     else:
-        skip_mask = True
-    return mask, skip_mask
+        mask = None
+    return mask
+
+
+# FUNZIONE DI RILEVAMENTO DEI CONTORNI
+# RESTITUISCE LA MASCHERA E UN BOOLEANO CHE INDICA SE LA MASCHERA E' STATA GENERATA O MENO
+def detect_contours(image):
+    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+    # gray = cv.bilateralFilter(gray, 9, 75, 75)
+    # gray = cv.GaussianBlur(gray, (5, 5), 0)
+    # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
+    cv.imshow("BLUR", gray)
+    cv.waitKey(0)
+    # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
+    sigma = 0.99
+    v = np.median(image)
+    # apply automatic Canny edge detection using the computed median
+    lower = int(max(0, (1.0 - sigma) * v))
+    upper = int(min(255, (1.0 + sigma) * v))
+    gray = cv.Canny(gray, lower, upper)
+    cv.imshow("CANNY", img_as_ubyte(gray))
+    cv.waitKey(0)
+    se = np.ones((7, 7), dtype='uint8')
+    gray = cv.morphologyEx(gray, cv.MORPH_CLOSE, se)
+    cv.imshow("MORP", img_as_ubyte(gray))
+    cv.waitKey(0)
+    contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE)
+    # mask = cv.drawContours(gray, contours, -1, 255, 3)
+    cv.imshow("CONT", img_as_ubyte(gray))
+    cv.waitKey(0)
+    mask = cv.fillPoly(gray, contours, 255)
+    cv.imshow("FILL", img_as_ubyte(mask))
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
+    return mask
 
 
 # CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
