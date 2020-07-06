@@ -4,7 +4,6 @@ import numpy as np
 import cv2 as cv
 from skimage.transform import hough_ellipse
 from skimage.draw import ellipse as fill_ellipse
-from skimage.feature import canny
 from skimage.util import img_as_float, img_as_ubyte
 
 
@@ -34,8 +33,8 @@ def extract_histograms(filename, boxes_name):
     for box in boxes:
         sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
         sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
-        # mask = detect_ellipse(sub_img_bgr)
-        mask = detect_contours(sub_img_bgr)
+        mask = detect_ellipse(sub_img_bgr)
+        # mask = detect_contours(sub_img_bgr)
         fig, ax = plt.subplots()
 
         bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
@@ -52,14 +51,17 @@ def extract_histograms(filename, boxes_name):
 # RESTITUISCE LA MASCHERA , None SE NON E' STATA GENERATA
 def detect_ellipse(image):
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    # gray = cv.bilateralFilter(gray, 9, 75, 75)
-    gray = cv.GaussianBlur(gray, (5, 5), 0)
+    # gray = cv.Laplacian(gray, cv.CV_16S, ksize=3)
+    # gray = cv.convertScaleAbs(gray)
+
+    gray = cv.bilateralFilter(gray, 9, 75, 75)
+    # gray = cv.GaussianBlur(gray, (5, 5), 0)
     # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
     cv.imshow("BLUR", gray)
     cv.waitKey(0)
-    # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
+
     sigma = 0.33
-    v = np.median(gray)
+    v = np.median(image)
     # apply automatic Canny edge detection using the computed median
     lower = int(max(0, (1.0 - sigma) * v))
     upper = int(min(255, (1.0 + sigma) * v))
@@ -97,12 +99,15 @@ def detect_ellipse(image):
 # RESTITUISCE LA MASCHERA E UN BOOLEANO CHE INDICA SE LA MASCHERA E' STATA GENERATA O MENO
 def detect_contours(image):
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    # gray = cv.bilateralFilter(gray, 9, 75, 75)
-    gray = cv.GaussianBlur(gray, (5, 5), 0)
+    # gray = cv.Laplacian(gray, cv.CV_16S, ksize=3)
+    # gray = cv.convertScaleAbs(gray)
+
+    gray = cv.bilateralFilter(gray, 9, 75, 75)
+    # gray = cv.GaussianBlur(gray, (5, 5), 0)
     # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 2)
     cv.imshow("BLUR", gray)
     cv.waitKey(0)
-    # gray = canny(gray, sigma=6.0, low_threshold=0.3, high_threshold=0.9)
+
     sigma = 0.33
     v = np.median(image)
     # apply automatic Canny edge detection using the computed median
@@ -117,8 +122,6 @@ def detect_contours(image):
     cv.waitKey(0)
     contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
     # mask = cv.drawContours(gray, contours, -1, 255, 3)
-    cv.imshow("CONT", img_as_ubyte(gray))
-    cv.waitKey(0)
     mask = cv.fillPoly(gray, contours, 255)
     cv.imshow("FILL", img_as_ubyte(mask))
     cv.waitKey(0)
@@ -145,7 +148,7 @@ def plot_histogram(axis, image, label="123", mask=None):
     return r1, r2, r3
 
 
-hsv, bgr = extract_histograms("mele.jpg", "bboxes3.txt")
+hsv, bgr = extract_histograms("olive2.jpg", "bboxes2.txt")
 
 img = cv.imread("olive2.jpg")
 fig1, ax1 = plt.subplots()
