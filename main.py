@@ -155,7 +155,7 @@ def plot_histogram(axis, image, label="123", mask=None):
     return r1, r2, r3
 
 
-hsv, bgr = extract_histograms("mele.jpg", "bboxes3.txt")
+hsv, bgr = extract_histograms("mele.jpg", "bboxes_mele.txt")
 
 # img = cv.imread("olive2.jpg")
 # fig1, ax1 = plt.subplots()
