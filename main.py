@@ -1,3 +1,5 @@
+import random
+import time
 import math
 import json
 import matplotlib.pyplot as plt
@@ -54,9 +56,13 @@ def extract_histograms(filename, boxes_name):
             sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
 
-            mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
+            print("DETECTING")
+            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
             # mask = detect_contours(sub_img_bgr)  # METODO 2
-
+            cv.imshow("INPUT", sub_img_bgr)
+            cv.waitKey(0)
+            cv.destroyAllWindows()
+            mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
             fig, ax = plt.subplots()
 
             bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
@@ -66,7 +72,7 @@ def extract_histograms(filename, boxes_name):
 
             bgr_hists.append([bh, gh, rh])
             hsv_hists.append([hh, sh, vh])
-        except Exception:
+        except FileNotFoundError:
             continue
 
     return hsv_hists, bgr_hists
@@ -186,8 +192,113 @@ def plot_histogram(axis, image, label="123", mask=None):
     return r1, r2, r3
 
 
-read_json(0)
-hsv, bgr = extract_histograms("images/1.jpg", 0)
+def extract_cnn_mask(image):
+    COLORS = open("mask-rcnn-coco/colors.txt").read().strip().split("\n")
+    COLORS = [np.array(c.split(",")).astype("int") for c in COLORS]
+    COLORS = np.array(COLORS, dtype="uint8")
+
+    LABELS = open("mask-rcnn-coco/object_detection_classes_coco.txt").read().strip().split("\n")
+
+    (H, W) = image.shape[:2]
+
+    # construct a blob from the input image and then perform a forward
+    # pass of the Mask R-CNN, giving us (1) the bounding box  coordinates
+    # of the objects in the image along with (2) the pixel-wise segmentation
+    # for each specific object
+    blob = cv.dnn.blobFromImage(image, swapRB=True, crop=False)
+    net.setInput(blob)
+    start = time.time()
+    (boxes, masks) = net.forward(["detection_out_final", "detection_masks"])
+    end = time.time()
+
+    # show timing information and volume information on Mask R-CNN
+    print("[INFO] Mask R-CNN took {:.6f} seconds".format(end - start))
+    print("[INFO] boxes shape: {}".format(boxes.shape))
+    print("[INFO] masks shape: {}".format(masks.shape))
+    for i in range(0, boxes.shape[2]):
+        # extract the class ID of the detection along with the confidence
+        # (i.e., probability) associated with the prediction
+        classID = int(boxes[0, 0, i, 1])
+        confidence = boxes[0, 0, i, 2]
+        # filter out weak predictions by ensuring the detected probability
+        # is greater than the minimum probability
+        if confidence > 0:
+            # clone our original image so we can draw on it
+            clone = image.copy()
+
+            # scale the bounding box coordinates back relative to the
+            # size of the image and then compute the width and the height
+            # of the bounding box
+            box = boxes[0, 0, i, 3:7] * np.array([W, H, W, H])
+            (startX, startY, endX, endY) = box.astype("int")
+            boxW = endX - startX
+            boxH = endY - startY
+
+            # extract the pixel-wise segmentation for the object, resize
+            # the mask such that it's the same dimensions of the bounding
+            # box, and then finally threshold to create a *binary* mask
+            mask = masks[i, classID]
+            mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_NEAREST)
+            mask = (mask > 0.5)
+
+            # extract the ROI of the image
+            roi = clone[startY:endY, startX:endX]
+
+
+            # check to see if are going to visualize how to extract the
+            # masked region itself
+
+            # convert the mask from a boolean to an integer mask with
+            # to values: 0 or 255, then apply the mask
+            visMask = (mask * 255).astype("uint8")
+            instance = cv.bitwise_and(roi, roi, mask=visMask)
+            newMask = np.zeros((H, W), np.uint8)
+            newMask[startY:endY, startX:endX][mask] = 255
+            cv.imshow("NEWMASK", newMask)
+
+            # show the extracted ROI, the mask, along with the
+            # segmented instance
+            cv.imshow("ROI", roi)
+            cv.imshow("Segmented", instance)
+
+            # now, extract *only* the masked region of the ROI by passing
+            # in the boolean mask array as our slice condition
+            roi = roi[mask]
+
+            # randomly select a color that will be used to visualize this
+            # particular instance segmentation then create a transparent
+            # overlay by blending the randomly selected color with the ROI
+            color = random.choice(COLORS)
+            blended = ((0.4 * color) + (0.6 * roi)).astype("uint8")
+
+            # store the blended ROI in the original image
+            clone[startY:endY, startX:endX][mask] = blended
+
+            # draw the bounding box of the instance on the image
+            color = [int(c) for c in color]
+            cv.rectangle(clone, (startX, startY), (endX, endY), color, 2)
+
+            # draw the predicted label and associated probability of the
+            # instance segmentation on the image
+            text = "{}: {:.4f}".format(LABELS[classID], confidence)
+            cv.putText(clone, text, (startX, startY - 5),
+                        cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+            # show the output image
+            cv.imshow("Output", clone)
+            cv.waitKey(0)
+            cv.destroyAllWindows()
+
+    return newMask
+
+
+print("[INFO] loading Mask R-CNN from disk...")
+net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
+                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
+image = cv.imread("images/4.jpg", 1)
+extract_cnn_mask(image)
+i = 5
+hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
 # fig1, ax1 = plt.subplots()
