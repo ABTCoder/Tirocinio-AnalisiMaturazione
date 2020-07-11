@@ -28,16 +28,25 @@ def read_boxes(filename):
 
 
 # LETTURA BOUNDING BOXES DAL JSON
-def read_json(n):
+def read_json(n, h, w):
     b_list = []
     with open('info.json') as f:
         data = json.load(f)
 
-    for points in data[n]["Label"]["Olive"]:
-        xstart = points["geometry"][0]["x"]
-        xstop = points["geometry"][1]["x"]
-        ystart = points["geometry"][0]["y"]
-        ystop = points["geometry"][2]["y"]
+    for rect in data[n]["Label"]["Olive"]:
+        min_h = h
+        min_w = w
+        max_h = 0
+        max_w = 0
+        for point in rect["geometry"]:
+            min_h = min(min_h, point["y"])
+            max_h = max(max_h, point["y"])
+            min_w = min(min_w, point["x"])
+            max_w = max(max_w, point["x"])
+        xstart = min_w
+        xstop = max_w
+        ystart = min_h
+        ystop = max_h
         b_list.append([xstart, xstop, ystart, ystop])
 
     return b_list
@@ -49,10 +58,12 @@ def extract_histograms(filename, boxes_name):
     hsv_hists = []
     bgr_hists = []
     # boxes = read_boxes(boxes_name)
-    boxes = read_json(boxes_name)
     fruits = cv.imread(filename)
+    (H, W) = fruits.shape[:2]
+    boxes = read_json(boxes_name, H, W)
     for box in boxes:
         try:
+            print(box[2], box[3], box[0], box[1])
             sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
 
@@ -238,7 +249,7 @@ def extract_cnn_mask(image):
             # the mask such that it's the same dimensions of the bounding
             # box, and then finally threshold to create a *binary* mask
             mask = masks[i, classID]
-            mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_NEAREST)
+            mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_CUBIC)
             mask = (mask > 0.5)
 
             # extract the ROI of the image
@@ -297,7 +308,7 @@ net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                     "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
 image = cv.imread("images/4.jpg", 1)
 extract_cnn_mask(image)
-i = 5
+i = 6
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
