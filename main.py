@@ -68,12 +68,13 @@ def extract_histograms(filename, boxes_name):
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
 
             print("DETECTING")
-            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
-            # mask = detect_contours(sub_img_bgr)  # METODO 2
             cv.imshow("INPUT", sub_img_bgr)
             cv.waitKey(0)
             cv.destroyAllWindows()
             mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
+            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
+            if mask is None:
+                mask = detect_contours(sub_img_bgr)  # METODO 2
             fig, ax = plt.subplots()
 
             bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
@@ -150,7 +151,7 @@ def detect_contours(image):
     # gray = cv.bilateralFilter(gray, 9, 75, 75)  # SFOCATURA
     # gray = cv.GaussianBlur(gray, (5, 5), 0)
     # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 9, 7)
-    _, gray = cv.threshold(gray, 150, 255, cv.THRESH_BINARY_INV)
+    _, gray = cv.threshold(gray, 160, 255, cv.THRESH_BINARY_INV)
     kernel = cv.getStructuringElement(cv.MORPH_CROSS, (3, 3))
     # gray = cv.dilate(gray, kernel, iterations=2)  # dilate
     # gray = cv.bitwise_not(gray)
@@ -204,6 +205,7 @@ def plot_histogram(axis, image, label="123", mask=None):
 
 
 def extract_cnn_mask(image):
+    newMask = None
     COLORS = open("mask-rcnn-coco/colors.txt").read().strip().split("\n")
     COLORS = [np.array(c.split(",")).astype("int") for c in COLORS]
     COLORS = np.array(COLORS, dtype="uint8")
@@ -306,9 +308,9 @@ def extract_cnn_mask(image):
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                     "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
-image = cv.imread("images/4.jpg", 1)
-extract_cnn_mask(image)
-i = 6
+# image = cv.imread("images/4.jpg", 1)
+# extract_cnn_mask(image)
+i = 10
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
