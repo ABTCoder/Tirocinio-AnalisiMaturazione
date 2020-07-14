@@ -64,28 +64,36 @@ def extract_histograms(filename, boxes_name):
     i = 0
     for box in boxes:
         try:
-            print(box[2], box[3], box[0], box[1])
             sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
 
             print("DETECTING")
+            nw = int(sub_img_bgr.shape[1] * 50 / 100)
+            nh = int(sub_img_bgr.shape[0] * 50 / 100)
+            dim = (nw, nh)
+            sub_img_bgr = cv.resize(sub_img_bgr, dim, interpolation=cv.INTER_NEAREST)
+            nw = int(sub_img_bgr.shape[1] * 200 / 100)
+            nh = int(sub_img_bgr.shape[0] * 200 / 100)
+            dim = (nw, nh)
+            sub_img_bgr = cv.resize(sub_img_bgr, dim, interpolation=cv.INTER_NEAREST)
             cv.imshow("INPUT", sub_img_bgr)
             cv.waitKey(0)
             cv.destroyAllWindows()
-            cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
-            mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
+            # cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
+
+            # mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
             # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
-            if mask is None:
-                mask = detect_contours(sub_img_bgr)  # METODO 2
+            # if mask is None:
+                # mask = detect_contours(sub_img_bgr)  # METODO 2
             fig, ax = plt.subplots()
 
-            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
-            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
-            ax.legend()
-            plt.show()
+            # bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
+            # hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+            # ax.legend()
+            # plt.show()
 
-            bgr_hists.append([bh, gh, rh])
-            hsv_hists.append([hh, sh, vh])
+            # bgr_hists.append([bh, gh, rh])
+            # hsv_hists.append([hh, sh, vh])
             i = i +1
         except FileNotFoundError:
             i = i +1
