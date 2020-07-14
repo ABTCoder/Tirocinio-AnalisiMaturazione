@@ -61,6 +61,7 @@ def extract_histograms(filename, boxes_name):
     fruits = cv.imread(filename)
     (H, W) = fruits.shape[:2]
     boxes = read_json(boxes_name, H, W)
+    i = 0
     for box in boxes:
         try:
             print(box[2], box[3], box[0], box[1])
@@ -71,6 +72,7 @@ def extract_histograms(filename, boxes_name):
             cv.imshow("INPUT", sub_img_bgr)
             cv.waitKey(0)
             cv.destroyAllWindows()
+            cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
             mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
             # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
             if mask is None:
@@ -84,7 +86,9 @@ def extract_histograms(filename, boxes_name):
 
             bgr_hists.append([bh, gh, rh])
             hsv_hists.append([hh, sh, vh])
+            i = i +1
         except FileNotFoundError:
+            i = i +1
             continue
 
     return hsv_hists, bgr_hists
@@ -310,7 +314,7 @@ net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                     "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
 # image = cv.imread("images/4.jpg", 1)
 # extract_cnn_mask(image)
-i = 10
+i = 1
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
