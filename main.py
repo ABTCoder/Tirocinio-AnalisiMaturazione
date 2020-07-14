@@ -1,3 +1,4 @@
+import matlab.engine
 import random
 import time
 import math
@@ -320,6 +321,9 @@ def extract_cnn_mask(image):
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                     "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
+
+eng = matlab.engine.start_matlab()
+eng.LCS_ellipse(nargout=0)
 # image = cv.imread("images/4.jpg", 1)
 # extract_cnn_mask(image)
 i = 1
