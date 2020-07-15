@@ -28,8 +28,10 @@ def read_boxes(filename):
     return converted_list
 
 
-# LETTURA BOUNDING BOXES DAL JSON
+# LETTURA BOUNDING BOXES DAL JSON DI OLIVES FINAL
+# IMPOSTARE L'EXTRA BORDER SE NECESSARIO
 def read_json(n, h, w):
+    extra = 10  # 0 per i bbox effettivi del json
     b_list = []
     with open('info.json') as f:
         data = json.load(f)
@@ -44,10 +46,10 @@ def read_json(n, h, w):
             max_h = max(max_h, point["y"])
             min_w = min(min_w, point["x"])
             max_w = max(max_w, point["x"])
-        xstart = min_w
-        xstop = max_w
-        ystart = min_h
-        ystop = max_h
+        xstart = max(min_w-extra, 0)
+        xstop = min(max_w+extra, w)
+        ystart = max(min_h-extra, 0)
+        ystop = min(max_h+extra, h)
         b_list.append([xstart, xstop, ystart, ystop])
 
     return b_list
@@ -69,20 +71,17 @@ def extract_histograms(filename, boxes_name):
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
 
             print("DETECTING")
-            nw = int(sub_img_bgr.shape[1] * 50 / 100)
-            nh = int(sub_img_bgr.shape[0] * 50 / 100)
-            dim = (nw, nh)
-            sub_img_bgr = cv.resize(sub_img_bgr, dim, interpolation=cv.INTER_NEAREST)
-            nw = int(sub_img_bgr.shape[1] * 200 / 100)
-            nh = int(sub_img_bgr.shape[0] * 200 / 100)
-            dim = (nw, nh)
-            sub_img_bgr = cv.resize(sub_img_bgr, dim, interpolation=cv.INTER_NEAREST)
-            cv.imshow("INPUT", sub_img_bgr)
+            cv.imshow("input", sub_img_bgr)
             cv.waitKey(0)
             cv.destroyAllWindows()
+            processed = pre_processing(sub_img_bgr)
             # cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
 
-            # mask = extract_cnn_mask(sub_img_bgr)  # METODO 3 MASK RCNN
+            mask = extract_matlab_ellipses(processed)  # METODO 4 MATLAB
+            if mask is None:
+                print("[INFO] MATLAB failed, trying Mask R-CNN...")
+                mask = extract_cnn_mask(processed)  # METODO 3 MASK RCNN
+
             # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
             # if mask is None:
                 # mask = detect_contours(sub_img_bgr)  # METODO 2
@@ -103,7 +102,7 @@ def extract_histograms(filename, boxes_name):
     return hsv_hists, bgr_hists
 
 
-# FUNZIONE DI RILEVAMENTO DELLE ELLISSI
+# FUNZIONE DI RILEVAMENTO DELLE ELLISSI CON SCI KIT
 # RESTITUISCE LA MASCHERA , None SE NON E' STATA GENERATA
 def detect_ellipse(image):
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)  # CONVERSIONE IN SCALA DI GRIGI
@@ -318,15 +317,62 @@ def extract_cnn_mask(image):
     return newMask
 
 
+# METODO DI ESTRAZIONE BASATO SULL'ALGORITMO IN PYTHON
+# RESTITUISCE LA MASCHERA
+def extract_matlab_ellipses(image):
+    image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+    image = cv.equalizeHist(image)
+    image_mat = matlab.uint8(list(image.ravel(order='F')))
+    image_mat.reshape((image.shape[0], image.shape[1], 1))  # TERZO PARAMETRO = 3 SE E' A COLORI
+    print("[INFO] done reshaping...")
+
+    ellipses = eng.get_ellipses(image_mat, nargout=1)
+    mask = np.zeros((image.shape[0], image.shape[1]), np.uint8)
+
+    for el in ellipses:
+        rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE L'AREA DELL'ELLISSE
+        mask[rr, cc] = 255
+        cv.imshow("MASK", mask)
+        cv.waitKey(0)
+        cv.destroyAllWindows()
+
+    if ellipses.size[0] == 0:
+        mask = None
+
+    return mask
+
+
+# FUNZIONE PER EFFETTUARE ALCUNE TRASFORMAZIONI PRE RILEVAMENTO
+def pre_processing(image):
+    nw = int(image.shape[1] * 50 / 100)
+    nh = int(image.shape[0] * 50 / 100)
+    dim = (nw, nh)
+    # image = cv.resize(image, dim, interpolation=cv.INTER_CUBIC)
+    nw = int(image.shape[1] * 200 / 100)
+    nh = int(image.shape[0] * 200 / 100)
+    dim = (nw, nh)
+    # image = cv.resize(image, dim, interpolation=cv.INTER_LANCZOS4)
+
+    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    image = cv.filter2D(image, -1, kernel)
+    cv.imshow("PROCESSED", image)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+    return image
+
+
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                     "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
-
+print("[INFO] loading MATLAB engine...")
 eng = matlab.engine.start_matlab()
-eng.LCS_ellipse(nargout=0)
+print("[INFO] done loading MATLAB...")
+
 # image = cv.imread("images/4.jpg", 1)
 # extract_cnn_mask(image)
-i = 1
+
+# CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
+i = 22
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
