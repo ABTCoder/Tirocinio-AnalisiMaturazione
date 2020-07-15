@@ -320,10 +320,10 @@ def extract_cnn_mask(image):
 # METODO DI ESTRAZIONE BASATO SULL'ALGORITMO IN PYTHON
 # RESTITUISCE LA MASCHERA
 def extract_matlab_ellipses(image):
-    image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
-    image = cv.equalizeHist(image)
+    image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
+    # image = cv.equalizeHist(image)
     image_mat = matlab.uint8(list(image.ravel(order='F')))
-    image_mat.reshape((image.shape[0], image.shape[1], 1))  # TERZO PARAMETRO = 3 SE E' A COLORI
+    image_mat.reshape((image.shape[0], image.shape[1], 3))  # TERZO PARAMETRO = 3 SE E' A COLORI
     print("[INFO] done reshaping...")
 
     ellipses = eng.get_ellipses(image_mat, nargout=1)
@@ -372,7 +372,7 @@ print("[INFO] done loading MATLAB...")
 # extract_cnn_mask(image)
 
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-i = 22
+i = 65
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
