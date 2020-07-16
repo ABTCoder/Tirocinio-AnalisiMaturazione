@@ -57,10 +57,10 @@ def read_json(n, h, w):
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
 # RITORNA DUE LISTE CONTENENTI LE FREQUENZE D'ISTOGRAMMA PER OGNI CANALE
-def extract_histograms(filename, boxes_name, half_size=False, double_size=False, sharpening=False):
-    log_file = open("log.txt", 'a')
+def extract_histograms(filename, boxes_name, half_size=False, double_size=False):
+    start_time = time.time()
     log_file.write("Immagine: "+filename+" | TRANSFORMAZIONI: resize 0.5x:"+str(half_size)+"; resize 2x:"
-                   + str(double_size)+"; sharpening:"+str(sharpening)+"\n")
+                   + str(double_size)+"\n")
 
     hsv_hists = []
     bgr_hists = []
@@ -69,43 +69,52 @@ def extract_histograms(filename, boxes_name, half_size=False, double_size=False,
     (H, W) = fruits.shape[:2]
     boxes = read_json(boxes_name, H, W)
     i = 0
+    success = 0
     for box in boxes:
         try:
             sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
             sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
-
-            print("DETECTING")
-            cv.imshow("input", sub_img_bgr)
-            cv.waitKey(20)
-            cv.destroyAllWindows()
-            processed = pre_processing(sub_img_bgr, half_size, double_size, sharpening)
             # cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
 
-            rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)
-            mask = extract_matlab_ellipses(rgb_processed)  # METODO 4 MATLAB
-            method = "MATLAB"
-            if mask is None:
-                print("[INFO] MATLAB first attempt failed, trying equalize Hist...")
-                eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
-                eq = cv.equalizeHist(eq)
-                mask = extract_matlab_ellipses(eq)
-                method = "MATLAB + histequalize"
+            print("DETECTING")
+            # cv.imshow("input", sub_img_bgr)
+            # cv.waitKey(0)
+            cv.destroyAllWindows()
 
-            if mask is None:
-                print("[INFO] MATLAB failed, trying Mask R-CNN...")
-                mask = extract_cnn_mask(processed)  # METODO 3 MASK RCNN
-                method = "Mask R-CNN"
+            sharpening = False;
+            for n in range(2):
+                processed = pre_processing(sub_img_bgr, half_size, double_size, sharpening)
+                rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)
+                mask = extract_matlab_ellipses(rgb_processed)  # METODO 4 MATLAB
+                method = "MATLAB"
+                if mask is None:
+                    print("[INFO] MATLAB first attempt failed, trying equalize Hist...")
+                    eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
+                    eq = cv.equalizeHist(eq)
+                    mask = extract_matlab_ellipses(eq)
+                    method = "MATLAB + histequalize"
 
-            if mask is None:
-                print("[INFO] Mask R-CNN failed, trying findContours...")
-                mask = detect_contours(processed)  # METODO 2
-                method = "FindContours"
+                if mask is None:
+                    print("[INFO] MATLAB failed, trying Mask R-CNN...")
+                    mask = extract_cnn_mask(processed)  # METODO 3 MASK RCNN
+                    method = "Mask R-CNN"
+
+                if mask is None:
+                    print("[INFO] Mask R-CNN failed, trying findContours...")
+                    mask = detect_contours(processed)  # METODO 2
+                    method = "FindContours"
+
+                if mask is not None:
+                    break;
+                sharpening = True;
 
             if mask is None:
                 log_file.write("Oliva "+str(i+1)+" FALLITO\n")
             else:
+                success = success + 1
                 white_p = calc_white_percentage(mask)
-                log_file.write("Oliva "+str(i+1)+" SUCCESSO, metodo="+method+", PIXEL BIANCHI MASCHERA="+white_p+"%\n")
+                log_file.write("Oliva "+str(i+1)+" SUCCESSO, metodo = "+method+", PIXEL BIANCHI MASCHERA = "
+                               + "{:.2f}".format(white_p) + "%, sharpening = "+str(sharpening)+"\n")
 
             # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI SCI KIT)
 
@@ -122,8 +131,7 @@ def extract_histograms(filename, boxes_name, half_size=False, double_size=False,
             i = i +1
             continue
 
-    log_file.write("\n")
-    log_file.close()
+    log_file.write("RILEVAMENTI: "+str(success)+" SU "+str(i+1)+"\n----------------------\n\n")
     return hsv_hists, bgr_hists
 
 
@@ -211,8 +219,8 @@ def detect_contours(image):
     mask = np.zeros((height, width), np.uint8)
     # mask = cv.drawContours(gray, hull_list, -1, 255, 3)
     mask = cv.fillPoly(mask, contours, 255)
-    cv.imshow("FILL", mask)
-    cv.waitKey(20)
+    # cv.imshow("FILL", mask)
+    # cv.waitKey(0)
     cv.destroyAllWindows()
 
     return mask
@@ -301,12 +309,12 @@ def extract_cnn_mask(image):
             instance = cv.bitwise_and(roi, roi, mask=visMask)
             newMask = np.zeros((H, W), np.uint8)
             newMask[startY:endY, startX:endX][mask] = 255
-            cv.imshow("NEWMASK", newMask)
+            # cv.imshow("NEWMASK", newMask)
 
             # show the extracted ROI, the mask, along with the
             # segmented instance
-            cv.imshow("ROI", roi)
-            cv.imshow("Segmented", instance)
+            # cv.imshow("ROI", roi)
+            # cv.imshow("Segmented", instance)
 
             # now, extract *only* the masked region of the ROI by passing
             # in the boolean mask array as our slice condition
@@ -332,8 +340,8 @@ def extract_cnn_mask(image):
                         cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
             # show the output image
-            cv.imshow("Output", clone)
-            cv.waitKey(20)
+            # cv.imshow("Output", clone)
+            # cv.waitKey(0)
             cv.destroyAllWindows()
 
     return newMask
@@ -354,8 +362,8 @@ def extract_matlab_ellipses(image):
     for el in ellipses:
         rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE L'AREA DELL'ELLISSE
         mask[rr, cc] = 255
-        cv.imshow("MASK", mask)
-        cv.waitKey(20)
+        # cv.imshow("MASK", mask)
+        # cv.waitKey(0)
         cv.destroyAllWindows()
 
     if ellipses.size[0] == 0:
@@ -380,8 +388,8 @@ def pre_processing(image, half_size=False, double_size=False, sharpening=False):
         kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
         image = cv.filter2D(image, -1, kernel)
 
-    cv.imshow("PROCESSED", image)
-    cv.waitKey(20)
+    # cv.imshow("PROCESSED", image)
+    # cv.waitKey(0)
     cv.destroyAllWindows()
     return image
 
@@ -401,9 +409,12 @@ print("[INFO] done loading MATLAB...")
 # image = cv.imread("images/4.jpg", 1)
 # extract_cnn_mask(image)
 
+log_file = open("log.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-i = 40
-hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
+for i in range(10):
+    hsv, bgr = extract_histograms("images/"+str(i+1)+".jpg", i)
+
+log_file.close()
 
 # img = cv.imread("olive2.jpg")
 # fig1, ax1 = plt.subplots()
