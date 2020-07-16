@@ -57,7 +57,11 @@ def read_json(n, h, w):
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
 # RITORNA DUE LISTE CONTENENTI LE FREQUENZE D'ISTOGRAMMA PER OGNI CANALE
-def extract_histograms(filename, boxes_name):
+def extract_histograms(filename, boxes_name, half_size=False, double_size=False, sharpening=False):
+    log_file = open("log.txt", 'a')
+    log_file.write("Immagine: "+filename+" | TRANSFORMAZIONI: resize 0.5x:"+str(half_size)+"; resize 2x:"
+                   + str(double_size)+"; sharpening:"+str(sharpening)+"\n")
+
     hsv_hists = []
     bgr_hists = []
     # boxes = read_boxes(boxes_name)
@@ -72,21 +76,40 @@ def extract_histograms(filename, boxes_name):
 
             print("DETECTING")
             cv.imshow("input", sub_img_bgr)
-            cv.waitKey(0)
+            cv.waitKey(20)
             cv.destroyAllWindows()
-            processed = pre_processing(sub_img_bgr)
+            processed = pre_processing(sub_img_bgr, half_size, double_size, sharpening)
             # cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
 
-            mask = extract_matlab_ellipses(processed)  # METODO 4 MATLAB
+            rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)
+            mask = extract_matlab_ellipses(rgb_processed)  # METODO 4 MATLAB
+            method = "MATLAB"
+            if mask is None:
+                print("[INFO] MATLAB first attempt failed, trying equalize Hist...")
+                eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
+                eq = cv.equalizeHist(eq)
+                mask = extract_matlab_ellipses(eq)
+                method = "MATLAB + histequalize"
+
             if mask is None:
                 print("[INFO] MATLAB failed, trying Mask R-CNN...")
                 mask = extract_cnn_mask(processed)  # METODO 3 MASK RCNN
+                method = "Mask R-CNN"
 
-            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI)
-            # if mask is None:
-                # mask = detect_contours(sub_img_bgr)  # METODO 2
+            if mask is None:
+                print("[INFO] Mask R-CNN failed, trying findContours...")
+                mask = detect_contours(processed)  # METODO 2
+                method = "FindContours"
+
+            if mask is None:
+                log_file.write("Oliva "+str(i+1)+" FALLITO\n")
+            else:
+                white_p = calc_white_percentage(mask)
+                log_file.write("Oliva "+str(i+1)+" SUCCESSO, metodo="+method+", PIXEL BIANCHI MASCHERA="+white_p+"%\n")
+
+            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI SCI KIT)
+
             fig, ax = plt.subplots()
-
             # bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
             # hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
             # ax.legend()
@@ -99,6 +122,8 @@ def extract_histograms(filename, boxes_name):
             i = i +1
             continue
 
+    log_file.write("\n")
+    log_file.close()
     return hsv_hists, bgr_hists
 
 
@@ -167,8 +192,7 @@ def detect_contours(image):
     kernel = cv.getStructuringElement(cv.MORPH_CROSS, (3, 3))
     # gray = cv.dilate(gray, kernel, iterations=2)  # dilate
     # gray = cv.bitwise_not(gray)
-    cv.imshow("BLUR", gray)
-    cv.waitKey(0)
+    # cv.imshow("BLUR", gray)
 
     sigma = 0.33
     v = np.median(image)
@@ -176,13 +200,11 @@ def detect_contours(image):
     lower = int(max(0, (1.0 - sigma) * v))
     upper = int(min(255, (1.0 + sigma) * v))
     # gray = cv.Canny(gray, lower, upper)
-    cv.imshow("CANNY", gray)
-    cv.waitKey(0)
+    # cv.imshow("CANNY", gray)
 
     se = np.ones((7, 7), dtype='uint8')
     # gray = cv.morphologyEx(gray, cv.MORPH_CLOSE, se, iterations=1)  # CHIUDE I BUCHI DEI CONTORNI
-    cv.imshow("MORP", gray)
-    cv.waitKey(0)
+    # cv.imshow("MORP", gray)
     contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
     height, width = gray.shape[0:2]
@@ -190,7 +212,7 @@ def detect_contours(image):
     # mask = cv.drawContours(gray, hull_list, -1, 255, 3)
     mask = cv.fillPoly(mask, contours, 255)
     cv.imshow("FILL", mask)
-    cv.waitKey(0)
+    cv.waitKey(20)
     cv.destroyAllWindows()
 
     return mask
@@ -311,7 +333,7 @@ def extract_cnn_mask(image):
 
             # show the output image
             cv.imshow("Output", clone)
-            cv.waitKey(0)
+            cv.waitKey(20)
             cv.destroyAllWindows()
 
     return newMask
@@ -320,11 +342,11 @@ def extract_cnn_mask(image):
 # METODO DI ESTRAZIONE BASATO SULL'ALGORITMO IN PYTHON
 # RESTITUISCE LA MASCHERA
 def extract_matlab_ellipses(image):
-    image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
-    # image = cv.equalizeHist(image)
     image_mat = matlab.uint8(list(image.ravel(order='F')))
-    image_mat.reshape((image.shape[0], image.shape[1], 3))  # TERZO PARAMETRO = 3 SE E' A COLORI
-    print("[INFO] done reshaping...")
+    ch = 3
+    if len(image.shape) == 2:
+        ch = 1
+    image_mat.reshape((image.shape[0], image.shape[1], ch))  # TERZO PARAMETRO = 3 SE E' A COLORI
 
     ellipses = eng.get_ellipses(image_mat, nargout=1)
     mask = np.zeros((image.shape[0], image.shape[1]), np.uint8)
@@ -333,7 +355,7 @@ def extract_matlab_ellipses(image):
         rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE L'AREA DELL'ELLISSE
         mask[rr, cc] = 255
         cv.imshow("MASK", mask)
-        cv.waitKey(0)
+        cv.waitKey(20)
         cv.destroyAllWindows()
 
     if ellipses.size[0] == 0:
@@ -343,22 +365,30 @@ def extract_matlab_ellipses(image):
 
 
 # FUNZIONE PER EFFETTUARE ALCUNE TRASFORMAZIONI PRE RILEVAMENTO
-def pre_processing(image):
-    nw = int(image.shape[1] * 50 / 100)
-    nh = int(image.shape[0] * 50 / 100)
-    dim = (nw, nh)
-    # image = cv.resize(image, dim, interpolation=cv.INTER_CUBIC)
-    nw = int(image.shape[1] * 200 / 100)
-    nh = int(image.shape[0] * 200 / 100)
-    dim = (nw, nh)
-    # image = cv.resize(image, dim, interpolation=cv.INTER_LANCZOS4)
+def pre_processing(image, half_size=False, double_size=False, sharpening=False):
+    if half_size:
+        nw = int(image.shape[1] * 50 / 100)
+        nh = int(image.shape[0] * 50 / 100)
+        dim = (nw, nh)
+        image = cv.resize(image, dim, interpolation=cv.INTER_CUBIC)
+    if double_size:
+        nw = int(image.shape[1] * 200 / 100)
+        nh = int(image.shape[0] * 200 / 100)
+        dim = (nw, nh)
+        image = cv.resize(image, dim, interpolation=cv.INTER_LANCZOS4)
+    if sharpening:
+        kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+        image = cv.filter2D(image, -1, kernel)
 
-    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-    image = cv.filter2D(image, -1, kernel)
     cv.imshow("PROCESSED", image)
-    cv.waitKey(0)
+    cv.waitKey(20)
     cv.destroyAllWindows()
     return image
+
+
+def calc_white_percentage(mask):
+    wh = cv.countNonZero(mask)
+    return (wh / mask.size) * 100
 
 
 print("[INFO] loading Mask R-CNN from disk...")
@@ -372,7 +402,7 @@ print("[INFO] done loading MATLAB...")
 # extract_cnn_mask(image)
 
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-i = 65
+i = 40
 hsv, bgr = extract_histograms("images/"+str(i)+".jpg", i-1)
 
 # img = cv.imread("olive2.jpg")
