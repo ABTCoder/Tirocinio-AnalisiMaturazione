@@ -131,7 +131,8 @@ def extract_histograms(filename, boxes_name, half_size=False, double_size=False)
             i = i +1
             continue
 
-    log_file.write("RILEVAMENTI: "+str(success)+" SU "+str(i+1)+"\n----------------------\n\n")
+    log_file.write("RILEVAMENTI: "+str(success)+" SU "+str(i)+", TEMPO: "+str(time.time()-start_time)+"\n")
+    log_file.write("----------------------\n\n")
     return hsv_hists, bgr_hists
 
 
@@ -411,7 +412,7 @@ print("[INFO] done loading MATLAB...")
 
 log_file = open("log.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-for i in range(10):
+for i in range(2):
     hsv, bgr = extract_histograms("images/"+str(i+1)+".jpg", i)
 
 log_file.close()

@@ -1,0 +1,28 @@
+Immagine: images/1.jpg | TRANSFORMAZIONI: resize 0.5x:False; resize 2x:False
+Oliva 1 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 46.71%, sharpening = False
+Oliva 2 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 42.47%, sharpening = False
+Oliva 3 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 46.62%, sharpening = False
+Oliva 4 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 42.49%, sharpening = False
+Oliva 5 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 41.52%, sharpening = False
+Oliva 6 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 43.15%, sharpening = False
+Oliva 7 SUCCESSO, metodo = MATLAB + histequalize, PIXEL BIANCHI MASCHERA = 25.34%, sharpening = False
+Oliva 8 SUCCESSO, metodo = FindContours, PIXEL BIANCHI MASCHERA = 90.17%, sharpening = False
+Oliva 9 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 19.83%, sharpening = False
+RILEVAMENTI: 9 SU 10, TEMPO: 66.71181583404541
+----------------------
+
+Immagine: images/2.jpg | TRANSFORMAZIONI: resize 0.5x:False; resize 2x:False
+Oliva 1 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 54.86%, sharpening = False
+Oliva 2 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 6.24%, sharpening = False
+Oliva 3 SUCCESSO, metodo = MATLAB, PIXEL BIANCHI MASCHERA = 58.77%, sharpening = False
+Oliva 4 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 8.31%, sharpening = False
+Oliva 5 SUCCESSO, metodo = MATLAB + histequalize, PIXEL BIANCHI MASCHERA = 5.45%, sharpening = False
+Oliva 6 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 9.39%, sharpening = False
+Oliva 7 SUCCESSO, metodo = MATLAB + histequalize, PIXEL BIANCHI MASCHERA = 23.19%, sharpening = False
+Oliva 8 SUCCESSO, metodo = FindContours, PIXEL BIANCHI MASCHERA = 97.36%, sharpening = False
+Oliva 9 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 56.72%, sharpening = False
+Oliva 10 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 48.47%, sharpening = False
+Oliva 11 SUCCESSO, metodo = Mask R-CNN, PIXEL BIANCHI MASCHERA = 24.03%, sharpening = False
+RILEVAMENTI: 11 SU 12, TEMPO: 126.95626139640808
+----------------------
+
