@@ -301,67 +301,70 @@ def extract_cnn_mask(image):
         if confidence > 0:
             # clone our original image so we can draw on it
             clone = image.copy()
-
+            print("CONFIDENCE = "+str(confidence))
             # scale the bounding box coordinates back relative to the
             # size of the image and then compute the width and the height
             # of the bounding box
             box = boxes[0, 0, i, 3:7] * np.array([W, H, W, H])
             (startX, startY, endX, endY) = box.astype("int")
-            boxW = endX - startX
-            boxH = endY - startY
+            center_x = int(round((startX+endX)/2))
+            center_y = int(round((startY + endY) / 2))
+            if check_box_center(W, H, center_x, center_y):
+                boxW = endX - startX
+                boxH = endY - startY
 
-            # extract the pixel-wise segmentation for the object, resize
-            # the mask such that it's the same dimensions of the bounding
-            # box, and then finally threshold to create a *binary* mask
-            mask = masks[i, classID]
-            mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_CUBIC)
-            mask = (mask > 0.5)
+                # extract the pixel-wise segmentation for the object, resize
+                # the mask such that it's the same dimensions of the bounding
+                # box, and then finally threshold to create a *binary* mask
+                mask = masks[i, classID]
+                mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_CUBIC)
+                mask = (mask > 0.5)
 
-            # extract the ROI of the image
-            roi = clone[startY:endY, startX:endX]
+                # extract the ROI of the image
+                roi = clone[startY:endY, startX:endX]
 
-            # check to see if are going to visualize how to extract the
-            # masked region itself
+                # check to see if are going to visualize how to extract the
+                # masked region itself
 
-            # convert the mask from a boolean to an integer mask with
-            # to values: 0 or 255, then apply the mask
-            visMask = (mask * 255).astype("uint8")
-            instance = cv.bitwise_and(roi, roi, mask=visMask)
-            newMask[startY:endY, startX:endX][mask] = 255
-            cv.imshow("NEWMASK", newMask)
+                # convert the mask from a boolean to an integer mask with
+                # to values: 0 or 255, then apply the mask
+                visMask = (mask * 255).astype("uint8")
+                instance = cv.bitwise_and(roi, roi, mask=visMask)
+                newMask[startY:endY, startX:endX][mask] = 255
+                cv.imshow("NEWMASK", newMask)
 
-            # show the extracted ROI, the mask, along with the
-            # segmented instance
-            # cv.imshow("ROI", roi)
-            # cv.imshow("Segmented", instance)
+                # show the extracted ROI, the mask, along with the
+                # segmented instance
+                # cv.imshow("ROI", roi)
+                # cv.imshow("Segmented", instance)
 
-            # now, extract *only* the masked region of the ROI by passing
-            # in the boolean mask array as our slice condition
-            roi = roi[mask]
+                # now, extract *only* the masked region of the ROI by passing
+                # in the boolean mask array as our slice condition
+                roi = roi[mask]
 
-            # randomly select a color that will be used to visualize this
-            # particular instance segmentation then create a transparent
-            # overlay by blending the randomly selected color with the ROI
-            color = random.choice(COLORS)
-            blended = ((0.4 * color) + (0.6 * roi)).astype("uint8")
+                # randomly select a color that will be used to visualize this
+                # particular instance segmentation then create a transparent
+                # overlay by blending the randomly selected color with the ROI
+                color = random.choice(COLORS)
+                blended = ((0.4 * color) + (0.6 * roi)).astype("uint8")
 
-            # store the blended ROI in the original image
-            clone[startY:endY, startX:endX][mask] = blended
+                # store the blended ROI in the original image
+                clone[startY:endY, startX:endX][mask] = blended
 
-            # draw the bounding box of the instance on the image
-            color = [int(c) for c in color]
-            cv.rectangle(clone, (startX, startY), (endX, endY), color, 2)
+                # draw the bounding box of the instance on the image
+                color = [int(c) for c in color]
+                cv.rectangle(clone, (startX, startY), (endX, endY), color, 2)
 
-            # draw the predicted label and associated probability of the
-            # instance segmentation on the image
-            text = "{}: {:.4f}".format(LABELS[classID], confidence)
-            cv.putText(clone, text, (startX, startY - 5),
-                       cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                # draw the predicted label and associated probability of the
+                # instance segmentation on the image
+                text = "{}: {:.4f}".format(LABELS[classID], confidence)
+                cv.putText(clone, text, (startX, startY - 5),
+                           cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
-            # show the output image
-            cv.imshow("Output", clone)
-            cv.waitKey(0)
-            cv.destroyAllWindows()
+                # show the output image
+                cv.imshow("Output", clone)
+                cv.waitKey(0)
+                cv.destroyAllWindows()
 
     return newMask
 
@@ -414,6 +417,7 @@ def pre_processing(image, half_size=False, double_size=False, sharpening=False):
         kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
         image = cv.filter2D(image, -1, kernel)
 
+    # image = cv.flip(image, 1)
     # cv.imshow("PROCESSED", image)
     # cv.waitKey(0)
     cv.destroyAllWindows()
@@ -428,6 +432,20 @@ def calc_white_percentage(mask):
         return 0
 
 
+def check_box_center(w, h, x, y):
+    allowed_h = int(round(0.5 * h))
+    allowed_w = int(round(0.5 * w))
+    sx = int(round((w-allowed_w)/2))
+    sy = int(round((h - allowed_h) / 2))
+    ex = sx + allowed_w
+    ey = sy + allowed_h
+
+    if ex > x > sx and ey > y > sy:
+        return True
+    else:
+        return False
+
+
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
@@ -440,9 +458,9 @@ print("[INFO] done loading MATLAB...")
 
 log_file = open("log.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-# VEDERE 23, 25, 35, 49, 1
-i = 1
-hsv, bgr = extract_histograms("images/" + str(i) + ".jpg", i - 1, min_mask=15)
+# VEDERE 23, 25, 35, 49, 1, 12, 60 (problematico), 29 troppo piccolo
+i = 7
+hsv, bgr = extract_histograms("images/" + str(i) + ".jpg", i - 1, min_mask=20)
 
 log_file.close()
 
