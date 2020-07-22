@@ -317,8 +317,8 @@ def extract_cnn_mask(image):
                 # the mask such that it's the same dimensions of the bounding
                 # box, and then finally threshold to create a *binary* mask
                 mask = masks[i, classID]
-                mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_CUBIC)
-                mask = (mask > 0.5)
+                mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_LANCZOS4)
+                mask = (mask > 0.1)
 
                 # extract the ROI of the image
                 roi = clone[startY:endY, startX:endX]
@@ -459,7 +459,7 @@ print("[INFO] done loading MATLAB...")
 log_file = open("log.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
 # VEDERE 23, 25, 35, 49, 1, 12, 60 (problematico), 29 troppo piccolo
-i = 7
+i = 2
 hsv, bgr = extract_histograms("images/" + str(i) + ".jpg", i - 1, min_mask=20)
 
 log_file.close()
