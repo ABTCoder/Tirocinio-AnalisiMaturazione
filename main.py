@@ -133,18 +133,22 @@ def extract_histograms(filename, boxes_name, min_mask=0):
                                + "%, sharpening = " + str(sharpening) + ", double size = " + str(double_size) +
                                ", metodo = " + method + "\n")
 
-            # mask = detect_ellipse(sub_img_bgr)  # METODO 1 (ELLISSI SCI KIT)
+            if double_size:
+                nw = sub_img_bgr.shape[1]
+                nh = sub_img_bgr.shape[0]
+                dim = (nw, nh)
+                mask = cv.resize(mask, dim, interpolation=cv.INTER_LINEAR)
 
-            # fig, ax = plt.subplots()
-            # bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
-            # hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
-            # ax.legend()
-            # plt.show()
+            fig, ax = plt.subplots()
+            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
+            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+            ax.legend()
+            plt.show()
 
-            # bgr_hists.append([bh, gh, rh])
-            # hsv_hists.append([hh, sh, vh])
+            bgr_hists.append([bh, gh, rh])
+            hsv_hists.append([hh, sh, vh])
             i = i + 1
-        except FileNotFoundError:
+        except Exception:
             i = i + 1
             continue
 
@@ -216,7 +220,7 @@ def detect_contours(image):
     # gray = cv.GaussianBlur(gray, (5, 5), 0)
     gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 9, 7)
     # _, gray = cv.threshold(gray, 0, 255, cv.THRESH_BINARY_INV + cv.THRESH_OTSU)
-    kernel = cv.getStructuringElement(cv.MORPH_CROSS, (3, 3))
+    # kernel = cv.getStructuringElement(cv.MORPH_CROSS, (3, 3))
     # gray = cv.dilate(gray, kernel, iterations=2)  # dilate
     # gray = cv.bitwise_not(gray)
     # cv.imshow("BLUR", gray)
@@ -433,8 +437,8 @@ def calc_white_percentage(mask):
 
 
 def check_box_center(w, h, x, y):
-    allowed_h = int(round(0.5 * h))
-    allowed_w = int(round(0.5 * w))
+    allowed_h = int(round(0.33 * h))
+    allowed_w = int(round(0.33 * w))
     sx = int(round((w-allowed_w)/2))
     sy = int(round((h - allowed_h) / 2))
     ex = sx + allowed_w
@@ -458,16 +462,12 @@ print("[INFO] done loading MATLAB...")
 
 log_file = open("log.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-# VEDERE 23, 25, 35, 49, 1, 12, 60 (problematico), 29 troppo piccolo
-i = 2
+# VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo
+i = 12
 hsv, bgr = extract_histograms("images/" + str(i) + ".jpg", i - 1, min_mask=20)
 
 log_file.close()
 
-# img = cv.imread("olive2.jpg")
-# fig1, ax1 = plt.subplots()
-# vals = plot_histogram(ax1, img)
-# plt.show()
 
 
 cv.destroyAllWindows()
