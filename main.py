@@ -3,6 +3,7 @@ import random
 import time
 import math
 import json
+import csv
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
@@ -62,8 +63,8 @@ def extract_histograms(filename, box_index, min_mask=0):
     start_time = time.time()
     log_file.write("Immagine: " + filename + "\n")
 
-    hsv_hists = []
-    bgr_hists = []
+    # hsv_hists = []
+    # bgr_hists = []
     # boxes = read_boxes(boxes_name)
     fruits = cv.imread(filename)
     (H, W) = fruits.shape[:2]
@@ -71,14 +72,16 @@ def extract_histograms(filename, box_index, min_mask=0):
     real_boxes = read_json(box_index, H, W, 0)
     i = 0
     success = 0
-    for box in boxes:
+    for box, r_box in zip(boxes, real_boxes):
         try:
-            sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
-            # sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
-            # cv.imwrite("pics3/input"+str(i)+".jpg", sub_img_bgr)
+            roi_bgr_extra = fruits[box[2]:box[3], box[0]:box[1]]
+            roi_hsv_extra = cv.cvtColor(roi_bgr_extra, cv.COLOR_BGR2HSV_FULL)
+            roi_bgr = fruits[r_box[2]:r_box[3], r_box[0]:r_box[1]]
+            roi_hsv = cv.cvtColor(roi_bgr, cv.COLOR_BGR2HSV_FULL)
+            # cv.imwrite("pics3/input"+str(i)+".jpg", roi_bgr)
 
             print("DETECTING")
-            # cv.imshow("input", sub_img_bgr)
+            # cv.imshow("input", roi_bgr_extra)
             # cv.waitKey(0)
             # cv.destroyAllWindows()
 
@@ -86,7 +89,7 @@ def extract_histograms(filename, box_index, min_mask=0):
             double_size = True
             sharpening = False
             for n in range(3):
-                processed = pre_processing(sub_img_bgr, half_size, double_size, sharpening)
+                processed = pre_processing(roi_bgr_extra, half_size, double_size, sharpening)
 
                 rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)
                 mask = extract_matlab_ellipses(rgb_processed)  # METODO 4 MATLAB
@@ -123,10 +126,7 @@ def extract_histograms(filename, box_index, min_mask=0):
 
             if mask is None or white_p < min_mask:
                 print("[INFO] All methods failed")
-                r_box = real_boxes[i]
-                sub_img_bgr = fruits[r_box[2]:r_box[3], r_box[0]:r_box[1]]
-                height, width = sub_img_bgr.shape[0:2]
-                mask = np.full((height, width), 255, np.uint8)
+                mask = None
                 log_file.write("Oliva " + str(i + 1) + " FALLITO\n")
             else:
                 success = success + 1
@@ -135,23 +135,59 @@ def extract_histograms(filename, box_index, min_mask=0):
                                ", metodo = " + method + "\n")
 
             if double_size:
-                nw = sub_img_bgr.shape[1]
-                nh = sub_img_bgr.shape[0]
+                nw = roi_bgr_extra.shape[1]
+                nh = roi_bgr_extra.shape[0]
                 dim = (nw, nh)
                 mask = cv.resize(mask, dim, interpolation=cv.INTER_LINEAR)
 
             # cv.imwrite("pics3/mask" + str(i) + ".jpg", mask)
 
+            ax = None
             # fig, ax = plt.subplots()
-            # bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
-            # hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+            if mask is not None:
+                file = open("masked_ripening.txt", 'a')
+                file.write(str(stag[i]) + "\n")
+                file.close()
+                for g in range(3, 6):
+                    bins = pow(2, g)
+                    file = open("rgb_"+str(bins)+"bin_masked.txt", 'a')
+                    bh, gh, rh = plot_histogram(roi_bgr_extra, ax, "BGR", mask, bins)
+                    hh, sh, vh = plot_histogram(roi_hsv_extra, ax, "HSV", mask, bins)
+                    rgb_full = np.vstack((rh, gh, bh))
+                    hsv_full = np.vstack((hh, sh, vh))
+                    for f in rgb_full:
+                        file.write(str(int(f))+" ")
+                    file.write("\n")
+                    file.close()
+                    file = open("hsv_"+str(bins)+"bin_masked.txt", 'a')
+                    for f in hsv_full:
+                        file.write(str(int(f))+" ")
+                    file.write("\n")
+                    file.close()
+
+            for g in range(3, 6):
+                bins = pow(2, g)
+                file = open("rgb_" + str(bins) + "bin.txt", 'a')
+                bh, gh, rh = plot_histogram(roi_bgr, None, "BGR", None, bins)
+                hh, sh, vh = plot_histogram(roi_hsv, None, "HSV", None, bins)
+                rgb_full = np.vstack((rh, gh, bh))
+                hsv_full = np.vstack((hh, sh, vh))
+                for f in rgb_full:
+                    file.write(str(int(f)) + " ")
+                file.write("\n")
+                file.close()
+                file = open("hsv_" + str(bins) + "bin.txt", 'a')
+                for f in hsv_full:
+                    file.write(str(int(f)) + " ")
+                file.write("\n")
+                file.close()
             # ax.legend()
             # plt.show()
 
             # bgr_hists.append([bh, gh, rh])
             # hsv_hists.append([hh, sh, vh])
             i = i + 1
-        except Exception:
+        except FileNotFoundError:
             i = i + 1
             continue
 
@@ -159,7 +195,7 @@ def extract_histograms(filename, box_index, min_mask=0):
         "RILEVAMENTI: " + str(success) + " SU " + str(i) + ", TEMPO: " + str(time.time() - start_time) + "\n")
     log_file.write("----------------------\n\n")
     log_file.close()
-    return hsv_hists, bgr_hists, success, i
+    return success, i
 
 
 # FUNZIONE DI RILEVAMENTO DELLE ELLISSI CON SCI KIT
@@ -254,27 +290,26 @@ def detect_contours(image):
 
 
 # CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
-def plot_histogram(axis, image, label="123", mask=None):
+def plot_histogram(image, axis=None, label="123", mask=None, bins=256):
     if mask is None:
         mask = np.full(image.shape[0:2], 255, np.uint8)
 
     c1, c2, c3 = cv.split(image)
 
-    r1 = cv.calcHist([c1], [0], mask, [256], [0, 256])  # Istogramma di opencv è 10x più veloce di numpy
+    r1 = cv.calcHist([c1], [0], mask, [bins], [0, 256])  # Istogramma di opencv è 10x più veloce di numpy
     # axis.hist(c1.ravel(), bins=256, range=[0, 256], label=label[0]) # Hist di matplotlib ricalcola le frequenze
-    axis.bar(np.arange(256), r1.ravel(), label=label[0])
+    r2 = cv.calcHist([c2], [0], mask, [bins], [0, 256])
+    r3 = cv.calcHist([c3], [0], mask, [bins], [0, 256])
 
-    r2 = cv.calcHist([c2], [0], mask, [256], [0, 256])
-    axis.bar(np.arange(256), r2.ravel(), label=label[1])
-
-    r3 = cv.calcHist([c3], [0], mask, [256], [0, 256])
-    axis.bar(np.arange(256), r3.ravel(), label=label[2])
+    if axis is not None:
+        axis.bar(np.arange(bins), r1.ravel(), label=label[0])
+        axis.bar(np.arange(bins), r2.ravel(), label=label[1])
+        axis.bar(np.arange(bins), r3.ravel(), label=label[2])
 
     return r1, r2, r3
 
 
 def extract_cnn_mask(image):
-    newMask = None
     COLORS = open("mask-rcnn-coco/colors.txt").read().strip().split("\n")
     COLORS = [np.array(c.split(",")).astype("int") for c in COLORS]
     COLORS = np.array(COLORS, dtype="uint8")
@@ -466,6 +501,16 @@ def write_ripening_csv(filename, box_index):
     csv.close()
 
 
+def load_ripening_stages():
+    stages = []
+    with open("maturazioni.csv") as csv_file:
+        reader = csv.reader(csv_file)
+        for row in reader:
+            stages.append(int(row[5]))
+    return stages
+
+
+stag = load_ripening_stages()
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
@@ -473,22 +518,19 @@ print("[INFO] loading MATLAB engine...")
 eng = matlab.engine.start_matlab()
 print("[INFO] done loading MATLAB...")
 
-# image = cv.imread("images/1.jpg", 1)
-# extract_matlab_ellipses(image)
 
-
-result = open("result.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
 # VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo, 61 troppo piccolo e troppe ombre
-# i = 23
+# k = 23
 successes = 0
 total = 0
-for i in range(70):
-    hsv, bgr, s, t = extract_histograms("images/" + str(i+1) + ".jpg", i, min_mask=20)
+for k in range(70):
+    s, t = extract_histograms("images/" + str(k+1) + ".jpg", k, min_mask=20)
     successes = successes + s
     total = total + t
 
 percent = (successes / total) * 100
+result = open("result.txt", 'a')
 result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
 result.close()
 

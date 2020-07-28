@@ -749,3 +749,17 @@ Oliva 17 SUCCESSO,	PIXEL MASCHERA = 48.79%, sharpening = False, double size = Tr
 RILEVAMENTI: 16 SU 17, TEMPO: 234.51241302490234
 ----------------------
 
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Immagine: images/23.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 53.85%, sharpening = False, double size = True, metodo = Mask R-CNN
