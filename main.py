@@ -30,8 +30,8 @@ def read_boxes(filename):
 
 # LETTURA BOUNDING BOXES DAL JSON DI OLIVES FINAL
 # IMPOSTARE L'EXTRA BORDER SE NECESSARIO
-def read_json(n, h, w):
-    extra = 10  # 0 per i bbox effettivi del json
+def read_json(n, h, w, extra=0):
+    # extra = 0 per i bbox effettivi del json
     b_list = []
     with open('info.json') as f:
         data = json.load(f)
@@ -57,7 +57,8 @@ def read_json(n, h, w):
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
 # RITORNA DUE LISTE CONTENENTI LE FREQUENZE D'ISTOGRAMMA PER OGNI CANALE
-def extract_histograms(filename, boxes_name, min_mask=0):
+def extract_histograms(filename, box_index, min_mask=0):
+    log_file = open("log.txt", 'a')
     start_time = time.time()
     log_file.write("Immagine: " + filename + "\n")
 
@@ -66,19 +67,20 @@ def extract_histograms(filename, boxes_name, min_mask=0):
     # boxes = read_boxes(boxes_name)
     fruits = cv.imread(filename)
     (H, W) = fruits.shape[:2]
-    boxes = read_json(boxes_name, H, W)
+    boxes = read_json(box_index, H, W, 10)
+    real_boxes = read_json(box_index, H, W, 0)
     i = 0
     success = 0
     for box in boxes:
         try:
             sub_img_bgr = fruits[box[2]:box[3], box[0]:box[1]]
-            sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
-            # cv.imwrite("input"+str(i)+".jpg", sub_img_bgr)
+            # sub_img_hsv = cv.cvtColor(sub_img_bgr, cv.COLOR_BGR2HSV_FULL)
+            # cv.imwrite("pics3/input"+str(i)+".jpg", sub_img_bgr)
 
             print("DETECTING")
-            cv.imshow("input", sub_img_bgr)
-            cv.waitKey(0)
-            cv.destroyAllWindows()
+            # cv.imshow("input", sub_img_bgr)
+            # cv.waitKey(0)
+            # cv.destroyAllWindows()
 
             half_size = False
             double_size = True
@@ -120,13 +122,12 @@ def extract_histograms(filename, boxes_name, min_mask=0):
                     double_size = False
 
             if mask is None or white_p < min_mask:
-                print("[INFO] Mask R-CNN failed, trying findContours...")
-                mask = detect_contours(processed)  # METODO 2
-                method = "FindContours"
-                white_p = calc_white_percentage(mask)
-                log_file.write("Oliva " + str(i + 1) + " FALLITO,\tPIXEL MASCHERA = " + "{:.2f}".format(white_p)
-                               + "%, sharpening = " + str(sharpening) + ", double size = " + str(double_size) +
-                               ", metodo = " + method + "\n")
+                print("[INFO] All methods failed")
+                r_box = real_boxes[i]
+                sub_img_bgr = fruits[r_box[2]:r_box[3], r_box[0]:r_box[1]]
+                height, width = sub_img_bgr.shape[0:2]
+                mask = np.full((height, width), 255, np.uint8)
+                log_file.write("Oliva " + str(i + 1) + " FALLITO\n")
             else:
                 success = success + 1
                 log_file.write("Oliva " + str(i + 1) + " SUCCESSO,\tPIXEL MASCHERA = " + "{:.2f}".format(white_p)
@@ -139,14 +140,16 @@ def extract_histograms(filename, boxes_name, min_mask=0):
                 dim = (nw, nh)
                 mask = cv.resize(mask, dim, interpolation=cv.INTER_LINEAR)
 
-            fig, ax = plt.subplots()
-            bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
-            hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
-            ax.legend()
-            plt.show()
+            # cv.imwrite("pics3/mask" + str(i) + ".jpg", mask)
 
-            bgr_hists.append([bh, gh, rh])
-            hsv_hists.append([hh, sh, vh])
+            # fig, ax = plt.subplots()
+            # bh, gh, rh = plot_histogram(ax, sub_img_bgr, "BGR", mask)
+            # hh, sh, vh = plot_histogram(ax, sub_img_hsv, "HSV", mask)
+            # ax.legend()
+            # plt.show()
+
+            # bgr_hists.append([bh, gh, rh])
+            # hsv_hists.append([hh, sh, vh])
             i = i + 1
         except Exception:
             i = i + 1
@@ -155,7 +158,8 @@ def extract_histograms(filename, boxes_name, min_mask=0):
     log_file.write(
         "RILEVAMENTI: " + str(success) + " SU " + str(i) + ", TEMPO: " + str(time.time() - start_time) + "\n")
     log_file.write("----------------------\n\n")
-    return hsv_hists, bgr_hists
+    log_file.close()
+    return hsv_hists, bgr_hists, success, i
 
 
 # FUNZIONE DI RILEVAMENTO DELLE ELLISSI CON SCI KIT
@@ -335,7 +339,7 @@ def extract_cnn_mask(image):
                 visMask = (mask * 255).astype("uint8")
                 instance = cv.bitwise_and(roi, roi, mask=visMask)
                 newMask[startY:endY, startX:endX][mask] = 255
-                cv.imshow("NEWMASK", newMask)
+                # cv.imshow("NEWMASK", newMask)
 
                 # show the extracted ROI, the mask, along with the
                 # segmented instance
@@ -366,9 +370,9 @@ def extract_cnn_mask(image):
                            cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
                 # show the output image
-                cv.imshow("Output", clone)
-                cv.waitKey(0)
-                cv.destroyAllWindows()
+                # cv.imshow("Output", clone)
+                # cv.waitKey(0)
+                # cv.destroyAllWindows()
 
     return newMask
 
@@ -394,10 +398,10 @@ def extract_matlab_ellipses(image):
             image[cy, cx] = (0, 0, 255)
         else:
             image[cy, cx] = 255
-        cv.imshow("MASK", mask)
-        cv.imshow("ORIGINAL", image)
-        cv.waitKey(0)
-        cv.destroyAllWindows()
+        # cv.imshow("MASK", mask)
+        # cv.imshow("ORIGINAL", image)
+        # cv.waitKey(0)
+        # cv.destroyAllWindows()
 
     if ellipses.size[0] == 0:
         mask = None
@@ -421,9 +425,6 @@ def pre_processing(image, half_size=False, double_size=False, sharpening=False):
         kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
         image = cv.filter2D(image, -1, kernel)
 
-    # image = cv.flip(image, 1)
-    # cv.imshow("PROCESSED", image)
-    # cv.waitKey(0)
     cv.destroyAllWindows()
     return image
 
@@ -437,8 +438,8 @@ def calc_white_percentage(mask):
 
 
 def check_box_center(w, h, x, y):
-    allowed_h = int(round(0.33 * h))
-    allowed_w = int(round(0.33 * w))
+    allowed_h = int(round(0.30 * h))
+    allowed_w = int(round(0.30 * w))
     sx = int(round((w-allowed_w)/2))
     sy = int(round((h - allowed_h) / 2))
     ex = sx + allowed_w
@@ -448,6 +449,21 @@ def check_box_center(w, h, x, y):
         return True
     else:
         return False
+
+
+def write_ripening_csv(filename, box_index):
+    csv = open("maturazioni.csv", 'a')
+    olives = cv.imread("images/"+filename, cv.IMREAD_UNCHANGED)
+    (H, W) = olives.shape[:2]
+    boxes = read_json(box_index, H, W, 0)
+    for box in boxes:
+        olive = olives[box[2]:box[3], box[0]:box[1]]
+        cv.imshow("OLIVA", olive)
+        cv.waitKey(300)
+        ripening = input("Maturazione:")
+        cv.destroyAllWindows()
+        csv.write(filename + ", "+str(box[2])+", "+str(box[3])+", "+str(box[0])+", "+str(box[1])+", "+str(ripening)+"\n")
+    csv.close()
 
 
 print("[INFO] loading Mask R-CNN from disk...")
@@ -460,14 +476,25 @@ print("[INFO] done loading MATLAB...")
 # image = cv.imread("images/1.jpg", 1)
 # extract_matlab_ellipses(image)
 
-log_file = open("log.txt", 'a')
+
+result = open("result.txt", 'a')
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-# VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo
-i = 12
-hsv, bgr = extract_histograms("images/" + str(i) + ".jpg", i - 1, min_mask=20)
+# VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo, 61 troppo piccolo e troppe ombre
+# i = 23
+successes = 0
+total = 0
+for i in range(70):
+    hsv, bgr, s, t = extract_histograms("images/" + str(i+1) + ".jpg", i, min_mask=20)
+    successes = successes + s
+    total = total + t
 
-log_file.close()
+percent = (successes / total) * 100
+result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
+result.close()
 
+
+# for i in range(70):
+    # write_ripening_csv(str(i+1) + ".jpg", i)
 
 
 cv.destroyAllWindows()
