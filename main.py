@@ -146,7 +146,7 @@ def extract_histograms(filename, box_index, min_mask=0):
             # fig, ax = plt.subplots()
             if mask is not None:
                 file = open("masked_ripening.txt", 'a')
-                file.write(str(stag[i]) + "\n")
+                file.write(str(stag[o+i]) + "\n")
                 file.close()
                 for g in range(3, 6):
                     bins = pow(2, g)
@@ -487,7 +487,7 @@ def check_box_center(w, h, x, y):
 
 
 def write_ripening_csv(filename, box_index):
-    csv = open("maturazioni.csv", 'a')
+    csv_file = open("maturazioni.csv", 'a')
     olives = cv.imread("images/"+filename, cv.IMREAD_UNCHANGED)
     (H, W) = olives.shape[:2]
     boxes = read_json(box_index, H, W, 0)
@@ -497,8 +497,8 @@ def write_ripening_csv(filename, box_index):
         cv.waitKey(300)
         ripening = input("Maturazione:")
         cv.destroyAllWindows()
-        csv.write(filename + ", "+str(box[2])+", "+str(box[3])+", "+str(box[0])+", "+str(box[1])+", "+str(ripening)+"\n")
-    csv.close()
+        csv_file.write(filename + ", "+str(box[2])+", "+str(box[3])+", "+str(box[0])+", "+str(box[1])+", "+str(ripening)+"\n")
+    csv_file.close()
 
 
 def load_ripening_stages():
@@ -511,6 +511,7 @@ def load_ripening_stages():
 
 
 stag = load_ripening_stages()
+print(stag)
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
@@ -524,10 +525,12 @@ print("[INFO] done loading MATLAB...")
 # k = 23
 successes = 0
 total = 0
+o = 0
 for k in range(70):
     s, t = extract_histograms("images/" + str(k+1) + ".jpg", k, min_mask=20)
     successes = successes + s
     total = total + t
+    o = t
 
 percent = (successes / total) * 100
 result = open("result.txt", 'a')
