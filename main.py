@@ -10,6 +10,8 @@ import cv2 as cv
 from skimage.transform import hough_ellipse
 from skimage.draw import ellipse as fill_ellipse, ellipse_perimeter
 from skimage.util import img_as_float, img_as_ubyte
+from sklearn import tree
+from sklearn.metrics import plot_confusion_matrix
 
 
 # LETTURA DEI BOUNDING BOX
@@ -146,7 +148,7 @@ def extract_histograms(filename, box_index, min_mask=0):
             # fig, ax = plt.subplots()
             if mask is not None:
                 file = open("masked_ripening.txt", 'a')
-                file.write(str(stag[o+i]) + "\n")
+                file.write(str(stag[total+i]) + "\n")
                 file.close()
                 for g in range(3, 6):
                     bins = pow(2, g)
@@ -510,14 +512,37 @@ def load_ripening_stages():
     return stages
 
 
+def load_training_data(bins, colorspace, masked):
+    colorspace = colorspace.lower()
+    if masked:
+        x = np.loadtxt(colorspace+"_"+str(bins)+"bin_masked.txt", int)
+    else:
+        x = np.loadtxt(colorspace + "_" + str(bins) + "bin.txt", int)
+    y = np.loadtxt("masked_ripening.txt", int)
+    # y = y.reshape(-1, 1)
+    return x, y
+
+
+def create_masked_ripening():
+    ms = open("masked_ripening.txt", "w")
+    with open('log2.txt', 'r') as f:
+        i = 0
+        for line in f:
+            words = line.split()
+            if words[2] == "SUCCESSO,":
+                ms.write(str(stag[i])+"\n")
+            i = i + 1
+    ms.close()
+
+
 stag = load_ripening_stages()
-print(stag)
+# print(stag)
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
 print("[INFO] loading MATLAB engine...")
 eng = matlab.engine.start_matlab()
-print("[INFO] done loading MATLAB...")
+print("[INFO] done loading MATLAB")
 
 
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
@@ -526,20 +551,30 @@ print("[INFO] done loading MATLAB...")
 successes = 0
 total = 0
 o = 0
-for k in range(70):
-    s, t = extract_histograms("images/" + str(k+1) + ".jpg", k, min_mask=20)
-    successes = successes + s
-    total = total + t
-    o = t
+# for k in range(70):
+# s, t = extract_histograms("images/" + str(k+1) + ".jpg", k, min_mask=20)
+# successes = successes + s
+# total = total + t
 
-percent = (successes / total) * 100
-result = open("result.txt", 'a')
-result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
-result.close()
+# percent = (successes / total) * 100
+# result = open("result.txt", 'a')
+# result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
+# result.close()
 
 
 # for i in range(70):
     # write_ripening_csv(str(i+1) + ".jpg", i)
 
+print("[INFO] loading training data...")
+x, y = load_training_data(8, "rgb", True)
+clf = tree.DecisionTreeClassifier()
+print("[INFO] fitting Tree...")
+clf = clf.fit(x, y)
+print("[INFO] done fitting tree")
+tree.plot_tree(clf)
+res = clf.predict(x[59].reshape(1, -1))
+print(res)
+disp = plot_confusion_matrix(clf, x, y)
+print(disp.confusion_matrix)
+plt.show()
 
-cv.destroyAllWindows()
