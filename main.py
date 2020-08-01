@@ -12,6 +12,11 @@ from skimage.draw import ellipse as fill_ellipse, ellipse_perimeter
 from skimage.util import img_as_float, img_as_ubyte
 from sklearn import tree
 from sklearn.metrics import plot_confusion_matrix
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import KFold
 
 
 # LETTURA DEI BOUNDING BOX
@@ -503,23 +508,37 @@ def write_ripening_csv(filename, box_index):
     csv_file.close()
 
 
-def load_ripening_stages():
+def load_ripening_stages(three_classes=False):
     stages = []
     with open("maturazioni.csv") as csv_file:
         reader = csv.reader(csv_file)
         for row in reader:
-            stages.append(int(row[5]))
-    return stages
+            val = int(row[5])
+            if val == 1 or val == 2:
+                num = 1
+            elif val == 3:
+                num = 2
+            else:
+                num = 3
+            if three_classes:
+                stages.append(int(num))
+            else:
+                stages.append(int(val))
+    return np.array(stages)
 
 
-def load_training_data(bins, colorspace, masked):
+def load_training_data(bins, colorspace, masked, three_classes=False):
     colorspace = colorspace.lower()
     if masked:
         x = np.loadtxt(colorspace+"_"+str(bins)+"bin_masked.txt", int)
     else:
         x = np.loadtxt(colorspace + "_" + str(bins) + "bin.txt", int)
     y = np.loadtxt("masked_ripening.txt", int)
-    # y = y.reshape(-1, 1)
+    if three_classes:
+        y = np.where(y == 2, 1, y)
+        y = np.where(y == 3, 2, y)
+        y = np.where(y >= 4, 3, y)
+
     return x, y
 
 
@@ -530,19 +549,55 @@ def create_masked_ripening():
         for line in f:
             words = line.split()
             if words[2] == "SUCCESSO,":
-                ms.write(str(stag[i])+"\n")
+                ms.write(str(y2[i])+"\n")
             i = i + 1
     ms.close()
 
 
-stag = load_ripening_stages()
-# print(stag)
+def split_data(x, y):
+    kf = KFold(n_splits=5, shuffle=True, random_state=3)
+    for train_index, test_index in kf.split(x):
+        print("TRAIN:", train_index, "TEST:", test_index)
+        x_train, x_test = x[train_index], x[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+    return x_train, x_test, y_train, y_test
+
+
+def test_classifiers(x_train, x_test, y_train, y_test):
+    classifiers = [
+        KNeighborsClassifier(3),
+        SVC(kernel="linear", C=0.025),
+        SVC(gamma=2, C=1),
+        tree.DecisionTreeClassifier(),
+        RandomForestClassifier(n_estimators=10, max_features=1),
+        MLPClassifier(alpha=1, max_iter=2000),
+        AdaBoostClassifier()]
+    names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Decision Tree", "Random Forest", "Neural Net", "AdaBoost"]
+    for name, clf in zip(names, classifiers):
+        clf = clf.fit(x_train, y_train)
+        disp = plot_confusion_matrix(clf, x_test, y_test)
+        disp.ax_.set_title(name)
+        print(disp.confusion_matrix)
+        plt.show()
+
+
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
 print("[INFO] loading MATLAB engine...")
 eng = matlab.engine.start_matlab()
 print("[INFO] done loading MATLAB")
+
+print("[INFO] loading training data...")
+y2 = load_ripening_stages(three_classes=False)
+x1, y1 = load_training_data(16, "hsv", masked=True, three_classes=False)
+x2, _ = load_training_data(8, "hsv", masked=False, three_classes=False)
+x_train, x_test, y_train, y_test = split_data(x1, y1)
+
+
+print("[INFO] testing...")
+test_classifiers(x_train, x_test, y_train, y_test)
+# tree.plot_tree(clf)
 
 
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
@@ -565,16 +620,4 @@ o = 0
 # for i in range(70):
     # write_ripening_csv(str(i+1) + ".jpg", i)
 
-print("[INFO] loading training data...")
-x, y = load_training_data(8, "rgb", True)
-clf = tree.DecisionTreeClassifier()
-print("[INFO] fitting Tree...")
-clf = clf.fit(x, y)
-print("[INFO] done fitting tree")
-tree.plot_tree(clf)
-res = clf.predict(x[59].reshape(1, -1))
-print(res)
-disp = plot_confusion_matrix(clf, x, y)
-print(disp.confusion_matrix)
-plt.show()
 
