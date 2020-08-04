@@ -17,6 +17,7 @@ from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import KFold
+from sklearn.metrics import f1_score
 
 
 # LETTURA DEI BOUNDING BOX
@@ -153,22 +154,22 @@ def extract_histograms(filename, box_index, min_mask=0):
             # fig, ax = plt.subplots()
             if mask is not None:
                 file = open("masked_ripening.txt", 'a')
-                file.write(str(stag[total+i]) + "\n")
+                file.write(str(stag[total + i]) + "\n")
                 file.close()
                 for g in range(3, 6):
                     bins = pow(2, g)
-                    file = open("rgb_"+str(bins)+"bin_masked.txt", 'a')
+                    file = open("rgb_" + str(bins) + "bin_masked.txt", 'a')
                     bh, gh, rh = plot_histogram(roi_bgr_extra, ax, "BGR", mask, bins)
                     hh, sh, vh = plot_histogram(roi_hsv_extra, ax, "HSV", mask, bins)
                     rgb_full = np.vstack((rh, gh, bh))
                     hsv_full = np.vstack((hh, sh, vh))
                     for f in rgb_full:
-                        file.write(str(int(f))+" ")
+                        file.write(str(int(f)) + " ")
                     file.write("\n")
                     file.close()
-                    file = open("hsv_"+str(bins)+"bin_masked.txt", 'a')
+                    file = open("hsv_" + str(bins) + "bin_masked.txt", 'a')
                     for f in hsv_full:
-                        file.write(str(int(f))+" ")
+                        file.write(str(int(f)) + " ")
                     file.write("\n")
                     file.close()
 
@@ -351,13 +352,13 @@ def extract_cnn_mask(image):
         if confidence > 0:
             # clone our original image so we can draw on it
             clone = image.copy()
-            print("CONFIDENCE = "+str(confidence))
+            print("CONFIDENCE = " + str(confidence))
             # scale the bounding box coordinates back relative to the
             # size of the image and then compute the width and the height
             # of the bounding box
             box = boxes[0, 0, i, 3:7] * np.array([W, H, W, H])
             (startX, startY, endX, endY) = box.astype("int")
-            center_x = int(round((startX+endX)/2))
+            center_x = int(round((startX + endX) / 2))
             center_y = int(round((startY + endY) / 2))
             if check_box_center(W, H, center_x, center_y):
                 boxW = endX - startX
@@ -482,7 +483,7 @@ def calc_white_percentage(mask):
 def check_box_center(w, h, x, y):
     allowed_h = int(round(0.30 * h))
     allowed_w = int(round(0.30 * w))
-    sx = int(round((w-allowed_w)/2))
+    sx = int(round((w - allowed_w) / 2))
     sy = int(round((h - allowed_h) / 2))
     ex = sx + allowed_w
     ey = sy + allowed_h
@@ -495,7 +496,7 @@ def check_box_center(w, h, x, y):
 
 def write_ripening_csv(filename, box_index):
     csv_file = open("maturazioni.csv", 'a')
-    olives = cv.imread("images/"+filename, cv.IMREAD_UNCHANGED)
+    olives = cv.imread("images/" + filename, cv.IMREAD_UNCHANGED)
     (H, W) = olives.shape[:2]
     boxes = read_json(box_index, H, W, 0)
     for box in boxes:
@@ -504,7 +505,9 @@ def write_ripening_csv(filename, box_index):
         cv.waitKey(300)
         ripening = input("Maturazione:")
         cv.destroyAllWindows()
-        csv_file.write(filename + ", "+str(box[2])+", "+str(box[3])+", "+str(box[0])+", "+str(box[1])+", "+str(ripening)+"\n")
+        csv_file.write(
+            filename + ", " + str(box[2]) + ", " + str(box[3]) + ", " + str(box[0]) + ", " + str(box[1]) + ", " + str(
+                ripening) + "\n")
     csv_file.close()
 
 
@@ -530,11 +533,13 @@ def load_ripening_stages(three_classes=False):
 def load_training_data(bins, colorspace, masked, three_classes=False):
     colorspace = colorspace.lower()
     if masked:
-        x = np.loadtxt(colorspace+"_"+str(bins)+"bin_masked.txt", int)
+        x = np.loadtxt(colorspace + "_" + str(bins) + "bin_masked.txt", int)
+        y = np.loadtxt("masked_ripening.txt", int)
     else:
         x = np.loadtxt(colorspace + "_" + str(bins) + "bin.txt", int)
-    y = np.loadtxt("masked_ripening.txt", int)
-    if three_classes:
+        y = load_ripening_stages(three_classes)
+
+    if three_classes and masked:
         y = np.where(y == 2, 1, y)
         y = np.where(y == 3, 2, y)
         y = np.where(y >= 4, 3, y)
@@ -549,7 +554,7 @@ def create_masked_ripening():
         for line in f:
             words = line.split()
             if words[2] == "SUCCESSO,":
-                ms.write(str(y2[i])+"\n")
+                ms.write(str(y2[i]) + "\n")
             i = i + 1
     ms.close()
 
@@ -563,22 +568,34 @@ def split_data(x, y):
     return x_train, x_test, y_train, y_test
 
 
-def test_classifiers(x_train, x_test, y_train, y_test):
+def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, classes):
     classifiers = [
         KNeighborsClassifier(3),
         SVC(kernel="linear", C=0.025),
-        SVC(gamma=2, C=1),
         tree.DecisionTreeClassifier(),
-        RandomForestClassifier(n_estimators=10, max_features=1),
+        RandomForestClassifier(n_estimators=200),
         MLPClassifier(alpha=1, max_iter=2000),
         AdaBoostClassifier()]
-    names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Decision Tree", "Random Forest", "Neural Net", "AdaBoost"]
+    names = ["Nearest Neighbors", "Linear SVM", "Decision Tree", "Random Forest", "Neural Net", "AdaBoost"]
     for name, clf in zip(names, classifiers):
         clf = clf.fit(x_train, y_train)
-        disp = plot_confusion_matrix(clf, x_test, y_test)
-        disp.ax_.set_title(name)
-        print(disp.confusion_matrix)
-        plt.show()
+        y_pred = clf.predict(x_test)
+        weighted = f1_score(y_test, y_pred, average="weighted")
+        with open("weighted.csv", "a") as f:
+            txt = "{0}, {1}, {2}, {3}, {4}, {5}\n".format(name, bins, mask, colorspace, classes, weighted)
+            f.write(txt)
+        none = f1_score(y_test, y_pred, average=None)
+        vals = ""
+        for n in none:
+            vals = vals + str(n)+", "
+        with open("none.csv", "a") as f:
+            txt = "{0}, {1}, {2}, {3}, {4}, {5}\n".format(name, bins, mask, colorspace, classes, vals)
+            f.write(txt)
+        # disp = plot_confusion_matrix(clf, x_test, y_test, normalize="all")
+        # disp.ax_.set_title(name)
+        # print(disp.confusion_matrix)
+        # plt.savefig("C:/Users/User/Desktop/Matrici di confusione/8_rgb_mask_"+name+".png")
+        # plt.show()
 
 
 print("[INFO] loading Mask R-CNN from disk...")
@@ -589,14 +606,28 @@ eng = matlab.engine.start_matlab()
 print("[INFO] done loading MATLAB")
 
 print("[INFO] loading training data...")
-y2 = load_ripening_stages(three_classes=False)
-x1, y1 = load_training_data(16, "hsv", masked=True, three_classes=False)
-x2, _ = load_training_data(8, "hsv", masked=False, three_classes=False)
-x_train, x_test, y_train, y_test = split_data(x1, y1)
+x2, _ = load_training_data(32, "rgb", masked=False, three_classes=False)
 
+mask = True
+for u in range(2):
+    cs = "hsv"
+    for i in range(2):
+        three_c = False
+        for k in range(2):
+            for j in range(3, 6):
+                bins = pow(2, j)
+                x1, y1 = load_training_data(bins, cs, masked=mask, three_classes=three_c)
+                x_train, x_test, y_train, y_test = split_data(x1, y1)
+                print("[INFO] testing...")
+                if three_c:
+                    c = "3"
+                else:
+                    c = "5"
+                test_classifiers(x_train, x_test, y_train, y_test, bins, mask, cs, c)
+            three_c = True
+        cs = "rgb"
+    mask = False
 
-print("[INFO] testing...")
-test_classifiers(x_train, x_test, y_train, y_test)
 # tree.plot_tree(clf)
 
 
@@ -618,6 +649,4 @@ o = 0
 
 
 # for i in range(70):
-    # write_ripening_csv(str(i+1) + ".jpg", i)
-
-
+# write_ripening_csv(str(i+1) + ".jpg", i)
