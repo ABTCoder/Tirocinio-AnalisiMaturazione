@@ -64,20 +64,53 @@ def read_json(n, h, w, extra=0):
     return b_list
 
 
+def darknet_bbox(filename, width, height, extra=0):
+    with open(filename, 'r') as f:
+        vals = []
+        for line in f:
+            nums = line.split()
+            for num in nums:
+                vals.append(num)
+
+        ndarray = np.array(vals, dtype=np.longfloat)
+        ndarray = ndarray[ndarray > 0]
+        k = int(ndarray.shape[0] / 4)
+        ndarray = ndarray.reshape(k, 4)
+        b_list = []
+        for coord in ndarray:
+            x_center = int(round(coord[0] * height))
+            y_center = int(round(coord[1] * width))
+            half_width = int(round((coord[2] * height)/2))
+            half_height = int(round((coord[3] * width)/2))
+            x_start = x_center - half_width
+            y_start = y_center - half_height
+            x_stop = x_center + half_width
+            y_stop = y_center + half_height
+            if extra:
+                x_start = max(x_start-extra, 0)
+                y_start = max(y_start-extra, 0)
+                x_stop = min(x_stop + extra, width)
+                y_stop = min(y_stop + extra, height)
+            b_list.append([x_start, x_stop, y_start, y_stop])
+    return b_list
+
+
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
 # RITORNA DUE LISTE CONTENENTI LE FREQUENZE D'ISTOGRAMMA PER OGNI CANALE
 def extract_histograms(filename, box_index, min_mask=0):
     log_file = open("log.txt", 'a')
     start_time = time.time()
     log_file.write("Immagine: " + filename + "\n")
-
+    print("[INFO] "+filename)
     # hsv_hists = []
     # bgr_hists = []
     # boxes = read_boxes(boxes_name)
     fruits = cv.imread(filename)
     (H, W) = fruits.shape[:2]
-    boxes = read_json(box_index, H, W, 10)
-    real_boxes = read_json(box_index, H, W, 0)
+    # boxes = read_json(box_index, H, W, 10)
+    # real_boxes = read_json(box_index, H, W, 0)
+    boxes = darknet_bbox(box_index, W, H, 10)
+    real_boxes = darknet_bbox(box_index, W, H)
     i = 0
     success = 0
     for box, r_box in zip(boxes, real_boxes):
@@ -88,7 +121,7 @@ def extract_histograms(filename, box_index, min_mask=0):
             roi_hsv = cv.cvtColor(roi_bgr, cv.COLOR_BGR2HSV_FULL)
             # cv.imwrite("pics3/input"+str(i)+".jpg", roi_bgr)
 
-            print("DETECTING")
+            print("[INFO] DETECTING")
             # cv.imshow("input", roi_bgr_extra)
             # cv.waitKey(0)
             # cv.destroyAllWindows()
@@ -150,45 +183,9 @@ def extract_histograms(filename, box_index, min_mask=0):
 
             # cv.imwrite("pics3/mask" + str(i) + ".jpg", mask)
 
-            ax = None
+            write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i)
             # fig, ax = plt.subplots()
-            if mask is not None:
-                file = open("masked_ripening.txt", 'a')
-                file.write(str(stag[total + i]) + "\n")
-                file.close()
-                for g in range(3, 6):
-                    bins = pow(2, g)
-                    file = open("rgb_" + str(bins) + "bin_masked.txt", 'a')
-                    bh, gh, rh = plot_histogram(roi_bgr_extra, ax, "BGR", mask, bins)
-                    hh, sh, vh = plot_histogram(roi_hsv_extra, ax, "HSV", mask, bins)
-                    rgb_full = np.vstack((rh, gh, bh))
-                    hsv_full = np.vstack((hh, sh, vh))
-                    for f in rgb_full:
-                        file.write(str(int(f)) + " ")
-                    file.write("\n")
-                    file.close()
-                    file = open("hsv_" + str(bins) + "bin_masked.txt", 'a')
-                    for f in hsv_full:
-                        file.write(str(int(f)) + " ")
-                    file.write("\n")
-                    file.close()
 
-            for g in range(3, 6):
-                bins = pow(2, g)
-                file = open("rgb_" + str(bins) + "bin.txt", 'a')
-                bh, gh, rh = plot_histogram(roi_bgr, None, "BGR", None, bins)
-                hh, sh, vh = plot_histogram(roi_hsv, None, "HSV", None, bins)
-                rgb_full = np.vstack((rh, gh, bh))
-                hsv_full = np.vstack((hh, sh, vh))
-                for f in rgb_full:
-                    file.write(str(int(f)) + " ")
-                file.write("\n")
-                file.close()
-                file = open("hsv_" + str(bins) + "bin.txt", 'a')
-                for f in hsv_full:
-                    file.write(str(int(f)) + " ")
-                file.write("\n")
-                file.close()
             # ax.legend()
             # plt.show()
 
@@ -204,6 +201,43 @@ def extract_histograms(filename, box_index, min_mask=0):
     log_file.write("----------------------\n\n")
     log_file.close()
     return success, i
+
+
+def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i):
+    if mask is not None:
+        for g in range(3, 6):
+            bins = pow(2, g)
+            file = open("rgb_" + str(bins) + "bin_masked.txt", 'a')
+            bh, gh, rh = plot_histogram(roi_bgr_extra, None, "BGR", mask, bins)
+            hh, sh, vh = plot_histogram(roi_hsv_extra, None, "HSV", mask, bins)
+            rgb_full = np.vstack((rh, gh, bh))
+            hsv_full = np.vstack((hh, sh, vh))
+            for f in rgb_full:
+                file.write(str(int(f)) + " ")
+            file.write("\n")
+            file.close()
+            file = open("hsv_" + str(bins) + "bin_masked.txt", 'a')
+            for f in hsv_full:
+                file.write(str(int(f)) + " ")
+            file.write("\n")
+            file.close()
+
+    for g in range(3, 6):
+        bins = pow(2, g)
+        file = open("rgb_" + str(bins) + "bin.txt", 'a')
+        bh, gh, rh = plot_histogram(roi_bgr, None, "BGR", None, bins)
+        hh, sh, vh = plot_histogram(roi_hsv, None, "HSV", None, bins)
+        rgb_full = np.vstack((rh, gh, bh))
+        hsv_full = np.vstack((hh, sh, vh))
+        for f in rgb_full:
+            file.write(str(int(f)) + " ")
+        file.write("\n")
+        file.close()
+        file = open("hsv_" + str(bins) + "bin.txt", 'a')
+        for f in hsv_full:
+            file.write(str(int(f)) + " ")
+        file.write("\n")
+        file.close()
 
 
 # FUNZIONE DI RILEVAMENTO DELLE ELLISSI CON SCI KIT
@@ -496,10 +530,12 @@ def check_box_center(w, h, x, y):
 
 def write_ripening_csv(filename, box_index):
     csv_file = open("maturazioni.csv", 'a')
-    olives = cv.imread("images/" + filename, cv.IMREAD_UNCHANGED)
+    olives = cv.imread(filename, cv.IMREAD_UNCHANGED)
     (H, W) = olives.shape[:2]
-    boxes = read_json(box_index, H, W, 0)
+    # boxes = read_json(box_index, H, W, 0)
+    boxes = darknet_bbox(box_index, H, W)
     for box in boxes:
+        print(box, H, W)
         olive = olives[box[2]:box[3], box[0]:box[1]]
         cv.imshow("OLIVA", olive)
         cv.waitKey(300)
@@ -598,6 +634,29 @@ def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, c
         # plt.show()
 
 
+def calc_f1_score():
+    mask = True
+    for u in range(2):
+        cs = "hsv"
+        for i in range(2):
+            three_c = False
+            for k in range(2):
+                for j in range(3, 6):
+                    bins = pow(2, j)
+                    x1, y1 = load_training_data(bins, cs, masked=mask, three_classes=three_c)
+                    x_train, x_test, y_train, y_test = split_data(x1, y1)
+                    print("[INFO] testing...")
+                    if three_c:
+                        c = "3"
+                    else:
+                        c = "5"
+                    test_classifiers(x_train, x_test, y_train, y_test, bins, mask, cs, c)
+                three_c = True
+            cs = "rgb"
+        mask = False
+
+
+np.set_printoptions(precision=17, floatmode="maxprec")
 print("[INFO] loading Mask R-CNN from disk...")
 net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
                                    "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
@@ -606,27 +665,6 @@ eng = matlab.engine.start_matlab()
 print("[INFO] done loading MATLAB")
 
 print("[INFO] loading training data...")
-x2, _ = load_training_data(32, "rgb", masked=False, three_classes=False)
-
-mask = True
-for u in range(2):
-    cs = "hsv"
-    for i in range(2):
-        three_c = False
-        for k in range(2):
-            for j in range(3, 6):
-                bins = pow(2, j)
-                x1, y1 = load_training_data(bins, cs, masked=mask, three_classes=three_c)
-                x_train, x_test, y_train, y_test = split_data(x1, y1)
-                print("[INFO] testing...")
-                if three_c:
-                    c = "3"
-                else:
-                    c = "5"
-                test_classifiers(x_train, x_test, y_train, y_test, bins, mask, cs, c)
-            three_c = True
-        cs = "rgb"
-    mask = False
 
 # tree.plot_tree(clf)
 
@@ -637,8 +675,8 @@ for u in range(2):
 successes = 0
 total = 0
 o = 0
-# for k in range(70):
-# s, t = extract_histograms("images/" + str(k+1) + ".jpg", k, min_mask=20)
+# for k in range(25, 53):
+# s, t = extract_histograms("images/olives{0}.jpg".format(k), "labels/olives{0}.txt".format(k), min_mask=20)
 # successes = successes + s
 # total = total + t
 
@@ -648,5 +686,5 @@ o = 0
 # result.close()
 
 
-# for i in range(70):
-# write_ripening_csv(str(i+1) + ".jpg", i)
+for i in range(30, 42):
+    write_ripening_csv("images/{0}.jpg".format(i), "labels/{0}.txt".format(i))
