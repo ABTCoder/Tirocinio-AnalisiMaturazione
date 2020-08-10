@@ -1,0 +1,145 @@
+Classifier, Bins, Mask, Colorspace, Classes, F1 SCORE
+Nearest Neighbors, 8, True, hsv, 5, 0.709187675070028
+Linear SVM, 8, True, hsv, 5, 0.7933839721396139
+Decision Tree, 8, True, hsv, 5, 0.66772208786805
+Random Forest, 8, True, hsv, 5, 0.7753017164344791
+Neural Net, 8, True, hsv, 5, 0.7838541208700434
+AdaBoost, 8, True, hsv, 5, 0.6658299255531088
+Nearest Neighbors, 16, True, hsv, 5, 0.820098314817877
+Linear SVM, 16, True, hsv, 5, 0.80147170095557
+Decision Tree, 16, True, hsv, 5, 0.7258263305322128
+Random Forest, 16, True, hsv, 5, 0.767214683011573
+Neural Net, 16, True, hsv, 5, 0.8432326920871812
+AdaBoost, 16, True, hsv, 5, 0.6383847141520315
+Nearest Neighbors, 32, True, hsv, 5, 0.8888790184131563
+Linear SVM, 32, True, hsv, 5, 0.8230621893025984
+Decision Tree, 32, True, hsv, 5, 0.7381852670892919
+Random Forest, 32, True, hsv, 5, 0.7321468707915028
+Neural Net, 32, True, hsv, 5, 0.8338111715274344
+AdaBoost, 32, True, hsv, 5, 0.6892284054731923
+Nearest Neighbors, 8, True, hsv, 3, 0.9260398308738437
+Linear SVM, 8, True, hsv, 3, 0.9258956623890947
+Decision Tree, 8, True, hsv, 3, 0.883658545285913
+Random Forest, 8, True, hsv, 3, 0.9412504154204053
+Neural Net, 8, True, hsv, 3, 0.8999686393978765
+AdaBoost, 8, True, hsv, 3, 0.9084967320261437
+Nearest Neighbors, 16, True, hsv, 3, 0.9380504201680671
+Linear SVM, 16, True, hsv, 3, 0.9531671967658127
+Decision Tree, 16, True, hsv, 3, 0.8464171122994651
+Random Forest, 16, True, hsv, 3, 0.9069143446852426
+Neural Net, 16, True, hsv, 3, 0.953658383139352
+AdaBoost, 16, True, hsv, 3, 0.895544536795919
+Nearest Neighbors, 32, True, hsv, 3, 0.9499488471624695
+Linear SVM, 32, True, hsv, 3, 0.9314002131339593
+Decision Tree, 32, True, hsv, 3, 0.8476482291234454
+Random Forest, 32, True, hsv, 3, 0.9070472792149866
+Neural Net, 32, True, hsv, 3, 0.9647058823529412
+AdaBoost, 32, True, hsv, 3, 0.9048049181980045
+Nearest Neighbors, 8, True, rgb, 5, 0.6399243458066987
+Linear SVM, 8, True, rgb, 5, 0.7974564270152504
+Decision Tree, 8, True, rgb, 5, 0.5957185697808536
+Random Forest, 8, True, rgb, 5, 0.6648448673587082
+Neural Net, 8, True, rgb, 5, 0.7451798338197827
+AdaBoost, 8, True, rgb, 5, 0.38774284426414246
+Nearest Neighbors, 16, True, rgb, 5, 0.6734576969871089
+Linear SVM, 16, True, rgb, 5, 0.7339250085999313
+Decision Tree, 16, True, rgb, 5, 0.5789381641703623
+Random Forest, 16, True, rgb, 5, 0.6745049843443053
+Neural Net, 16, True, rgb, 5, 0.7679974834853728
+AdaBoost, 16, True, rgb, 5, 0.4141246618868102
+Nearest Neighbors, 32, True, rgb, 5, 0.6762328948941526
+Linear SVM, 32, True, rgb, 5, 0.7985516375609254
+Decision Tree, 32, True, rgb, 5, 0.5949129174042669
+Random Forest, 32, True, rgb, 5, 0.6769344270457921
+Neural Net, 32, True, rgb, 5, 0.772663449280641
+AdaBoost, 32, True, rgb, 5, 0.4264239028944911
+Nearest Neighbors, 8, True, rgb, 3, 0.8997782750411264
+Linear SVM, 8, True, rgb, 3, 0.9517474963841747
+Decision Tree, 8, True, rgb, 3, 0.8134668335419274
+Random Forest, 8, True, rgb, 3, 0.868359133126935
+Neural Net, 8, True, rgb, 3, 0.930539580040135
+AdaBoost, 8, True, rgb, 3, 0.8140664364852874
+Nearest Neighbors, 16, True, rgb, 3, 0.8999621365787696
+Linear SVM, 16, True, rgb, 3, 0.9404378869259475
+Decision Tree, 16, True, rgb, 3, 0.8403587560995063
+Random Forest, 16, True, rgb, 3, 0.881505483549352
+Neural Net, 16, True, rgb, 3, 0.8909732620320856
+AdaBoost, 16, True, rgb, 3, 0.8133236023938111
+Nearest Neighbors, 32, True, rgb, 3, 0.8884327248140638
+Linear SVM, 32, True, rgb, 3, 0.941893677256999
+Decision Tree, 32, True, rgb, 3, 0.8039215686274509
+Random Forest, 32, True, rgb, 3, 0.88270337922403
+Neural Net, 32, True, rgb, 3, 0.8906983483048392
+AdaBoost, 32, True, rgb, 3, 0.8245136485966936
+Nearest Neighbors, 8, False, hsv, 5, 0.8079060065391815
+Linear SVM, 8, False, hsv, 5, 0.7534359453705651
+Decision Tree, 8, False, hsv, 5, 0.5987924598730869
+Random Forest, 8, False, hsv, 5, 0.7944744551942925
+Neural Net, 8, False, hsv, 5, 0.6884730300183828
+AdaBoost, 8, False, hsv, 5, 0.6052268622527642
+Nearest Neighbors, 16, False, hsv, 5, 0.820117366651919
+Linear SVM, 16, False, hsv, 5, 0.7640036236319566
+Decision Tree, 16, False, hsv, 5, 0.6674833440790888
+Random Forest, 16, False, hsv, 5, 0.7752656014127431
+Neural Net, 16, False, hsv, 5, 0.7730189777932385
+AdaBoost, 16, False, hsv, 5, 0.5215778088118513
+Nearest Neighbors, 32, False, hsv, 5, 0.8099446506790257
+Linear SVM, 32, False, hsv, 5, 0.8021340361765895
+Decision Tree, 32, False, hsv, 5, 0.7240641497360423
+Random Forest, 32, False, hsv, 5, 0.7864489774193978
+Neural Net, 32, False, hsv, 5, 0.8320565728453636
+AdaBoost, 32, False, hsv, 5, 0.6107226282708793
+Nearest Neighbors, 8, False, hsv, 3, 0.9425671752549422
+Linear SVM, 8, False, hsv, 3, 0.9096116795225807
+Decision Tree, 8, False, hsv, 3, 0.8912210082422848
+Random Forest, 8, False, hsv, 3, 0.9234392000825966
+Neural Net, 8, False, hsv, 3, 0.8984144355085005
+AdaBoost, 8, False, hsv, 3, 0.8659367463475467
+Nearest Neighbors, 16, False, hsv, 3, 0.9196140129033251
+Linear SVM, 16, False, hsv, 3, 0.8845802890999137
+Decision Tree, 16, False, hsv, 3, 0.8373784538365264
+Random Forest, 16, False, hsv, 3, 0.9234392000825966
+Neural Net, 16, False, hsv, 3, 0.9117788614342403
+AdaBoost, 16, False, hsv, 3, 0.8673741564720765
+Nearest Neighbors, 32, False, hsv, 3, 0.9330072183978502
+Linear SVM, 32, False, hsv, 3, 0.8938770866180129
+Decision Tree, 32, False, hsv, 3, 0.852012785935471
+Random Forest, 32, False, hsv, 3, 0.9219023779724655
+Neural Net, 32, False, hsv, 3, 0.9684132589231916
+AdaBoost, 32, False, hsv, 3, 0.8926761387445937
+Nearest Neighbors, 8, False, rgb, 5, 0.6218373824756804
+Linear SVM, 8, False, rgb, 5, 0.720925449445749
+Decision Tree, 8, False, rgb, 5, 0.5518369949432272
+Random Forest, 8, False, rgb, 5, 0.6500631268652156
+Neural Net, 8, False, rgb, 5, 0.6913184163130742
+AdaBoost, 8, False, rgb, 5, 0.5213362776401779
+Nearest Neighbors, 16, False, rgb, 5, 0.6858335188369825
+Linear SVM, 16, False, rgb, 5, 0.7543422629409241
+Decision Tree, 16, False, rgb, 5, 0.6601626146492011
+Random Forest, 16, False, rgb, 5, 0.6458320669189287
+Neural Net, 16, False, rgb, 5, 0.6794337264398927
+AdaBoost, 16, False, rgb, 5, 0.5342745321283712
+Nearest Neighbors, 32, False, rgb, 5, 0.6783287180511066
+Linear SVM, 32, False, rgb, 5, 0.7343737974138197
+Decision Tree, 32, False, rgb, 5, 0.657159157767756
+Random Forest, 32, False, rgb, 5, 0.6946952810782597
+Neural Net, 32, False, rgb, 5, 0.6923711600083381
+AdaBoost, 32, False, rgb, 5, 0.4537918795481848
+Nearest Neighbors, 8, False, rgb, 3, 0.8394616169738042
+Linear SVM, 8, False, rgb, 3, 0.9106050172333522
+Decision Tree, 8, False, rgb, 3, 0.7834324758629635
+Random Forest, 8, False, rgb, 3, 0.8822925345372111
+Neural Net, 8, False, rgb, 3, 0.9014629362246982
+AdaBoost, 8, False, rgb, 3, 0.8270604835614008
+Nearest Neighbors, 16, False, rgb, 3, 0.8547047445670725
+Linear SVM, 16, False, rgb, 3, 0.9244063217926368
+Decision Tree, 16, False, rgb, 3, 0.7446122168840082
+Random Forest, 16, False, rgb, 3, 0.9030931521544787
+Neural Net, 16, False, rgb, 3, 0.8986601414460924
+AdaBoost, 16, False, rgb, 3, 0.8384627480879655
+Nearest Neighbors, 32, False, rgb, 3, 0.8683633395717001
+Linear SVM, 32, False, rgb, 3, 0.9480000570800692
+Decision Tree, 32, False, rgb, 3, 0.7789970649369642
+Random Forest, 32, False, rgb, 3, 0.893687241064532
+Neural Net, 32, False, rgb, 3, 0.8794641721341422
+AdaBoost, 32, False, rgb, 3, 0.846697329478225

@@ -1,9 +1,6 @@
 import matlab.engine
 import random
 import time
-import math
-import json
-import csv
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
@@ -16,83 +13,8 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import KFold
 from sklearn.metrics import f1_score
-
-
-# LETTURA DEI BOUNDING BOX
-def read_boxes(filename):
-    bb_list = np.loadtxt(filename, int)
-    converted_list = []
-    # CONVERSIONE DAL FORMATO XCENTER, YCENTER, WIDTH , HEIGHT
-    # A XSTART , XSTOP, YSTART, YSTOP
-    for box in bb_list:
-        half_width = math.floor(box[2] / 2)
-        half_height = math.floor(box[3] / 2)
-        xstart = box[0] - half_width
-        xstop = box[0] + half_width + 1
-        ystart = box[1] - half_height
-        ystop = box[1] + half_height + 1
-        converted_list.append([xstart, xstop, ystart, ystop])
-    return converted_list
-
-
-# LETTURA BOUNDING BOXES DAL JSON DI OLIVES FINAL
-# IMPOSTARE L'EXTRA BORDER SE NECESSARIO
-def read_json(n, h, w, extra=0):
-    # extra = 0 per i bbox effettivi del json
-    b_list = []
-    with open('info.json') as f:
-        data = json.load(f)
-
-    for rect in data[n]["Label"]["Olive"]:
-        min_h = h
-        min_w = w
-        max_h = 0
-        max_w = 0
-        for point in rect["geometry"]:
-            min_h = min(min_h, point["y"])
-            max_h = max(max_h, point["y"])
-            min_w = min(min_w, point["x"])
-            max_w = max(max_w, point["x"])
-        xstart = max(min_w - extra, 0)
-        xstop = min(max_w + extra, w)
-        ystart = max(min_h - extra, 0)
-        ystop = min(max_h + extra, h)
-        b_list.append([xstart, xstop, ystart, ystop])
-
-    return b_list
-
-
-def darknet_bbox(filename, width, height, extra=0):
-    with open(filename, 'r') as f:
-        vals = []
-        for line in f:
-            nums = line.split()
-            for num in nums:
-                vals.append(num)
-
-        ndarray = np.array(vals, dtype=np.longfloat)
-        ndarray = ndarray[ndarray > 0]
-        k = int(ndarray.shape[0] / 4)
-        ndarray = ndarray.reshape(k, 4)
-        b_list = []
-        for coord in ndarray:
-            x_center = int(round(coord[0] * height))
-            y_center = int(round(coord[1] * width))
-            half_width = int(round((coord[2] * height)/2))
-            half_height = int(round((coord[3] * width)/2))
-            x_start = x_center - half_width
-            y_start = y_center - half_height
-            x_stop = x_center + half_width
-            y_stop = y_center + half_height
-            if extra:
-                x_start = max(x_start-extra, 0)
-                y_start = max(y_start-extra, 0)
-                x_stop = min(x_stop + extra, width)
-                y_stop = min(y_stop + extra, height)
-            b_list.append([x_start, x_stop, y_start, y_stop])
-    return b_list
+import utils
 
 
 # ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
@@ -109,8 +31,8 @@ def extract_histograms(filename, box_index, min_mask=0):
     (H, W) = fruits.shape[:2]
     # boxes = read_json(box_index, H, W, 10)
     # real_boxes = read_json(box_index, H, W, 0)
-    boxes = darknet_bbox(box_index, W, H, 10)
-    real_boxes = darknet_bbox(box_index, W, H)
+    boxes = utils.darknet_bbox(box_index, H, W, 10)
+    real_boxes = utils.darknet_bbox(box_index, H, W)
     i = 0
     success = 0
     for box, r_box in zip(boxes, real_boxes):
@@ -121,10 +43,12 @@ def extract_histograms(filename, box_index, min_mask=0):
             roi_hsv = cv.cvtColor(roi_bgr, cv.COLOR_BGR2HSV_FULL)
             # cv.imwrite("pics3/input"+str(i)+".jpg", roi_bgr)
 
-            print("[INFO] DETECTING")
-            # cv.imshow("input", roi_bgr_extra)
-            # cv.waitKey(0)
-            # cv.destroyAllWindows()
+            print("[INFO] DETECTING {0} IN {1}".format(i+1, filename))
+            """
+            cv.imshow("input", roi_bgr_extra)
+            cv.waitKey(0)
+            cv.destroyAllWindows()
+            """
 
             half_size = False
             double_size = True
@@ -528,82 +452,6 @@ def check_box_center(w, h, x, y):
         return False
 
 
-def write_ripening_csv(filename, box_index):
-    csv_file = open("maturazioni.csv", 'a')
-    olives = cv.imread(filename, cv.IMREAD_UNCHANGED)
-    (H, W) = olives.shape[:2]
-    # boxes = read_json(box_index, H, W, 0)
-    boxes = darknet_bbox(box_index, H, W)
-    for box in boxes:
-        print(box, H, W)
-        olive = olives[box[2]:box[3], box[0]:box[1]]
-        cv.imshow("OLIVA", olive)
-        cv.waitKey(300)
-        ripening = input("Maturazione:")
-        cv.destroyAllWindows()
-        csv_file.write(
-            filename + ", " + str(box[2]) + ", " + str(box[3]) + ", " + str(box[0]) + ", " + str(box[1]) + ", " + str(
-                ripening) + "\n")
-    csv_file.close()
-
-
-def load_ripening_stages(three_classes=False):
-    stages = []
-    with open("maturazioni.csv") as csv_file:
-        reader = csv.reader(csv_file)
-        for row in reader:
-            val = int(row[5])
-            if val == 1 or val == 2:
-                num = 1
-            elif val == 3:
-                num = 2
-            else:
-                num = 3
-            if three_classes:
-                stages.append(int(num))
-            else:
-                stages.append(int(val))
-    return np.array(stages)
-
-
-def load_training_data(bins, colorspace, masked, three_classes=False):
-    colorspace = colorspace.lower()
-    if masked:
-        x = np.loadtxt(colorspace + "_" + str(bins) + "bin_masked.txt", int)
-        y = np.loadtxt("masked_ripening.txt", int)
-    else:
-        x = np.loadtxt(colorspace + "_" + str(bins) + "bin.txt", int)
-        y = load_ripening_stages(three_classes)
-
-    if three_classes and masked:
-        y = np.where(y == 2, 1, y)
-        y = np.where(y == 3, 2, y)
-        y = np.where(y >= 4, 3, y)
-
-    return x, y
-
-
-def create_masked_ripening():
-    ms = open("masked_ripening.txt", "w")
-    with open('log2.txt', 'r') as f:
-        i = 0
-        for line in f:
-            words = line.split()
-            if words[2] == "SUCCESSO,":
-                ms.write(str(y2[i]) + "\n")
-            i = i + 1
-    ms.close()
-
-
-def split_data(x, y):
-    kf = KFold(n_splits=5, shuffle=True, random_state=3)
-    for train_index, test_index in kf.split(x):
-        print("TRAIN:", train_index, "TEST:", test_index)
-        x_train, x_test = x[train_index], x[test_index]
-        y_train, y_test = y[train_index], y[test_index]
-    return x_train, x_test, y_train, y_test
-
-
 def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, classes):
     classifiers = [
         KNeighborsClassifier(3),
@@ -634,7 +482,7 @@ def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, c
         # plt.show()
 
 
-def calc_f1_score():
+def calc_f1_score(dataset):
     mask = True
     for u in range(2):
         cs = "hsv"
@@ -643,8 +491,9 @@ def calc_f1_score():
             for k in range(2):
                 for j in range(3, 6):
                     bins = pow(2, j)
-                    x1, y1 = load_training_data(bins, cs, masked=mask, three_classes=three_c)
-                    x_train, x_test, y_train, y_test = split_data(x1, y1)
+                    x1, y1 = utils.load_training_data(bins, cs, masked=mask, dataset=dataset, three_classes=three_c)
+                    print(x1.shape[0])
+                    x_train, x_test, y_train, y_test = utils.split_data(x1, y1)
                     print("[INFO] testing...")
                     if three_c:
                         c = "3"
@@ -668,23 +517,28 @@ print("[INFO] loading training data...")
 
 # tree.plot_tree(clf)
 
-
 # CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
 # VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo, 61 troppo piccolo e troppe ombre
 # k = 23
+"""
 successes = 0
 total = 0
 o = 0
-# for k in range(25, 53):
-# s, t = extract_histograms("images/olives{0}.jpg".format(k), "labels/olives{0}.txt".format(k), min_mask=20)
-# successes = successes + s
-# total = total + t
+for k in range(45, 53):
+    s, t = extract_histograms("images/olives{0}.jpg".format(k), "labels/olives{0}.txt".format(k), min_mask=20)
+    successes = successes + s
+    total = total + t
 
-# percent = (successes / total) * 100
-# result = open("result.txt", 'a')
-# result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
-# result.close()
+percent = (successes / total) * 100
+result = open("result.txt", 'a')
+result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
+result.close()
+"""
 
 
-for i in range(30, 42):
-    write_ripening_csv("images/{0}.jpg".format(i), "labels/{0}.txt".format(i))
+"""
+for i in range(53):
+    write_ripening_csv("images/olives{0}.jpg".format(i), "labels/olives{0}.txt".format(i))
+"""
+
+calc_f1_score(2)

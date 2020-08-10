@@ -1,0 +1,2455 @@
+Immagine: images/olives0.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+RILEVAMENTI: 0 SU 13, TEMPO: 397.0767114162445
+----------------------
+
+Immagine: images/olives1.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 72.50%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+RILEVAMENTI: 1 SU 9, TEMPO: 248.4782121181488
+----------------------
+
+Immagine: images/olives2.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 74.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 FALLITO
+RILEVAMENTI: 1 SU 2, TEMPO: 39.979286909103394
+----------------------
+
+Immagine: images/olives3.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+RILEVAMENTI: 1 SU 7, TEMPO: 189.3218286037445
+----------------------
+
+Immagine: images/olives4.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.303733110427856
+----------------------
+
+Immagine: images/olives5.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.11572265625
+----------------------
+
+Immagine: images/olives6.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.309733629226685
+----------------------
+
+Immagine: images/olives7.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.085720777511597
+----------------------
+
+Immagine: images/olives8.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 34.424968957901
+----------------------
+
+Immagine: images/olives9.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 32.9298837184906
+----------------------
+
+Immagine: images/olives10.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 43.80550527572632
+----------------------
+
+Immagine: images/olives11.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.656753540039062
+----------------------
+
+Immagine: images/olives12.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.43774104118347
+----------------------
+
+Immagine: images/olives13.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 83.64%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 1 SU 1, TEMPO: 10.47459888458252
+----------------------
+
+Immagine: images/olives14.jpg
+Oliva 1 FALLITO
+RILEVAMENTI: 0 SU 1, TEMPO: 30.520745754241943
+----------------------
+
+Immagine: images/olives15.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 90.28%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+RILEVAMENTI: 1 SU 34, TEMPO: 1016.4221360683441
+----------------------
+
+Immagine: images/olives16.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+RILEVAMENTI: 0 SU 47, TEMPO: 1444.4256165027618
+----------------------
+
+Immagine: images/olives17.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+RILEVAMENTI: 2 SU 48, TEMPO: 1439.0383083820343
+----------------------
+
+Immagine: images/olives18.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 22.41%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 66.11%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 98.53%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 62.17%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 56.63%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 85.19%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 79.24%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+RILEVAMENTI: 7 SU 48, TEMPO: 1304.9176371097565
+----------------------
+
+Immagine: images/olives19.jpg
+Oliva 1 FALLITO
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 92.15%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 94.74%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 77.11%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 97.22%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 94.74%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 51 FALLITO
+Oliva 52 FALLITO
+Oliva 53 FALLITO
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+RILEVAMENTI: 6 SU 59, TEMPO: 1713.0739822387695
+----------------------
+
+Immagine: images/olives20.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 94.44%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 81.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 4 SU 43, TEMPO: 1259.7250521183014
+----------------------
+
+Immagine: images/olives21.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 73.31%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+RILEVAMENTI: 1 SU 28, TEMPO: 843.3922390937805
+----------------------
+
+Immagine: images/olives22.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 97.07%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 85.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+RILEVAMENTI: 2 SU 49, TEMPO: 1485.0919425487518
+----------------------
+
+Immagine: images/olives23.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 74.88%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 FALLITO
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 24.51%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+RILEVAMENTI: 2 SU 31, TEMPO: 896.9823043346405
+----------------------
+
+Immagine: images/olives24.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+RILEVAMENTI: 1 SU 16, TEMPO: 478.5203697681427
+----------------------
+
+Immagine: images/olives25.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 27.85%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 23.01%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 92.59%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 24.38%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 62.77%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 9 FALLITO
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 22.50%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 68.93%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 24.63%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 71.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 94.23%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 80.38%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 21.96%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 23.13%, sharpening = True, double size = True, metodo = MATLAB + histequalize
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 84.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 96.49%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 15 SU 29, TEMPO: 583.3683669567108
+----------------------
+
+Immagine: images/olives26.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 85.82%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 91.74%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 39.91%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 97.06%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 94.31%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 69.90%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 20.73%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 53.66%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 76.41%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 34.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 82.59%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 54.37%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 57.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+RILEVAMENTI: 13 SU 18, TEMPO: 318.0261900424957
+----------------------
+
+Immagine: images/olives27.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 97.32%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 35.86%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 79.03%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 20.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 99.32%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 20.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 24.63%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 SUCCESSO,	PIXEL MASCHERA = 71.08%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 46 FALLITO
+RILEVAMENTI: 10 SU 46, TEMPO: 1227.9912371635437
+----------------------
+
+Immagine: images/olives28.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 70.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 30.90%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 27.51%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 28.26%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 23.27%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 24.10%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 24.59%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 13 FALLITO
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 26.81%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 77.22%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 84.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 99.66%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 80.67%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 75.93%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 21.37%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 25.29%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 23.83%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 28.68%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 80.87%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 66.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 26.48%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 24.62%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 73.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 20.81%, sharpening = True, double size = True, metodo = MATLAB + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 27.10%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 26.10%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 38 FALLITO
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 60.27%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 75.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 21.09%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 67.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 26.38%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 98.29%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 78.58%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 48 SUCCESSO,	PIXEL MASCHERA = 77.59%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 92.13%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 50 FALLITO
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 89.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 72.48%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 53 FALLITO
+Oliva 54 SUCCESSO,	PIXEL MASCHERA = 94.98%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 55 SUCCESSO,	PIXEL MASCHERA = 23.17%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 56 FALLITO
+Oliva 57 SUCCESSO,	PIXEL MASCHERA = 34.79%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 87.07%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 61 FALLITO
+RILEVAMENTI: 41 SU 61, TEMPO: 904.6837449073792
+----------------------
+
+Immagine: images/olives29.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 71.27%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 93.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 96.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 58.01%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 45.09%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 48.69%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 23.80%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 66.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 41.26%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 73.46%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 56.48%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 60.88%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 27.36%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 91.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 31.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 28.84%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 29.75%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 97.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 99.44%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 94.74%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+RILEVAMENTI: 20 SU 24, TEMPO: 320.439327955246
+----------------------
+
+Immagine: images/olives30.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 95.71%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 56.09%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 20.09%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 7 FALLITO
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 27.86%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 79.38%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 94.81%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 86.52%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 66.92%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 84.65%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 20.16%, sharpening = True, double size = True, metodo = MATLAB + histequalize
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 20.86%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 93.98%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 54.03%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 33.23%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 53.46%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 81.87%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 26.63%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 20.20%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 24.60%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 39.86%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 76.69%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 42 FALLITO
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 30.58%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 SUCCESSO,	PIXEL MASCHERA = 96.25%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 49 FALLITO
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 22.52%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 51 FALLITO
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 89.94%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 90.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 54 FALLITO
+Oliva 55 SUCCESSO,	PIXEL MASCHERA = 94.20%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 56 SUCCESSO,	PIXEL MASCHERA = 21.96%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 57 SUCCESSO,	PIXEL MASCHERA = 76.74%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+Oliva 60 FALLITO
+Oliva 61 SUCCESSO,	PIXEL MASCHERA = 23.08%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 62 FALLITO
+Oliva 63 SUCCESSO,	PIXEL MASCHERA = 64.39%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 64 FALLITO
+RILEVAMENTI: 33 SU 64, TEMPO: 1307.7617995738983
+----------------------
+
+Immagine: images/olives31.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 22.18%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 71.74%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 85.91%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 20.58%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 71.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 80.88%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 80.29%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 74.75%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 66.93%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 86.45%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 94.16%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 89.58%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 80.67%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 50 FALLITO
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 20.94%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 97.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 53 FALLITO
+Oliva 54 SUCCESSO,	PIXEL MASCHERA = 79.31%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 90.87%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 61 FALLITO
+Oliva 62 FALLITO
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 FALLITO
+Oliva 66 SUCCESSO,	PIXEL MASCHERA = 26.73%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 67 FALLITO
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 88.10%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 71 SUCCESSO,	PIXEL MASCHERA = 22.25%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 72 SUCCESSO,	PIXEL MASCHERA = 97.79%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 73 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 74 SUCCESSO,	PIXEL MASCHERA = 67.74%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 75 SUCCESSO,	PIXEL MASCHERA = 87.68%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 76 FALLITO
+Oliva 77 SUCCESSO,	PIXEL MASCHERA = 69.06%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 78 FALLITO
+Oliva 79 FALLITO
+Oliva 80 FALLITO
+Oliva 81 SUCCESSO,	PIXEL MASCHERA = 21.01%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 82 FALLITO
+Oliva 83 FALLITO
+Oliva 84 SUCCESSO,	PIXEL MASCHERA = 20.16%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 85 SUCCESSO,	PIXEL MASCHERA = 54.59%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 86 SUCCESSO,	PIXEL MASCHERA = 55.52%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 87 SUCCESSO,	PIXEL MASCHERA = 98.69%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 88 SUCCESSO,	PIXEL MASCHERA = 68.31%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 89 SUCCESSO,	PIXEL MASCHERA = 23.46%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 90 FALLITO
+Oliva 91 FALLITO
+Oliva 92 FALLITO
+Oliva 93 FALLITO
+Oliva 94 FALLITO
+Oliva 95 FALLITO
+Oliva 96 FALLITO
+Oliva 97 FALLITO
+Oliva 98 FALLITO
+Oliva 99 SUCCESSO,	PIXEL MASCHERA = 20.51%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 21.07%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 101 FALLITO
+Oliva 102 FALLITO
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 FALLITO
+Oliva 106 SUCCESSO,	PIXEL MASCHERA = 98.08%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 107 FALLITO
+Oliva 108 FALLITO
+Oliva 109 FALLITO
+Oliva 110 FALLITO
+Oliva 111 FALLITO
+RILEVAMENTI: 39 SU 111, TEMPO: 2942.4572987556458
+----------------------
+
+Immagine: images/olives32.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 31.49%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 29.04%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 64.84%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 97.32%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 7 FALLITO
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 69.66%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 30.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 27.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 46.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 62.61%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 65.80%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 70.06%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 81.97%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+RILEVAMENTI: 12 SU 23, TEMPO: 593.9509718418121
+----------------------
+
+Immagine: images/olives33.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 82.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 20.52%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 71.64%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 53.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 79.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 51.80%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 77.02%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 73.21%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 51.98%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 88.89%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 88.85%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 96.15%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 81.49%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 63.47%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 89.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 98.68%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 86.91%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 33 FALLITO
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 59.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 97.37%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 45.63%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 46.63%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 89.43%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 53.22%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 68.96%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 45.33%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 48 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 94.19%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 94.37%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 53.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 54.21%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 70.48%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 SUCCESSO,	PIXEL MASCHERA = 90.48%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 57 FALLITO
+Oliva 58 SUCCESSO,	PIXEL MASCHERA = 48.82%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 69.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 60 FALLITO
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 96.25%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 63 FALLITO
+Oliva 64 SUCCESSO,	PIXEL MASCHERA = 95.45%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 65 FALLITO
+Oliva 66 SUCCESSO,	PIXEL MASCHERA = 52.83%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 67 SUCCESSO,	PIXEL MASCHERA = 47.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 68 SUCCESSO,	PIXEL MASCHERA = 60.96%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 69 SUCCESSO,	PIXEL MASCHERA = 76.74%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 76.84%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 71 FALLITO
+Oliva 72 FALLITO
+Oliva 73 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 74 FALLITO
+Oliva 75 FALLITO
+Oliva 76 SUCCESSO,	PIXEL MASCHERA = 87.44%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 77 SUCCESSO,	PIXEL MASCHERA = 99.61%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 78 FALLITO
+Oliva 79 FALLITO
+Oliva 80 FALLITO
+Oliva 81 SUCCESSO,	PIXEL MASCHERA = 95.05%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 82 SUCCESSO,	PIXEL MASCHERA = 47.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 83 FALLITO
+Oliva 84 SUCCESSO,	PIXEL MASCHERA = 81.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 85 FALLITO
+Oliva 86 FALLITO
+Oliva 87 SUCCESSO,	PIXEL MASCHERA = 79.63%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 88 FALLITO
+Oliva 89 FALLITO
+Oliva 90 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 91 FALLITO
+Oliva 92 FALLITO
+Oliva 93 SUCCESSO,	PIXEL MASCHERA = 47.31%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 94 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 95 FALLITO
+Oliva 96 FALLITO
+Oliva 97 SUCCESSO,	PIXEL MASCHERA = 48.07%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 98 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 99 FALLITO
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 97.37%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 101 FALLITO
+Oliva 102 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 SUCCESSO,	PIXEL MASCHERA = 25.04%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 106 FALLITO
+Oliva 107 SUCCESSO,	PIXEL MASCHERA = 87.62%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 108 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 109 FALLITO
+Oliva 110 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 111 FALLITO
+Oliva 112 FALLITO
+Oliva 113 FALLITO
+Oliva 114 FALLITO
+Oliva 115 FALLITO
+Oliva 116 FALLITO
+Oliva 117 FALLITO
+Oliva 118 FALLITO
+Oliva 119 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 120 SUCCESSO,	PIXEL MASCHERA = 76.73%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 121 FALLITO
+Oliva 122 FALLITO
+Oliva 123 SUCCESSO,	PIXEL MASCHERA = 50.47%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 124 SUCCESSO,	PIXEL MASCHERA = 59.60%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 125 SUCCESSO,	PIXEL MASCHERA = 76.17%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 126 SUCCESSO,	PIXEL MASCHERA = 57.58%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 127 SUCCESSO,	PIXEL MASCHERA = 96.05%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 128 SUCCESSO,	PIXEL MASCHERA = 84.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 129 SUCCESSO,	PIXEL MASCHERA = 95.45%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 130 FALLITO
+Oliva 131 FALLITO
+Oliva 132 FALLITO
+Oliva 133 FALLITO
+Oliva 134 SUCCESSO,	PIXEL MASCHERA = 80.33%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 135 FALLITO
+Oliva 136 FALLITO
+Oliva 137 SUCCESSO,	PIXEL MASCHERA = 96.99%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 138 SUCCESSO,	PIXEL MASCHERA = 54.40%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 139 FALLITO
+Oliva 140 FALLITO
+Oliva 141 FALLITO
+Oliva 142 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 143 FALLITO
+Oliva 144 FALLITO
+Oliva 145 FALLITO
+Oliva 146 FALLITO
+Oliva 147 FALLITO
+Oliva 148 FALLITO
+RILEVAMENTI: 73 SU 148, TEMPO: 3642.600344657898
+----------------------
+
+Immagine: images/olives34.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 58.39%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 58.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 41.29%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 24.15%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 56.50%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 69.64%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 48.43%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 85.46%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 24.01%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 32 FALLITO
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 91.43%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 63.52%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 98.08%, sharpening = True, double size = False, metodo = Mask R-CNN
+RILEVAMENTI: 13 SU 38, TEMPO: 1075.1814968585968
+----------------------
+
+Immagine: images/olives35.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 70.50%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 91.36%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 76.30%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 70.54%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 84.31%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 29.70%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 78.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 76.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 78.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 FALLITO
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 96.02%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 97.06%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 72.56%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 62.08%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 80.36%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 91.16%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 97.73%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 48.85%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 32 FALLITO
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 67.40%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 41.46%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 63.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 38.89%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 90.19%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 38 FALLITO
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 57.28%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 96.46%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 90.17%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 48.04%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 37.28%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 51 FALLITO
+Oliva 52 FALLITO
+Oliva 53 FALLITO
+Oliva 54 FALLITO
+Oliva 55 SUCCESSO,	PIXEL MASCHERA = 24.40%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 SUCCESSO,	PIXEL MASCHERA = 66.15%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 74.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 61 SUCCESSO,	PIXEL MASCHERA = 90.39%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 36.47%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 66 SUCCESSO,	PIXEL MASCHERA = 96.74%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 67 FALLITO
+Oliva 68 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 69 SUCCESSO,	PIXEL MASCHERA = 41.26%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 54.08%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 71 SUCCESSO,	PIXEL MASCHERA = 87.82%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 72 FALLITO
+Oliva 73 SUCCESSO,	PIXEL MASCHERA = 44.05%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 74 FALLITO
+Oliva 75 SUCCESSO,	PIXEL MASCHERA = 84.58%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 76 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 77 FALLITO
+Oliva 78 SUCCESSO,	PIXEL MASCHERA = 21.73%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 79 FALLITO
+Oliva 80 SUCCESSO,	PIXEL MASCHERA = 46.68%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 81 SUCCESSO,	PIXEL MASCHERA = 50.09%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 82 SUCCESSO,	PIXEL MASCHERA = 70.46%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 83 SUCCESSO,	PIXEL MASCHERA = 62.44%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 84 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 85 SUCCESSO,	PIXEL MASCHERA = 68.99%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 86 FALLITO
+Oliva 87 FALLITO
+Oliva 88 SUCCESSO,	PIXEL MASCHERA = 90.76%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 89 SUCCESSO,	PIXEL MASCHERA = 48.45%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 90 SUCCESSO,	PIXEL MASCHERA = 62.55%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 91 SUCCESSO,	PIXEL MASCHERA = 79.88%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 92 SUCCESSO,	PIXEL MASCHERA = 36.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 93 SUCCESSO,	PIXEL MASCHERA = 23.42%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 94 SUCCESSO,	PIXEL MASCHERA = 20.90%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 95 SUCCESSO,	PIXEL MASCHERA = 74.99%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 96 SUCCESSO,	PIXEL MASCHERA = 76.69%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 97 FALLITO
+Oliva 98 FALLITO
+Oliva 99 FALLITO
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 61.44%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 101 SUCCESSO,	PIXEL MASCHERA = 99.20%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 102 SUCCESSO,	PIXEL MASCHERA = 76.57%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 FALLITO
+Oliva 106 FALLITO
+Oliva 107 FALLITO
+Oliva 108 FALLITO
+Oliva 109 FALLITO
+Oliva 110 FALLITO
+RILEVAMENTI: 62 SU 110, TEMPO: 2244.3553698062897
+----------------------
+
+Immagine: images/olives36.jpg
+Oliva 1 FALLITO
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 23.43%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 21.93%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 29.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 98.13%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 25.32%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 31.86%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 32.84%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 29.25%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 89.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 26.34%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 97.16%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 37.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 96.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 57.27%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 33 FALLITO
+RILEVAMENTI: 16 SU 33, TEMPO: 746.4046919345856
+----------------------
+
+Immagine: images/olives37.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 23.62%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 61.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 35.65%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 67.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 33.61%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 99.78%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 32.38%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 31.97%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 33.07%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 75.84%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 28.97%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 80.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 89.78%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 81.94%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 91.84%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 85.71%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 16 SU 23, TEMPO: 428.72652196884155
+----------------------
+
+Immagine: images/olives38.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 25.41%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 30.57%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 29.18%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 93.17%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 33.13%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 24.48%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 90.74%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 94.64%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 25.83%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 30.58%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 17 FALLITO
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 22.92%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 24.61%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 26.26%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 22.51%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 99.02%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 99.07%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 24.56%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 21.85%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 24.55%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 25.09%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 95.63%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 35 FALLITO
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 92.74%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 22.20%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 21.85%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 24.99%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 90.15%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 41 FALLITO
+RILEVAMENTI: 27 SU 41, TEMPO: 626.257819890976
+----------------------
+
+Immagine: images/olives39.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 79.88%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 82.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 79.46%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 91.78%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 34.77%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 13 FALLITO
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 74.61%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 50.89%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 78.52%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 34.59%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 96.50%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 98.87%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 48.40%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN
+RILEVAMENTI: 14 SU 24, TEMPO: 512.9503390789032
+----------------------
+
+Immagine: images/olives40.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 74.22%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 52.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 52.19%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 54.34%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 90.91%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 97.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 63.04%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 41.28%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+RILEVAMENTI: 8 SU 24, TEMPO: 611.555979013443
+----------------------
+
+Immagine: images/olives41.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 87.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 FALLITO
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 29.51%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 25.42%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 83.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 98.61%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 77.94%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 69.82%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 96.05%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 93.23%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 94.52%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 50 FALLITO
+Oliva 51 FALLITO
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 98.94%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 53 FALLITO
+Oliva 54 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+Oliva 60 FALLITO
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 75.64%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 63 SUCCESSO,	PIXEL MASCHERA = 94.44%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 64 SUCCESSO,	PIXEL MASCHERA = 90.46%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 65 FALLITO
+Oliva 66 FALLITO
+Oliva 67 FALLITO
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 FALLITO
+Oliva 71 SUCCESSO,	PIXEL MASCHERA = 26.03%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 72 FALLITO
+Oliva 73 FALLITO
+Oliva 74 FALLITO
+Oliva 75 SUCCESSO,	PIXEL MASCHERA = 96.43%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 76 FALLITO
+Oliva 77 FALLITO
+Oliva 78 FALLITO
+Oliva 79 FALLITO
+Oliva 80 FALLITO
+Oliva 81 FALLITO
+Oliva 82 FALLITO
+Oliva 83 FALLITO
+Oliva 84 FALLITO
+Oliva 85 FALLITO
+Oliva 86 FALLITO
+Oliva 87 FALLITO
+Oliva 88 FALLITO
+Oliva 89 FALLITO
+Oliva 90 FALLITO
+Oliva 91 FALLITO
+Oliva 92 FALLITO
+Oliva 93 FALLITO
+Oliva 94 FALLITO
+Oliva 95 FALLITO
+Oliva 96 FALLITO
+Oliva 97 SUCCESSO,	PIXEL MASCHERA = 94.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 98 FALLITO
+Oliva 99 FALLITO
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 79.71%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 101 FALLITO
+Oliva 102 FALLITO
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 FALLITO
+Oliva 106 FALLITO
+Oliva 107 FALLITO
+Oliva 108 FALLITO
+Oliva 109 FALLITO
+Oliva 110 FALLITO
+Oliva 111 FALLITO
+Oliva 112 FALLITO
+Oliva 113 FALLITO
+Oliva 114 FALLITO
+Oliva 115 FALLITO
+Oliva 116 FALLITO
+Oliva 117 FALLITO
+Oliva 118 FALLITO
+Oliva 119 FALLITO
+Oliva 120 FALLITO
+Oliva 121 FALLITO
+Oliva 122 FALLITO
+Oliva 123 FALLITO
+Oliva 124 FALLITO
+Oliva 125 FALLITO
+RILEVAMENTI: 21 SU 125, TEMPO: 3476.6268515586853
+----------------------
+
+Immagine: images/olives42.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 77.96%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 25.87%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 34.25%, sharpening = True, double size = True, metodo = MATLAB + histequalize
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 34.67%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 22.54%, sharpening = True, double size = False, metodo = MATLAB + histequalize
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 20.50%, sharpening = True, double size = False, metodo = MATLAB + histequalize
+Oliva 7 FALLITO
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 36.98%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 31.59%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 94.57%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 84.47%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 32.88%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 97.32%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 45.25%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 72.39%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 26.36%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 74.53%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 26.30%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 44.45%, sharpening = True, double size = False, metodo = MATLAB + histequalize
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 84.59%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 67.12%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 49.74%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 96.88%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 91.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 87.50%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 34.93%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 88.26%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 23.99%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 21.59%, sharpening = True, double size = False, metodo = MATLAB + histequalize
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 89.70%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 FALLITO
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 31.85%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 88.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 32 SU 38, TEMPO: 598.8432517051697
+----------------------
+
+Immagine: images/olives43.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 93.57%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 55.03%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 26.10%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 88.47%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 95.24%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 12 FALLITO
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 92.11%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 55.62%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 92.78%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 98.81%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 29 FALLITO
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 82.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 75.86%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 55.13%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 39 FALLITO
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 39.32%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 73.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 20.16%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 23.75%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 53 FALLITO
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 SUCCESSO,	PIXEL MASCHERA = 69.91%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 78.87%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 60 FALLITO
+Oliva 61 FALLITO
+Oliva 62 FALLITO
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 FALLITO
+Oliva 66 FALLITO
+Oliva 67 FALLITO
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 72.17%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 71 SUCCESSO,	PIXEL MASCHERA = 65.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 72 SUCCESSO,	PIXEL MASCHERA = 25.28%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 73 FALLITO
+Oliva 74 SUCCESSO,	PIXEL MASCHERA = 69.24%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 75 SUCCESSO,	PIXEL MASCHERA = 89.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 76 FALLITO
+Oliva 77 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 78 FALLITO
+Oliva 79 SUCCESSO,	PIXEL MASCHERA = 34.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 80 FALLITO
+Oliva 81 FALLITO
+Oliva 82 FALLITO
+Oliva 83 FALLITO
+Oliva 84 SUCCESSO,	PIXEL MASCHERA = 72.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 85 FALLITO
+Oliva 86 FALLITO
+Oliva 87 FALLITO
+Oliva 88 FALLITO
+Oliva 89 SUCCESSO,	PIXEL MASCHERA = 22.51%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 90 FALLITO
+Oliva 91 FALLITO
+Oliva 92 FALLITO
+Oliva 93 FALLITO
+Oliva 94 FALLITO
+Oliva 95 SUCCESSO,	PIXEL MASCHERA = 94.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 96 FALLITO
+Oliva 97 FALLITO
+Oliva 98 FALLITO
+Oliva 99 FALLITO
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 90.83%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 101 FALLITO
+Oliva 102 FALLITO
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 FALLITO
+Oliva 106 FALLITO
+Oliva 107 FALLITO
+Oliva 108 FALLITO
+Oliva 109 FALLITO
+Oliva 110 FALLITO
+Oliva 111 FALLITO
+Oliva 112 SUCCESSO,	PIXEL MASCHERA = 91.18%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 113 FALLITO
+Oliva 114 SUCCESSO,	PIXEL MASCHERA = 54.12%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 115 FALLITO
+Oliva 116 FALLITO
+Oliva 117 FALLITO
+Oliva 118 FALLITO
+Oliva 119 FALLITO
+Oliva 120 FALLITO
+Oliva 121 FALLITO
+Oliva 122 FALLITO
+Oliva 123 FALLITO
+Oliva 124 FALLITO
+Oliva 125 FALLITO
+Oliva 126 FALLITO
+Oliva 127 FALLITO
+Oliva 128 SUCCESSO,	PIXEL MASCHERA = 88.47%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 129 SUCCESSO,	PIXEL MASCHERA = 78.09%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 130 SUCCESSO,	PIXEL MASCHERA = 83.21%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 131 SUCCESSO,	PIXEL MASCHERA = 54.15%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 132 SUCCESSO,	PIXEL MASCHERA = 97.06%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 133 SUCCESSO,	PIXEL MASCHERA = 82.39%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 134 SUCCESSO,	PIXEL MASCHERA = 83.53%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 135 FALLITO
+Oliva 136 FALLITO
+Oliva 137 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 138 SUCCESSO,	PIXEL MASCHERA = 70.72%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 139 FALLITO
+Oliva 140 SUCCESSO,	PIXEL MASCHERA = 97.22%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 141 FALLITO
+Oliva 142 FALLITO
+Oliva 143 FALLITO
+Oliva 144 FALLITO
+Oliva 145 FALLITO
+Oliva 146 FALLITO
+Oliva 147 FALLITO
+Oliva 148 FALLITO
+Oliva 149 FALLITO
+Oliva 150 FALLITO
+Oliva 151 FALLITO
+Oliva 152 FALLITO
+Oliva 153 FALLITO
+Oliva 154 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 155 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 156 SUCCESSO,	PIXEL MASCHERA = 98.61%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 157 FALLITO
+Oliva 158 FALLITO
+Oliva 159 FALLITO
+Oliva 160 FALLITO
+Oliva 161 FALLITO
+Oliva 162 SUCCESSO,	PIXEL MASCHERA = 94.44%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 163 FALLITO
+Oliva 164 FALLITO
+Oliva 165 SUCCESSO,	PIXEL MASCHERA = 88.10%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 166 FALLITO
+Oliva 167 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 168 FALLITO
+Oliva 169 FALLITO
+Oliva 170 SUCCESSO,	PIXEL MASCHERA = 93.42%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 171 SUCCESSO,	PIXEL MASCHERA = 97.06%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 172 FALLITO
+Oliva 173 FALLITO
+Oliva 174 FALLITO
+Oliva 175 SUCCESSO,	PIXEL MASCHERA = 99.31%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 176 FALLITO
+RILEVAMENTI: 51 SU 176, TEMPO: 4490.556844949722
+----------------------
+
+Immagine: images/olives44.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 69.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 62.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 89.94%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 57.46%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 98.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 54.96%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 20.50%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 31.43%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 98.38%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 74.69%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 62.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 36.92%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 98.75%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 69.49%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 51.34%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 44 FALLITO
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 74.64%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+Oliva 50 FALLITO
+Oliva 51 FALLITO
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 91.27%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 94.90%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 SUCCESSO,	PIXEL MASCHERA = 51.88%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 57 FALLITO
+Oliva 58 SUCCESSO,	PIXEL MASCHERA = 79.80%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 59 FALLITO
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 95.60%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 84.51%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 FALLITO
+Oliva 66 FALLITO
+Oliva 67 SUCCESSO,	PIXEL MASCHERA = 95.45%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 FALLITO
+Oliva 71 FALLITO
+Oliva 72 SUCCESSO,	PIXEL MASCHERA = 60.58%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 73 SUCCESSO,	PIXEL MASCHERA = 66.79%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 74 FALLITO
+Oliva 75 FALLITO
+Oliva 76 SUCCESSO,	PIXEL MASCHERA = 89.77%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 77 SUCCESSO,	PIXEL MASCHERA = 54.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 78 FALLITO
+Oliva 79 SUCCESSO,	PIXEL MASCHERA = 25.32%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 80 SUCCESSO,	PIXEL MASCHERA = 48.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 81 FALLITO
+Oliva 82 SUCCESSO,	PIXEL MASCHERA = 48.54%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 83 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 84 FALLITO
+Oliva 85 SUCCESSO,	PIXEL MASCHERA = 81.26%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 86 SUCCESSO,	PIXEL MASCHERA = 58.34%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 87 FALLITO
+Oliva 88 FALLITO
+Oliva 89 FALLITO
+Oliva 90 SUCCESSO,	PIXEL MASCHERA = 31.28%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 91 FALLITO
+Oliva 92 FALLITO
+Oliva 93 FALLITO
+Oliva 94 FALLITO
+Oliva 95 FALLITO
+Oliva 96 FALLITO
+Oliva 97 FALLITO
+Oliva 98 FALLITO
+Oliva 99 SUCCESSO,	PIXEL MASCHERA = 85.74%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 100 FALLITO
+Oliva 101 FALLITO
+Oliva 102 FALLITO
+Oliva 103 SUCCESSO,	PIXEL MASCHERA = 87.65%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 104 FALLITO
+Oliva 105 SUCCESSO,	PIXEL MASCHERA = 50.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 106 SUCCESSO,	PIXEL MASCHERA = 87.52%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 107 SUCCESSO,	PIXEL MASCHERA = 93.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 108 FALLITO
+Oliva 109 SUCCESSO,	PIXEL MASCHERA = 61.63%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 110 SUCCESSO,	PIXEL MASCHERA = 78.82%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 111 SUCCESSO,	PIXEL MASCHERA = 85.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 112 FALLITO
+Oliva 113 SUCCESSO,	PIXEL MASCHERA = 85.60%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 114 FALLITO
+Oliva 115 FALLITO
+Oliva 116 FALLITO
+Oliva 117 SUCCESSO,	PIXEL MASCHERA = 61.37%, sharpening = True, double size = True, metodo = Mask R-CNN
+RILEVAMENTI: 45 SU 117, TEMPO: 2797.17298913002
+----------------------
+
+Immagine: images/olives45.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 80.78%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 37.92%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 60.00%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 40.27%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 38.12%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 77.07%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 33.37%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 34.12%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 66.68%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 23.04%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 41.27%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 79.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 69.66%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 98.75%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 28.70%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 91.07%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 33.17%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 87.93%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 87.49%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 39.06%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 37.10%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 99.16%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 98.21%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 45.77%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 28.81%, sharpening = True, double size = True, metodo = MATLAB + histequalize
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 66.60%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 67.27%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 FALLITO
+RILEVAMENTI: 29 SU 41, TEMPO: 739.4462938308716
+----------------------
+
+Immagine: images/olives46.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 26.86%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 50.12%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 3 FALLITO
+Oliva 4 SUCCESSO,	PIXEL MASCHERA = 48.20%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 97.73%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 94.44%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 59.37%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 56.02%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 11 FALLITO
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 43.32%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 56.17%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 55.17%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 80.52%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 68.71%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 22 FALLITO
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 46.27%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 47.17%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 37.65%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 FALLITO
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 64.90%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 76.22%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 FALLITO
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 70.05%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 75.92%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 68.78%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 38 FALLITO
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 86.10%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 57.55%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 41 FALLITO
+Oliva 42 FALLITO
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 69.30%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 44 FALLITO
+Oliva 45 SUCCESSO,	PIXEL MASCHERA = 34.03%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 46 FALLITO
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 85.58%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 53.19%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 70.99%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 69.23%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 45.16%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 57.55%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 54 FALLITO
+Oliva 55 SUCCESSO,	PIXEL MASCHERA = 63.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 56 SUCCESSO,	PIXEL MASCHERA = 95.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 57 SUCCESSO,	PIXEL MASCHERA = 62.60%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 58 SUCCESSO,	PIXEL MASCHERA = 52.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 59 FALLITO
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 42.92%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 62.17%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 63 SUCCESSO,	PIXEL MASCHERA = 70.41%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 64 SUCCESSO,	PIXEL MASCHERA = 98.33%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 65 FALLITO
+RILEVAMENTI: 39 SU 65, TEMPO: 1284.7954859733582
+----------------------
+
+Immagine: images/olives47.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 80.38%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 86.64%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 SUCCESSO,	PIXEL MASCHERA = 36.56%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 88.24%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 85.12%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 73.73%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 77.34%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 72.32%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 82.95%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 60.36%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 39.68%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 67.71%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 96.43%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 77.03%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 95.37%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 62.33%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 79.06%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 84.98%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 26.43%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 86.64%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 95.95%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 72.48%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 35 SUCCESSO,	PIXEL MASCHERA = 98.28%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 96.60%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 72.08%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 85.93%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 60.56%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 20.41%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 25.05%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 42 FALLITO
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 22.31%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 45 FALLITO
+RILEVAMENTI: 32 SU 45, TEMPO: 830.3194916248322
+----------------------
+
+Immagine: images/olives48.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 88.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 97.62%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 20.14%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 46.53%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 48.92%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 83.01%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 84.55%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 74.94%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 22.87%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 85.17%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 31.04%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 22.67%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 21 FALLITO
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 22.61%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 51.61%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 23.43%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 95.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 59.85%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 29 FALLITO
+Oliva 30 SUCCESSO,	PIXEL MASCHERA = 85.18%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 31 FALLITO
+Oliva 32 SUCCESSO,	PIXEL MASCHERA = 91.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 78.12%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 69.54%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 35 FALLITO
+Oliva 36 SUCCESSO,	PIXEL MASCHERA = 23.05%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 78.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 21.20%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 24.08%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 21.24%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 42 FALLITO
+Oliva 43 FALLITO
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 93.99%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 45 SUCCESSO,	PIXEL MASCHERA = 77.48%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 75.89%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 83.33%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 74.52%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 50 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 51 FALLITO
+Oliva 52 SUCCESSO,	PIXEL MASCHERA = 20.38%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 65.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 54 SUCCESSO,	PIXEL MASCHERA = 95.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 SUCCESSO,	PIXEL MASCHERA = 90.47%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 58 FALLITO
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 21.89%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 28.33%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 61 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 31.40%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 63 FALLITO
+Oliva 64 SUCCESSO,	PIXEL MASCHERA = 85.90%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 65 SUCCESSO,	PIXEL MASCHERA = 75.10%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 66 FALLITO
+Oliva 67 FALLITO
+Oliva 68 SUCCESSO,	PIXEL MASCHERA = 76.14%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 69 FALLITO
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 21.71%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 71 FALLITO
+Oliva 72 FALLITO
+Oliva 73 FALLITO
+Oliva 74 FALLITO
+Oliva 75 SUCCESSO,	PIXEL MASCHERA = 76.43%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 76 FALLITO
+Oliva 77 FALLITO
+Oliva 78 FALLITO
+Oliva 79 FALLITO
+Oliva 80 FALLITO
+RILEVAMENTI: 48 SU 80, TEMPO: 1514.6256318092346
+----------------------
+
+Immagine: images/olives49.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 66.90%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 4 FALLITO
+Oliva 5 FALLITO
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 29.55%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 24.63%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 20.12%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 40.52%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 24.27%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 97.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 76.54%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 84.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 83.14%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 40 SUCCESSO,	PIXEL MASCHERA = 29.52%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 20.26%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 77.81%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 43 SUCCESSO,	PIXEL MASCHERA = 94.23%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 97.73%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 20.45%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+Oliva 50 FALLITO
+Oliva 51 FALLITO
+Oliva 52 FALLITO
+Oliva 53 FALLITO
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 FALLITO
+Oliva 60 FALLITO
+Oliva 61 FALLITO
+Oliva 62 FALLITO
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 FALLITO
+Oliva 66 SUCCESSO,	PIXEL MASCHERA = 98.53%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 67 FALLITO
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 FALLITO
+Oliva 71 FALLITO
+Oliva 72 FALLITO
+Oliva 73 FALLITO
+Oliva 74 FALLITO
+Oliva 75 FALLITO
+Oliva 76 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 77 FALLITO
+Oliva 78 FALLITO
+Oliva 79 FALLITO
+Oliva 80 SUCCESSO,	PIXEL MASCHERA = 21.07%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 81 FALLITO
+Oliva 82 SUCCESSO,	PIXEL MASCHERA = 21.30%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 83 FALLITO
+Oliva 84 FALLITO
+Oliva 85 FALLITO
+Oliva 86 SUCCESSO,	PIXEL MASCHERA = 97.50%, sharpening = True, double size = False, metodo = Mask R-CNN + histequalize
+Oliva 87 SUCCESSO,	PIXEL MASCHERA = 31.60%, sharpening = True, double size = False, metodo = MATLAB + histequalize
+Oliva 88 FALLITO
+Oliva 89 FALLITO
+Oliva 90 FALLITO
+Oliva 91 FALLITO
+Oliva 92 SUCCESSO,	PIXEL MASCHERA = 20.14%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 93 SUCCESSO,	PIXEL MASCHERA = 59.04%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 94 SUCCESSO,	PIXEL MASCHERA = 77.11%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 95 SUCCESSO,	PIXEL MASCHERA = 20.08%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 96 SUCCESSO,	PIXEL MASCHERA = 83.55%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 97 SUCCESSO,	PIXEL MASCHERA = 93.18%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 98 FALLITO
+Oliva 99 SUCCESSO,	PIXEL MASCHERA = 35.19%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 100 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 101 FALLITO
+Oliva 102 SUCCESSO,	PIXEL MASCHERA = 93.86%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 103 FALLITO
+Oliva 104 FALLITO
+Oliva 105 FALLITO
+Oliva 106 SUCCESSO,	PIXEL MASCHERA = 97.37%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 107 FALLITO
+Oliva 108 SUCCESSO,	PIXEL MASCHERA = 75.80%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 109 SUCCESSO,	PIXEL MASCHERA = 24.85%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 110 SUCCESSO,	PIXEL MASCHERA = 99.71%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 111 FALLITO
+Oliva 112 FALLITO
+Oliva 113 SUCCESSO,	PIXEL MASCHERA = 98.94%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+RILEVAMENTI: 36 SU 113, TEMPO: 2777.837883234024
+----------------------
+
+Immagine: images/olives50.jpg
+Oliva 1 FALLITO
+Oliva 2 FALLITO
+Oliva 3 FALLITO
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 57.45%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 SUCCESSO,	PIXEL MASCHERA = 82.51%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 9 FALLITO
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 89.65%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 26.97%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 96.99%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 84.85%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 80.65%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 19 FALLITO
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 50.71%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 FALLITO
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 59.44%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 23 FALLITO
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 93.06%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 25 FALLITO
+Oliva 26 FALLITO
+Oliva 27 FALLITO
+Oliva 28 FALLITO
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 57.04%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 32 FALLITO
+Oliva 33 SUCCESSO,	PIXEL MASCHERA = 77.05%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+RILEVAMENTI: 12 SU 36, TEMPO: 891.8770124912262
+----------------------
+
+Immagine: images/olives51.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 66.94%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 62.36%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 26.61%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 77.13%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 8 FALLITO
+Oliva 9 SUCCESSO,	PIXEL MASCHERA = 85.05%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 10 SUCCESSO,	PIXEL MASCHERA = 94.93%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 12 FALLITO
+Oliva 13 SUCCESSO,	PIXEL MASCHERA = 74.81%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 14 SUCCESSO,	PIXEL MASCHERA = 70.84%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 15 SUCCESSO,	PIXEL MASCHERA = 94.67%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 16 SUCCESSO,	PIXEL MASCHERA = 94.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 17 SUCCESSO,	PIXEL MASCHERA = 21.72%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 18 SUCCESSO,	PIXEL MASCHERA = 27.82%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 19 SUCCESSO,	PIXEL MASCHERA = 80.02%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 20 SUCCESSO,	PIXEL MASCHERA = 93.06%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 21 SUCCESSO,	PIXEL MASCHERA = 20.43%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 22 SUCCESSO,	PIXEL MASCHERA = 28.45%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 23 FALLITO
+Oliva 24 FALLITO
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 26.55%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 26 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 89.91%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 92.56%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 29 SUCCESSO,	PIXEL MASCHERA = 33.40%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 30 FALLITO
+Oliva 31 SUCCESSO,	PIXEL MASCHERA = 25.64%, sharpening = False, double size = True, metodo = MATLAB + histequalize
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 FALLITO
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 FALLITO
+Oliva 38 SUCCESSO,	PIXEL MASCHERA = 29.15%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 39 SUCCESSO,	PIXEL MASCHERA = 27.31%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 40 FALLITO
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 96.59%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 43 FALLITO
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 89.04%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 45 FALLITO
+Oliva 46 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 47 FALLITO
+Oliva 48 FALLITO
+Oliva 49 SUCCESSO,	PIXEL MASCHERA = 88.93%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 50 FALLITO
+Oliva 51 FALLITO
+Oliva 52 FALLITO
+Oliva 53 FALLITO
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 SUCCESSO,	PIXEL MASCHERA = 85.42%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 58 FALLITO
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 86.87%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 60 FALLITO
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 94.64%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 63 FALLITO
+Oliva 64 SUCCESSO,	PIXEL MASCHERA = 50.47%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 65 SUCCESSO,	PIXEL MASCHERA = 22.23%, sharpening = True, double size = True, metodo = MATLAB
+Oliva 66 FALLITO
+Oliva 67 SUCCESSO,	PIXEL MASCHERA = 39.08%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 FALLITO
+Oliva 71 FALLITO
+RILEVAMENTI: 37 SU 71, TEMPO: 1546.9214787483215
+----------------------
+
+Immagine: images/olives52.jpg
+Oliva 1 SUCCESSO,	PIXEL MASCHERA = 94.05%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 2 SUCCESSO,	PIXEL MASCHERA = 24.38%, sharpening = False, double size = True, metodo = MATLAB
+Oliva 3 SUCCESSO,	PIXEL MASCHERA = 85.73%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 4 FALLITO
+Oliva 5 SUCCESSO,	PIXEL MASCHERA = 98.23%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 6 FALLITO
+Oliva 7 FALLITO
+Oliva 8 FALLITO
+Oliva 9 FALLITO
+Oliva 10 FALLITO
+Oliva 11 SUCCESSO,	PIXEL MASCHERA = 92.64%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 12 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 13 FALLITO
+Oliva 14 FALLITO
+Oliva 15 FALLITO
+Oliva 16 FALLITO
+Oliva 17 FALLITO
+Oliva 18 FALLITO
+Oliva 19 FALLITO
+Oliva 20 FALLITO
+Oliva 21 FALLITO
+Oliva 22 FALLITO
+Oliva 23 SUCCESSO,	PIXEL MASCHERA = 98.15%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 24 SUCCESSO,	PIXEL MASCHERA = 24.96%, sharpening = True, double size = False, metodo = MATLAB
+Oliva 25 SUCCESSO,	PIXEL MASCHERA = 55.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 26 FALLITO
+Oliva 27 SUCCESSO,	PIXEL MASCHERA = 44.13%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 28 SUCCESSO,	PIXEL MASCHERA = 45.46%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 29 FALLITO
+Oliva 30 FALLITO
+Oliva 31 FALLITO
+Oliva 32 FALLITO
+Oliva 33 FALLITO
+Oliva 34 SUCCESSO,	PIXEL MASCHERA = 32.64%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 35 FALLITO
+Oliva 36 FALLITO
+Oliva 37 SUCCESSO,	PIXEL MASCHERA = 54.50%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 38 FALLITO
+Oliva 39 FALLITO
+Oliva 40 FALLITO
+Oliva 41 SUCCESSO,	PIXEL MASCHERA = 33.29%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 42 SUCCESSO,	PIXEL MASCHERA = 27.20%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 43 FALLITO
+Oliva 44 SUCCESSO,	PIXEL MASCHERA = 34.08%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 45 FALLITO
+Oliva 46 FALLITO
+Oliva 47 SUCCESSO,	PIXEL MASCHERA = 26.77%, sharpening = True, double size = True, metodo = Mask R-CNN
+Oliva 48 FALLITO
+Oliva 49 FALLITO
+Oliva 50 FALLITO
+Oliva 51 SUCCESSO,	PIXEL MASCHERA = 59.14%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 52 FALLITO
+Oliva 53 SUCCESSO,	PIXEL MASCHERA = 100.00%, sharpening = True, double size = False, metodo = Mask R-CNN
+Oliva 54 FALLITO
+Oliva 55 FALLITO
+Oliva 56 FALLITO
+Oliva 57 FALLITO
+Oliva 58 FALLITO
+Oliva 59 SUCCESSO,	PIXEL MASCHERA = 22.51%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 60 SUCCESSO,	PIXEL MASCHERA = 59.66%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 61 FALLITO
+Oliva 62 SUCCESSO,	PIXEL MASCHERA = 88.62%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 63 FALLITO
+Oliva 64 FALLITO
+Oliva 65 FALLITO
+Oliva 66 SUCCESSO,	PIXEL MASCHERA = 36.81%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 67 SUCCESSO,	PIXEL MASCHERA = 33.08%, sharpening = False, double size = True, metodo = Mask R-CNN
+Oliva 68 FALLITO
+Oliva 69 FALLITO
+Oliva 70 SUCCESSO,	PIXEL MASCHERA = 68.85%, sharpening = False, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 71 FALLITO
+Oliva 72 FALLITO
+Oliva 73 SUCCESSO,	PIXEL MASCHERA = 98.21%, sharpening = True, double size = True, metodo = Mask R-CNN + histequalize
+Oliva 74 FALLITO
+RILEVAMENTI: 26 SU 74, TEMPO: 2257.3131110668182
+----------------------
+
