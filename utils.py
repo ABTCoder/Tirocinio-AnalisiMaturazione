@@ -72,8 +72,8 @@ def load_training_data(bins, colorspace, masked, dataset, three_classes=False):
     if d2 and not d1:
         return x2, y2
     if d1 and d2:
-        x = np.vstack((x1, x2))
-        y = np.vstack((y1, y2))
+        x = np.concatenate((x1, x2))
+        y = np.concatenate((y1, y2))
         return x, y
 
 

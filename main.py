@@ -391,7 +391,7 @@ def extract_matlab_ellipses(image):
     mask = np.zeros((image.shape[0], image.shape[1]), np.uint8)
 
     for el in ellipses:
-        rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE L'AREA DELL'ELLISSE
+        rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE I PUNTI  DELL'AREA DELL'ELLISSE
         mask[rr, cc] = 255
         cy, cx = ellipse_perimeter(int(round(el[1])), int(round(el[0])), int(round(el[3])), int(round(el[2])),
                                    shape=mask.shape, orientation=int(round(el[4])))
@@ -541,4 +541,4 @@ for i in range(53):
     write_ripening_csv("images/olives{0}.jpg".format(i), "labels/olives{0}.txt".format(i))
 """
 
-calc_f1_score(2)
+calc_f1_score("both")
