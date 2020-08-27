@@ -30,7 +30,7 @@ def extract_histograms(file, box, min_mask=0,  hsv=True, bins=32, plot=False, ma
     Inizio script
 
     :param file: Percorso dell'ìmmagine
-    :param box: Percorso della label o indice nel caso di formato DarkNet (il json)
+    :param box: Percorso della label o indice nel caso del json
     :param min_mask: Minima percentuale di pixel bianchi per cui la maschera è considerata OK
     :param hsv: Indica se calcolare gli istogrammi per il canale hsv
     :param bins: Numero di intervalli per il calcolo dell'istogramma
@@ -68,6 +68,7 @@ def extract_histograms(file, box, min_mask=0,  hsv=True, bins=32, plot=False, ma
             print("[INFO] DETECTING {0} IN {1}".format(i + 1, file))
             if visualize:
                 cv.imshow("input", roi_bgr_padding)
+                cv.waitKey(0)
 
             """CODICE PER GENERARE LE IMMAGINI PER RESNET, CREARE PRIMA LE MATURAZIONI E LE CARTELLE
             cv.imwrite("non_mask5/{0}/{1}.jpg".format(y1[total + i], total + i), roi_bgr_padding)
@@ -144,14 +145,14 @@ def extract_histograms(file, box, min_mask=0,  hsv=True, bins=32, plot=False, ma
                                        "= {3}, metodo = {4}\n".format(i+1, white_p, sharpening, double_size, method))
 
                     if hsv:
-                        stack = calc_histogram(roi_hsv_padding, bins, "bgr", mask, plot)
+                        stack = calc_histogram(roi_hsv_padding, bins, "HSV", mask, plot)
                     else:
-                        stack = calc_histogram(roi_bgr_padding, bins, "bgr", mask, plot)
+                        stack = calc_histogram(roi_bgr_padding, bins, "BGR", mask, plot)
             else:
                 if hsv:
-                    stack = calc_histogram(roi_hsv, bins, "bgr", plot=plot)
+                    stack = calc_histogram(roi_hsv, bins, "HSV", plot=plot)
                 else:
-                    stack = calc_histogram(roi_bgr, bins, "bgr", plot=plot)
+                    stack = calc_histogram(roi_bgr, bins, "BGR", plot=plot)
 
             hists.append(stack)  # ISTOGRAMMI CALCOLATI PER TEST IMMEDIATO
 
@@ -238,9 +239,15 @@ def calc_histogram(image, bins=256, label="123", mask=None, plot=False):
 
     if plot:
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1)
-        ax1.bar(np.arange(bins), r1.ravel(), label=label[0])
-        ax2.bar(np.arange(bins), r2.ravel(), label=label[1])
-        ax3.bar(np.arange(bins), r3.ravel(), label=label[2])
+        ax1.bar(np.arange(bins), r1.ravel(), color='tab:blue')
+        ax1.set_title(label[0])
+        ax1.label_outer()
+        ax2.bar(np.arange(bins), r2.ravel(), color='tab:green')
+        ax2.set_title(label[1])
+        ax2.label_outer()
+        ax3.bar(np.arange(bins), r3.ravel(), color='tab:red')
+        ax3.set_title(label[2])
+        ax3.label_outer()
         plt.show()
 
     stacked = np.vstack((r1, r2, r3))  # AFFIANCA I 3 ARRAY DI VALORI IN UNICO NDARRAY
@@ -248,6 +255,19 @@ def calc_histogram(image, bins=256, label="123", mask=None, plot=False):
 
 
 def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, classes):
+    """
+    Funzione per testare i sei modelli di classificazione di Sklearn, calcola inoltre l'F1_SCORE e le matrici di
+    confusione
+
+    :param x_train: L'array input di allenamento
+    :param x_test: L'array input di test
+    :param y_train: Le label corrette per l'allenamento
+    :param y_test: Le label corrette per il test
+    :param bins: Numero di bins per salvare il file dei punteggi
+    :param mask: Per indicare se sono state applicate le maschere, per il file dei punteggi
+    :param colorspace: Per indicare lo spazio di colori del dataset, per il file dei punteggi
+    :param classes: Per indicare il numero di classi, per il file dei punteggi
+    """
     classifiers = [
         KNeighborsClassifier(3),
         SVC(kernel="linear", C=0.025),
@@ -260,32 +280,36 @@ def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, c
         clf = clf.fit(x_train, y_train)
         y_pred = clf.predict(x_test)
         weighted = f1_score(y_test, y_pred, average="weighted")
-        with open("weighted.csv", "a") as f:
+        with open("scores/f1_weighted.csv", "a") as f:
             txt = "{0}, {1}, {2}, {3}, {4}, {5}\n".format(name, bins, mask, colorspace, classes, weighted)
             f.write(txt)
         none = f1_score(y_test, y_pred, average=None)
         vals = ""
         for n in none:
             vals = vals + str(n) + ", "
-        with open("none.csv", "a") as f:
+        with open("scores/f1_none.csv", "a") as f:
             txt = "{0}, {1}, {2}, {3}, {4}, {5}\n".format(name, bins, mask, colorspace, classes, vals)
             f.write(txt)
-        disp = plot_confusion_matrix(clf, x_test, y_test, normalize="true")
-        disp.ax_.set_title(name)
-        # print(disp.confusion_matrix)
+
         if mask:
             mstring = "_mask"
         else:
             mstring = ""
 
-        plt.savefig("C:/Users/User/Desktop/Matrici di confusione/{0}_{1}{2}_{3}classes_{4}.png".format(bins, colorspace,
-                                                                                                       mstring, classes,
-                                                                                                       name))
+        disp = plot_confusion_matrix(clf, x_test, y_test, normalize="true")
+        disp.ax_.set_title(name)
+        print(disp.confusion_matrix)
+        plt.savefig("confusion_matrixes/{0}_{1}{2}_{3}classes_{4}.png".format(bins, colorspace,mstring, classes, name))
         # plt.show()
         plt.close('all')
 
 
 def calc_f1_score(dataset):
+    """
+    Funzione per calcolare rapidamente tutti i punteggi F1 e le matrici di confusione
+
+    :param dataset: 1 o 2 per scegliere rispettivamente i due dataset presenti, oppure 'both' per mischiarli
+    """
     mask = True
     for u in range(2):
         cs = "hsv"
@@ -310,13 +334,8 @@ def calc_f1_score(dataset):
 
 successes = 0
 total = 0
-o = 0
-_, y1 = utils.load_training_data(8,"rgb",False, 1, False)
-_, y2 = utils.load_training_data(8,"rgb",False, 1, True)
-_, y3 = utils.load_training_data(8,"rgb",True, 1, False)
-_, y4 = utils.load_training_data(8,"rgb",True, 1, True)
 for k in range(1):
-    _, s, t = extract_histograms("images/{0}.jpg".format(k), "labels/{0}.txt".format(k), min_mask=20, visualize=True)
+    _, s, t = extract_histograms("images/{0}.jpg".format(k+1), "labels/{0}.txt".format(k+1), min_mask=20)
     successes = successes + s
     total = total + t
 
@@ -325,25 +344,4 @@ result = open("result.txt", 'a')
 result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
 result.close()
 
-
-# extract_histograms("images/12.jpg", "labels/12.txt", min_mask=20)
-
-
-im = cv.imread("C:/Users/User/Desktop/olives/1_0.jpg", cv.IMREAD_COLOR)
-m = cv.imread("C:/Users/User/Desktop/olives/matlab_18.jpg", cv.IMREAD_COLOR)
-
-
-"""
-mask, instance, clone = extract_cnn_mask(im)
-cv.imshow("mask", mask)
-cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_mask_right.jpg", mask)
-cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_instance.jpg", instance)
-cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_clone.jpg", clone)
-cv.waitKey(0)
-cv.destroyAllWindows()
-
-
-for i in range(53):
-    write_ripening_csv("images/olives{0}.jpg".format(i), "labels/olives{0}.txt".format(i))
-"""
 
