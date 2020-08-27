@@ -1,12 +1,8 @@
 import matlab.engine
-import random
 import time
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2 as cv
-from skimage.transform import hough_ellipse
-from skimage.draw import ellipse as fill_ellipse, ellipse_perimeter
-from skimage.util import img_as_float, img_as_ubyte
 from sklearn import tree
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
@@ -15,127 +11,183 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import f1_score
 import utils
+import pre_processing as prp
+
+np.set_printoptions(precision=17, floatmode="maxprec")
+
+print("[INFO] loading Mask R-CNN from disk...")
+net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
+                                   "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
+print("[INFO] loading MATLAB engine...")
+eng = matlab.engine.start_matlab()
+print("[INFO] done loading MATLAB")
 
 
-# ESTRAI I SINGOLI FRUTTI DALL'IMMAGINE IN BASE ALLE BOUNDING BOXES
-# RITORNA DUE LISTE CONTENENTI LE FREQUENZE D'ISTOGRAMMA PER OGNI CANALE
-def extract_histograms(filename, box_index, min_mask=0):
-    log_file = open("log.txt", 'a')
-    start_time = time.time()
-    log_file.write("Immagine: " + filename + "\n")
-    print("[INFO] "+filename)
-    # hsv_hists = []
-    # bgr_hists = []
-    # boxes = read_boxes(boxes_name)
-    fruits = cv.imread(filename)
+def extract_histograms(file, box, min_mask=0,  hsv=True, bins=32, plot=False, masked=True, visualize=False,
+                       writelog=False, writedataset=False):
+    """
+    Funzione di rilevamento maschera e calcolo dell'istogramma, utilizza 2 variabili globali: net e eng inizializzati a
+    Inizio script
+
+    :param file: Percorso dell'ìmmagine
+    :param box: Percorso della label o indice nel caso di formato DarkNet (il json)
+    :param min_mask: Minima percentuale di pixel bianchi per cui la maschera è considerata OK
+    :param hsv: Indica se calcolare gli istogrammi per il canale hsv
+    :param bins: Numero di intervalli per il calcolo dell'istogramma
+    :param plot: Attiva il tracciamento e la visualizzazione del grafico dell'istogramma
+    :param masked: Indica se effettuare o meno il rilevamento della maschera e calcolare gli istogrammi su di esso
+    :param visualize: Per mostrare o meno l'immagine di input e la maschera generata
+    :param writelog: Per attivare o disattivare la scrittura del file di log
+    :param writedataset: Per attivare o disattivare la scrittura del dataset
+    :return: Ritorna nell'ordine: ndarray con gli istogrammi di tutte le olive dell'immagine, numero di successi di
+    rilevamento della maschera e numero totale di olive
+    """
+    if writelog:
+        log_file = open("log.txt", 'a')
+        start_time = time.time()
+        log_file.write("Immagine: " + file + "\n")
+
+    print("[INFO] " + file)
+    hists = []  # LISTA IN CUI VERRANNO MANO A MANO INSERITI I VALORI D'ISTOGRAMMA
+
+    fruits = cv.imread(file)
     (H, W) = fruits.shape[:2]
-    # boxes = read_json(box_index, H, W, 10)
-    # real_boxes = read_json(box_index, H, W, 0)
-    boxes = utils.darknet_bbox(box_index, H, W, 10)
-    real_boxes = utils.darknet_bbox(box_index, H, W)
+    # boxes = utils.read_json(box, H, W, 10)  # CON PADDING
+    # real_boxes = utils.read_json(box, H, W)  # SENZA PADDING
+    boxes = utils.darknet_bbox(box, H, W, 10)
+    real_boxes = utils.darknet_bbox(box, H, W)
     i = 0
     success = 0
     for box, r_box in zip(boxes, real_boxes):
         try:
-            roi_bgr_extra = fruits[box[2]:box[3], box[0]:box[1]]
-            roi_hsv_extra = cv.cvtColor(roi_bgr_extra, cv.COLOR_BGR2HSV_FULL)
+            roi_bgr_padding = fruits[box[2]:box[3], box[0]:box[1]]
+            roi_hsv_padding = cv.cvtColor(roi_bgr_padding, cv.COLOR_BGR2HSV_FULL)
             roi_bgr = fruits[r_box[2]:r_box[3], r_box[0]:r_box[1]]
             roi_hsv = cv.cvtColor(roi_bgr, cv.COLOR_BGR2HSV_FULL)
-            # cv.imwrite("pics3/input"+str(i)+".jpg", roi_bgr)
 
-            print("[INFO] DETECTING {0} IN {1}".format(i+1, filename))
+            print("[INFO] DETECTING {0} IN {1}".format(i + 1, file))
+            if visualize:
+                cv.imshow("input", roi_bgr_padding)
+
+            """CODICE PER GENERARE LE IMMAGINI PER RESNET, CREARE PRIMA LE MATURAZIONI E LE CARTELLE
+            cv.imwrite("non_mask5/{0}/{1}.jpg".format(y1[total + i], total + i), roi_bgr_padding)
+            cv.imwrite("non_mask3/{0}/{1}.jpg".format(y2[total + i], total + i), roi_bgr_padding)
             """
-            cv.imshow("input", roi_bgr_extra)
-            cv.waitKey(0)
-            cv.destroyAllWindows()
-            """
+            mask = None
+            # SE SI VUOLE GENERARE GLI ISTOGRAMMI ANCHE CON LA MASCHERA
+            if masked:
+                half_size = False
+                double_size = True
+                sharpening = False
+                for n in range(3):
+                    processed = prp.transform_image(roi_bgr_padding, half_size, double_size, sharpening)
 
-            half_size = False
-            double_size = True
-            sharpening = False
-            for n in range(3):
-                processed = pre_processing(roi_bgr_extra, half_size, double_size, sharpening)
+                    rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)  # IMMAGINI RGB PER MATLAB
+                    mask = prp.extract_matlab_ellipses(rgb_processed, eng)  # METODO 4 MATLAB
+                    white_p = prp.calc_white_percentage(mask)
+                    method = "MATLAB"
 
-                rgb_processed = cv.cvtColor(processed, cv.COLOR_BGR2RGB)
-                mask = extract_matlab_ellipses(rgb_processed)  # METODO 4 MATLAB
-                white_p = calc_white_percentage(mask)
-                method = "MATLAB"
+                    if mask is None or white_p < min_mask:
+                        print("[INFO] MATLAB first attempt failed, trying equalize Hist...")
+                        eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
+                        eq = cv.equalizeHist(eq)
+                        mask = prp.extract_matlab_ellipses(eq, eng)
+                        white_p = prp.calc_white_percentage(mask)
+                        method = "MATLAB + histequalize"
+
+                    if mask is None or white_p < min_mask:
+                        print("[INFO] MATLAB failed, trying Mask R-CNN...")
+                        mask = prp.extract_cnn_mask(processed, net)  # METODO 3 MASK RCNN
+                        white_p = prp.calc_white_percentage(mask)
+                        method = "Mask R-CNN"
+
+                    if mask is None or white_p < min_mask:
+                        eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
+                        eq = cv.equalizeHist(eq)
+                        eq = cv.cvtColor(eq, cv.COLOR_GRAY2BGR)
+                        mask = prp.extract_cnn_mask(eq, net)
+                        white_p = prp.calc_white_percentage(mask)
+                        method = "Mask R-CNN + histequalize"
+
+                    if mask is not None and white_p > min_mask:
+                        break;
+
+                    sharpening = True
+                    if n == 1:
+                        double_size = False
 
                 if mask is None or white_p < min_mask:
-                    print("[INFO] MATLAB first attempt failed, trying equalize Hist...")
-                    eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
-                    eq = cv.equalizeHist(eq)
-                    mask = extract_matlab_ellipses(eq)
-                    white_p = calc_white_percentage(mask)
-                    method = "MATLAB + histequalize"
+                    print("[INFO] All methods failed")
+                    mask = None
+                    if writelog:
+                        log_file.write("Oliva {0} FALLITO\n".format(i+1))
+                else:
+                    # RIPORTA LE DIMENSIONI DELLA MASCHERA A QUELLE DELLA IMMAGINE ORIGINALE
+                    if double_size:
+                        nw = roi_bgr_padding.shape[1]
+                        nh = roi_bgr_padding.shape[0]
+                        dim = (nw, nh)
+                        mask = cv.resize(mask, dim, interpolation=cv.INTER_LINEAR)
+                    if visualize:
+                        cv.imshow("mask", mask)
+                        cv.waitKey(0)
+                        cv.destroyAllWindows()
+                    """ CODICE PER GENERARE LE IMMAGINI PER RESNET, CREARE PRIMA LE MATURAZIONI E LE CARTELLE
+                    msc = cv.cvtColor(mask, cv.COLOR_GRAY2BGR)
+                    masked = cv.bitwise_and(roi_bgr_padding, msc)
+                    cv.imwrite("mask5/{0}/{1}.jpg".format(y3[successes + success], successes + success), masked)
+                    cv.imwrite("mask3/{0}/{1}.jpg".format(y4[successes + success], successes + success), masked)
+                    """
+                    success = success + 1
+                    if writelog:
+                        log_file.write("Oliva {0} SUCCESSO,\tPIXEL MASCHERA = {1:.2f}%, sharpening = {2}, double size "
+                                       "= {3}, metodo = {4}\n".format(i+1, white_p, sharpening, double_size, method))
 
-                if mask is None or white_p < min_mask:
-                    print("[INFO] MATLAB failed, trying Mask R-CNN...")
-                    mask = extract_cnn_mask(processed)  # METODO 3 MASK RCNN
-                    white_p = calc_white_percentage(mask)
-                    method = "Mask R-CNN"
-
-                if mask is None or white_p < min_mask:
-                    eq = cv.cvtColor(processed, cv.COLOR_BGR2GRAY)
-                    eq = cv.equalizeHist(eq)
-                    eq = cv.cvtColor(eq, cv.COLOR_GRAY2BGR)
-                    mask = extract_cnn_mask(eq)
-                    white_p = calc_white_percentage(mask)
-                    method = "Mask R-CNN + histequalize"
-
-                if mask is not None and white_p > min_mask:
-                    break;
-                sharpening = True
-                if n == 1:
-                    double_size = False
-
-            if mask is None or white_p < min_mask:
-                print("[INFO] All methods failed")
-                mask = None
-                log_file.write("Oliva " + str(i + 1) + " FALLITO\n")
+                    if hsv:
+                        stack = calc_histogram(roi_hsv_padding, bins, "bgr", mask, plot)
+                    else:
+                        stack = calc_histogram(roi_bgr_padding, bins, "bgr", mask, plot)
             else:
-                success = success + 1
-                log_file.write("Oliva " + str(i + 1) + " SUCCESSO,\tPIXEL MASCHERA = " + "{:.2f}".format(white_p)
-                               + "%, sharpening = " + str(sharpening) + ", double size = " + str(double_size) +
-                               ", metodo = " + method + "\n")
+                if hsv:
+                    stack = calc_histogram(roi_hsv, bins, "bgr", plot=plot)
+                else:
+                    stack = calc_histogram(roi_bgr, bins, "bgr", plot=plot)
 
-            if double_size:
-                nw = roi_bgr_extra.shape[1]
-                nh = roi_bgr_extra.shape[0]
-                dim = (nw, nh)
-                mask = cv.resize(mask, dim, interpolation=cv.INTER_LINEAR)
+            hists.append(stack)  # ISTOGRAMMI CALCOLATI PER TEST IMMEDIATO
 
-            # cv.imwrite("pics3/mask" + str(i) + ".jpg", mask)
+            if writedataset:
+                write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_padding, roi_hsv_padding)
 
-            write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i)
-            # fig, ax = plt.subplots()
-
-            # ax.legend()
-            # plt.show()
-
-            # bgr_hists.append([bh, gh, rh])
-            # hsv_hists.append([hh, sh, vh])
             i = i + 1
-        except FileNotFoundError:
+        except Exception:
             i = i + 1
             continue
 
-    log_file.write(
-        "RILEVAMENTI: " + str(success) + " SU " + str(i) + ", TEMPO: " + str(time.time() - start_time) + "\n")
-    log_file.write("----------------------\n\n")
-    log_file.close()
-    return success, i
+    if writelog:
+        log_file.write("RILEVAMENTI: {0} SU {1}, TEMPO: {2}\n".format(success, i, time.time() - start_time))
+        log_file.write("----------------------\n\n")
+        log_file.close()
+
+    hists_conv = np.array(hists)  # Converte la lista in un array numpy
+    return hists_conv, success, i
 
 
-def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i):
+def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra):
+    """
+    Funzione automatica di scrittura del dataset, eseguita all'interno di extract_histograms
+
+    :param mask: La maschera da passare alla funzione di calcolo istogramma
+    :param roi_bgr: Immagine dell'oliva in formato BGR (DEFAULT OPENCV) senza padding
+    :param roi_hsv: Immagine dell'oliva in formato HSV senza padding
+    :param roi_bgr_extra: Immagine dell'oliva in formato BGR con padding per il calcolo con maschera
+    :param roi_hsv_extra: Immagine dell'oliva in formato HSV con padding per il calcolo con maschera
+    """
     if mask is not None:
         for g in range(3, 6):
             bins = pow(2, g)
             file = open("rgb_" + str(bins) + "bin_masked.txt", 'a')
-            bh, gh, rh = plot_histogram(roi_bgr_extra, None, "BGR", mask, bins)
-            hh, sh, vh = plot_histogram(roi_hsv_extra, None, "HSV", mask, bins)
-            rgb_full = np.vstack((rh, gh, bh))
-            hsv_full = np.vstack((hh, sh, vh))
+            rgb_full = calc_histogram(roi_bgr_extra, bins)
+            hsv_full = calc_histogram(roi_hsv_extra, bins)
             for f in rgb_full:
                 file.write(str(int(f)) + " ")
             file.write("\n")
@@ -149,10 +201,8 @@ def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i):
     for g in range(3, 6):
         bins = pow(2, g)
         file = open("rgb_" + str(bins) + "bin.txt", 'a')
-        bh, gh, rh = plot_histogram(roi_bgr, None, "BGR", None, bins)
-        hh, sh, vh = plot_histogram(roi_hsv, None, "HSV", None, bins)
-        rgb_full = np.vstack((rh, gh, bh))
-        hsv_full = np.vstack((hh, sh, vh))
+        rgb_full = calc_histogram(roi_bgr, bins)
+        hsv_full = calc_histogram(roi_hsv, bins)
         for f in rgb_full:
             file.write(str(int(f)) + " ")
         file.write("\n")
@@ -164,99 +214,18 @@ def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra, i):
         file.close()
 
 
-# FUNZIONE DI RILEVAMENTO DELLE ELLISSI CON SCI KIT
-# RESTITUISCE LA MASCHERA , None SE NON E' STATA GENERATA
-def detect_ellipse(image):
-    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)  # CONVERSIONE IN SCALA DI GRIGI
+def calc_histogram(image, bins=256, label="123", mask=None, plot=False):
+    """
+    Calcola e traccia l'istogramma per I 3 canali
 
-    # gray = cv.Laplacian(gray, cv.CV_16S, ksize=3)
-    # gray = cv.convertScaleAbs(gray)
-
-    gray = cv.bilateralFilter(gray, 9, 75, 75)  # SFOCATURA
-    # gray = cv.GaussianBlur(gray, (5, 5), 0)
-    # gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 9, 7)
-    # gray = cv.bitwise_not(gray)
-    cv.imshow("BLUR", gray)
-    cv.waitKey(0)
-
-    sigma = 0.6
-    v = np.median(image)
-    # apply automatic Canny edge detection using the computed median
-    lower = int(max(0, (1.0 - sigma) * v))
-    upper = int(min(255, (1.0 + sigma) * v))
-    gray = cv.Canny(gray, lower, upper)
-
-    cv.imshow("CANNY", gray)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
-
-    height, width = gray.shape[0:2]
-    mask = np.zeros((height, width), np.uint8)
-    ellipses = hough_ellipse(gray, threshold=8, accuracy=100, min_size=round(max(height, width) / 2),
-                             max_size=round(min(height, width)))  # RICERCA ELLISSI
-    if ellipses.size > 0:
-        # ESTRAI L'ELLISSE MIGLIORE
-        ellipses.sort(order='accumulator')
-        print(ellipses)
-        best = list(ellipses[-1])
-        yc, xc, a, b = [int(round(x)) for x in best[1:5]]
-        rotation = best[5]
-        print(yc, xc, a, b)
-        if a == 0 or b == 0:
-            mask = None
-        else:
-            rr, cc = fill_ellipse(yc, xc, a, b, mask.shape, rotation)  # OTTIENE L'AREA DELL'ELLISSE
-            mask[rr, cc] = 255
-            cv.imshow("MASK", mask)
-            cv.waitKey(0)
-            cv.destroyAllWindows()
-    else:
-        mask = None
-    return mask
-
-
-# FUNZIONE DI RILEVAMENTO DEI CONTORNI
-# RESTITUISCE LA MASCHERA
-def detect_contours(image):
-    gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)  # CONVERSIONE IN SCALA DI GRIGI
-    # gray = cv.Laplacian(gray, cv.CV_16S, ksize=3)
-    # gray = cv.convertScaleAbs(gray)
-
-    # gray = cv.bilateralFilter(gray, 9, 75, 75)  # SFOCATURA
-    # gray = cv.GaussianBlur(gray, (5, 5), 0)
-    gray = cv.adaptiveThreshold(gray, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 9, 7)
-    # _, gray = cv.threshold(gray, 0, 255, cv.THRESH_BINARY_INV + cv.THRESH_OTSU)
-    # kernel = cv.getStructuringElement(cv.MORPH_CROSS, (3, 3))
-    # gray = cv.dilate(gray, kernel, iterations=2)  # dilate
-    # gray = cv.bitwise_not(gray)
-    # cv.imshow("BLUR", gray)
-
-    sigma = 0.33
-    v = np.median(image)
-    # apply automatic Canny edge detection using the computed median
-    lower = int(max(0, (1.0 - sigma) * v))
-    upper = int(min(255, (1.0 + sigma) * v))
-    # gray = cv.Canny(gray, lower, upper)
-    # cv.imshow("CANNY", gray)
-
-    se = np.ones((7, 7), dtype='uint8')
-    # gray = cv.morphologyEx(gray, cv.MORPH_CLOSE, se, iterations=1)  # CHIUDE I BUCHI DEI CONTORNI
-    # cv.imshow("MORP", gray)
-    contours, hierarchy = cv.findContours(gray, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
-
-    height, width = gray.shape[0:2]
-    mask = np.zeros((height, width), np.uint8)
-    # mask = cv.drawContours(gray, hull_list, -1, 255, 3)
-    mask = cv.fillPoly(mask, contours, 255)
-    cv.imshow("FILL", mask)
-    cv.waitKey(0)
-    cv.destroyAllWindows()
-
-    return mask
-
-
-# CALCOLA E STAMPA L'ISTOGRAMMA PER I 3 CANALI
-def plot_histogram(image, axis=None, label="123", mask=None, bins=256):
+    :param image: L'immagine di input, deve essere a 3 canali
+    :param bins: Il numero di intervalli su cui calcolare l'istogramma, possibilimente in potenze di 2
+    :param label: Stringa di almeno 3 caratteri per etichettare i 3 canali nel grafico
+    :param mask: La maschera per calcolare l'istogramma solamente in un area specifica
+    :param plot: Per scegliere di visualizzare l'istogramma
+    :return: Array numpy formato dai valori calcolato per i 3 canali (dimensione 3 * bins)
+    """
+    assert (len(image.shape) == 3 and image.shape[2] == 3), "The image does not have 3 channels"
     if mask is None:
         mask = np.full(image.shape[0:2], 255, np.uint8)
 
@@ -267,189 +236,15 @@ def plot_histogram(image, axis=None, label="123", mask=None, bins=256):
     r2 = cv.calcHist([c2], [0], mask, [bins], [0, 256])
     r3 = cv.calcHist([c3], [0], mask, [bins], [0, 256])
 
-    if axis is not None:
-        axis.bar(np.arange(bins), r1.ravel(), label=label[0])
-        axis.bar(np.arange(bins), r2.ravel(), label=label[1])
-        axis.bar(np.arange(bins), r3.ravel(), label=label[2])
+    if plot:
+        fig, (ax1, ax2, ax3) = plt.subplots(3, 1)
+        ax1.bar(np.arange(bins), r1.ravel(), label=label[0])
+        ax2.bar(np.arange(bins), r2.ravel(), label=label[1])
+        ax3.bar(np.arange(bins), r3.ravel(), label=label[2])
+        plt.show()
 
-    return r1, r2, r3
-
-
-def extract_cnn_mask(image):
-    COLORS = open("mask-rcnn-coco/colors.txt").read().strip().split("\n")
-    COLORS = [np.array(c.split(",")).astype("int") for c in COLORS]
-    COLORS = np.array(COLORS, dtype="uint8")
-
-    LABELS = open("mask-rcnn-coco/object_detection_classes_coco.txt").read().strip().split("\n")
-
-    (H, W) = image.shape[:2]
-    newMask = np.zeros((H, W), np.uint8)
-
-    # construct a blob from the input image and then perform a forward
-    # pass of the Mask R-CNN, giving us (1) the bounding box  coordinates
-    # of the objects in the image along with (2) the pixel-wise segmentation
-    # for each specific object
-    blob = cv.dnn.blobFromImage(image, swapRB=True, crop=False)
-    net.setInput(blob)
-    start = time.time()
-    (boxes, masks) = net.forward(["detection_out_final", "detection_masks"])
-    end = time.time()
-
-    # show timing information and volume information on Mask R-CNN
-    print("[INFO] Mask R-CNN took {:.6f} seconds".format(end - start))
-    print("[INFO] boxes shape: {}".format(boxes.shape))
-    print("[INFO] masks shape: {}".format(masks.shape))
-    for i in range(0, boxes.shape[2]):
-        # for i in range(1):
-        # extract the class ID of the detection along with the confidence
-        # (i.e., probability) associated with the prediction
-        classID = int(boxes[0, 0, i, 1])
-        confidence = boxes[0, 0, i, 2]
-        # filter out weak predictions by ensuring the detected probability
-        # is greater than the minimum probability
-        if confidence > 0:
-            # clone our original image so we can draw on it
-            clone = image.copy()
-            print("CONFIDENCE = " + str(confidence))
-            # scale the bounding box coordinates back relative to the
-            # size of the image and then compute the width and the height
-            # of the bounding box
-            box = boxes[0, 0, i, 3:7] * np.array([W, H, W, H])
-            (startX, startY, endX, endY) = box.astype("int")
-            center_x = int(round((startX + endX) / 2))
-            center_y = int(round((startY + endY) / 2))
-            if check_box_center(W, H, center_x, center_y):
-                boxW = endX - startX
-                boxH = endY - startY
-
-                # extract the pixel-wise segmentation for the object, resize
-                # the mask such that it's the same dimensions of the bounding
-                # box, and then finally threshold to create a *binary* mask
-                mask = masks[i, classID]
-                mask = cv.resize(mask, (boxW, boxH), interpolation=cv.INTER_LANCZOS4)
-                mask = (mask > 0.1)
-
-                # extract the ROI of the image
-                roi = clone[startY:endY, startX:endX]
-
-                # check to see if are going to visualize how to extract the
-                # masked region itself
-
-                # convert the mask from a boolean to an integer mask with
-                # to values: 0 or 255, then apply the mask
-                visMask = (mask * 255).astype("uint8")
-                instance = cv.bitwise_and(roi, roi, mask=visMask)
-                newMask[startY:endY, startX:endX][mask] = 255
-                # cv.imshow("NEWMASK", newMask)
-
-                # show the extracted ROI, the mask, along with the
-                # segmented instance
-                # cv.imshow("ROI", roi)
-                # cv.imshow("Segmented", instance)
-
-                # now, extract *only* the masked region of the ROI by passing
-                # in the boolean mask array as our slice condition
-                roi = roi[mask]
-
-                # randomly select a color that will be used to visualize this
-                # particular instance segmentation then create a transparent
-                # overlay by blending the randomly selected color with the ROI
-                color = random.choice(COLORS)
-                blended = ((0.4 * color) + (0.6 * roi)).astype("uint8")
-
-                # store the blended ROI in the original image
-                clone[startY:endY, startX:endX][mask] = blended
-
-                # draw the bounding box of the instance on the image
-                color = [int(c) for c in color]
-                cv.rectangle(clone, (startX, startY), (endX, endY), color, 2)
-
-                # draw the predicted label and associated probability of the
-                # instance segmentation on the image
-                text = "{}: {:.4f}".format(LABELS[classID], confidence)
-                cv.putText(clone, text, (startX, startY - 5),
-                           cv.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
-                # show the output image
-                # cv.imshow("Output", clone)
-                # cv.waitKey(0)
-                # cv.destroyAllWindows()
-
-    return newMask
-
-
-# METODO DI ESTRAZIONE BASATO SULL'ALGORITMO IN PYTHON
-# RESTITUISCE LA MASCHERA
-def extract_matlab_ellipses(image):
-    image_mat = matlab.uint8(list(image.ravel(order='F')))
-    ch = 3
-    if len(image.shape) == 2:
-        ch = 1
-    image_mat.reshape((image.shape[0], image.shape[1], ch))  # TERZO PARAMETRO = 3 SE E' A COLORI
-
-    ellipses = eng.get_ellipses(image_mat, nargout=1)
-    mask = np.zeros((image.shape[0], image.shape[1]), np.uint8)
-
-    for el in ellipses:
-        rr, cc = fill_ellipse(el[1], el[0], el[3], el[2], mask.shape, -el[4])  # OTTIENE I PUNTI  DELL'AREA DELL'ELLISSE
-        mask[rr, cc] = 255
-        cy, cx = ellipse_perimeter(int(round(el[1])), int(round(el[0])), int(round(el[3])), int(round(el[2])),
-                                   shape=mask.shape, orientation=int(round(el[4])))
-        if ch == 3:
-            image[cy, cx] = (0, 0, 255)
-        else:
-            image[cy, cx] = 255
-        # cv.imshow("MASK", mask)
-        # cv.imshow("ORIGINAL", image)
-        # cv.waitKey(0)
-        # cv.destroyAllWindows()
-
-    if ellipses.size[0] == 0:
-        mask = None
-
-    return mask
-
-
-# FUNZIONE PER EFFETTUARE ALCUNE TRASFORMAZIONI PRE RILEVAMENTO
-def pre_processing(image, half_size=False, double_size=False, sharpening=False):
-    if half_size:
-        nw = int(image.shape[1] * 50 / 100)
-        nh = int(image.shape[0] * 50 / 100)
-        dim = (nw, nh)
-        image = cv.resize(image, dim, interpolation=cv.INTER_CUBIC)
-    if double_size:
-        nw = int(image.shape[1] * 200 / 100)
-        nh = int(image.shape[0] * 200 / 100)
-        dim = (nw, nh)
-        image = cv.resize(image, dim, interpolation=cv.INTER_LANCZOS4)
-    if sharpening:
-        kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
-        image = cv.filter2D(image, -1, kernel)
-
-    cv.destroyAllWindows()
-    return image
-
-
-def calc_white_percentage(mask):
-    if mask is not None:
-        wh = cv.countNonZero(mask)
-        return (wh / mask.size) * 100
-    else:
-        return 0
-
-
-def check_box_center(w, h, x, y):
-    allowed_h = int(round(0.30 * h))
-    allowed_w = int(round(0.30 * w))
-    sx = int(round((w - allowed_w) / 2))
-    sy = int(round((h - allowed_h) / 2))
-    ex = sx + allowed_w
-    ey = sy + allowed_h
-
-    if ex > x > sx and ey > y > sy:
-        return True
-    else:
-        return False
+    stacked = np.vstack((r1, r2, r3))  # AFFIANCA I 3 ARRAY DI VALORI IN UNICO NDARRAY
+    return stacked
 
 
 def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, classes):
@@ -471,15 +266,23 @@ def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, c
         none = f1_score(y_test, y_pred, average=None)
         vals = ""
         for n in none:
-            vals = vals + str(n)+", "
+            vals = vals + str(n) + ", "
         with open("none.csv", "a") as f:
             txt = "{0}, {1}, {2}, {3}, {4}, {5}\n".format(name, bins, mask, colorspace, classes, vals)
             f.write(txt)
-        # disp = plot_confusion_matrix(clf, x_test, y_test, normalize="all")
-        # disp.ax_.set_title(name)
+        disp = plot_confusion_matrix(clf, x_test, y_test, normalize="true")
+        disp.ax_.set_title(name)
         # print(disp.confusion_matrix)
-        # plt.savefig("C:/Users/User/Desktop/Matrici di confusione/8_rgb_mask_"+name+".png")
+        if mask:
+            mstring = "_mask"
+        else:
+            mstring = ""
+
+        plt.savefig("C:/Users/User/Desktop/Matrici di confusione/{0}_{1}{2}_{3}classes_{4}.png".format(bins, colorspace,
+                                                                                                       mstring, classes,
+                                                                                                       name))
         # plt.show()
+        plt.close('all')
 
 
 def calc_f1_score(dataset):
@@ -505,27 +308,15 @@ def calc_f1_score(dataset):
         mask = False
 
 
-np.set_printoptions(precision=17, floatmode="maxprec")
-print("[INFO] loading Mask R-CNN from disk...")
-net = cv.dnn.readNetFromTensorflow("mask-rcnn-coco/frozen_inference_graph.pb",
-                                   "mask-rcnn-coco/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt")
-print("[INFO] loading MATLAB engine...")
-eng = matlab.engine.start_matlab()
-print("[INFO] done loading MATLAB")
-
-print("[INFO] loading training data...")
-
-# tree.plot_tree(clf)
-
-# CAMBIARE QUESTA i PER SELEZIONARE LE DIVERSE FOTO IN IMAGES
-# VEDERE 23, 25, 35, 49, 1, 12 (problematico), 60, 29 troppo piccolo, 61 troppo piccolo e troppe ombre
-# k = 23
-"""
 successes = 0
 total = 0
 o = 0
-for k in range(45, 53):
-    s, t = extract_histograms("images/olives{0}.jpg".format(k), "labels/olives{0}.txt".format(k), min_mask=20)
+_, y1 = utils.load_training_data(8,"rgb",False, 1, False)
+_, y2 = utils.load_training_data(8,"rgb",False, 1, True)
+_, y3 = utils.load_training_data(8,"rgb",True, 1, False)
+_, y4 = utils.load_training_data(8,"rgb",True, 1, True)
+for k in range(1):
+    _, s, t = extract_histograms("images/{0}.jpg".format(k), "labels/{0}.txt".format(k), min_mask=20, visualize=True)
     successes = successes + s
     total = total + t
 
@@ -533,12 +324,26 @@ percent = (successes / total) * 100
 result = open("result.txt", 'a')
 result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
 result.close()
-"""
+
+
+# extract_histograms("images/12.jpg", "labels/12.txt", min_mask=20)
+
+
+im = cv.imread("C:/Users/User/Desktop/olives/1_0.jpg", cv.IMREAD_COLOR)
+m = cv.imread("C:/Users/User/Desktop/olives/matlab_18.jpg", cv.IMREAD_COLOR)
 
 
 """
+mask, instance, clone = extract_cnn_mask(im)
+cv.imshow("mask", mask)
+cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_mask_right.jpg", mask)
+cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_instance.jpg", instance)
+cv.imwrite("C:/Users/User/Desktop/olives/cnn_30_clone.jpg", clone)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+
 for i in range(53):
     write_ripening_csv("images/olives{0}.jpg".format(i), "labels/olives{0}.txt".format(i))
 """
 
-calc_f1_score("both")

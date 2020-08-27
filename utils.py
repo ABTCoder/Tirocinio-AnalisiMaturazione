@@ -105,7 +105,7 @@ def write_ripening_csv(filename, box_index):
     csv_file.close()
 
 
-def darknet_bbox(filename, height, width, extra=0):
+def darknet_bbox(filename, height, width, padding=0):
     with open(filename, 'r') as f:
         vals = []
         for line in f:
@@ -127,18 +127,18 @@ def darknet_bbox(filename, height, width, extra=0):
             y_start = y_center - half_height
             x_stop = x_center + half_width
             y_stop = y_center + half_height
-            if extra:
-                x_start = max(x_start-extra, 0)
-                y_start = max(y_start-extra, 0)
-                x_stop = min(x_stop + extra, width)
-                y_stop = min(y_stop + extra, height)
+            if padding:
+                x_start = max(x_start-padding, 0)
+                y_start = max(y_start-padding, 0)
+                x_stop = min(x_stop + padding, width)
+                y_stop = min(y_stop + padding, height)
             b_list.append([x_start, x_stop, y_start, y_stop])
     return b_list
 
 
 # LETTURA BOUNDING BOXES DAL JSON DI OLIVES FINAL
 # IMPOSTARE L'EXTRA BORDER SE NECESSARIO
-def read_json(n, h, w, extra=0):
+def read_json(n, h, w, padding=0):
     # extra = 0 per i bbox effettivi del json
     b_list = []
     with open('info.json') as f:
@@ -154,10 +154,10 @@ def read_json(n, h, w, extra=0):
             max_h = max(max_h, point["y"])
             min_w = min(min_w, point["x"])
             max_w = max(max_w, point["x"])
-        xstart = max(min_w - extra, 0)
-        xstop = min(max_w + extra, w)
-        ystart = max(min_h - extra, 0)
-        ystop = min(max_h + extra, h)
+        xstart = max(min_w - padding, 0)
+        xstop = min(max_w + padding, w)
+        ystart = max(min_h - padding, 0)
+        ystop = min(max_h + padding, h)
         b_list.append([xstart, xstop, ystart, ystop])
 
     return b_list
@@ -178,6 +178,20 @@ def read_boxes(filename):
         ystop = box[1] + half_height + 1
         converted_list.append([xstart, xstop, ystart, ystop])
     return converted_list
+
+
+def check_box_center(w, h, x, y):
+    allowed_h = int(round(0.3 * h))
+    allowed_w = int(round(0.3 * w))
+    sx = int(round((w - allowed_w) / 2))
+    sy = int(round((h - allowed_h) / 2))
+    ex = sx + allowed_w
+    ey = sy + allowed_h
+
+    if ex > x > sx and ey > y > sy:
+        return True
+    else:
+        return False
 
 
 def quick():
