@@ -14,7 +14,7 @@ def write_ripening_csv(file, box):
     :param file: Percorso dell'immagine
     :param box: Percorso della label o indice nel caso di lettura del json
     """
-    csv_file = open("maturazioni.csv", 'a')
+    csv_file = open("generated/maturazioni.csv", 'a')
     olives = cv.imread(file, cv.IMREAD_UNCHANGED)
     (H, W) = olives.shape[:2]
     # boxes = read_json(box_index, H, W, 0)
@@ -51,8 +51,8 @@ def simple_log():
     Funzione per semplificare il file di log eliminando le righe vuote, trattini e info generali lasciando solamente i
     rilevamenti singoli, usata dalla funzione create_masked_ripening()
     """
-    log2 = open("log2.txt", 'w')
-    with open('log.txt', 'r') as f:
+    log2 = open("generated/log2.txt", 'w')
+    with open('generated/log.txt', 'r') as f:
         for line in f:
             words = line.split()
             if len(words) == 0 or words[0] == "Immagine:" or words[0] == "RILEVAMENTI:" or \
@@ -69,8 +69,8 @@ def create_masked_ripening():
     """
     simple_log()
     ri = load_ripening_stages()
-    ms = open("masked_ripening.txt", "w")
-    with open('log2.txt', 'r') as f:
+    ms = open("generated/masked_ripening.txt", "w")
+    with open('generated/log2.txt', 'r') as f:
         i = 0
         for line in f:
             words = line.split()
@@ -80,61 +80,43 @@ def create_masked_ripening():
     ms.close()
 
 
-def load_training_data(bins, colorspace, masked, dataset, three_classes=False):
+def load_training_data(bins, colorspace, masked, datasets, three_classes=False):
     """
-    Funzione di caricamento degli istogrammi (input) e delle label(output)
+    Funzione di caricamento degli istogrammi (input) e delle label(output), si possono caricare più dataset insieme e
+    concatenarli
 
     :param bins: Bins del dataset
     :param colorspace: Spazio di colori del dataset
     :param masked: Con o senza maschera
-    :param dataset: 1 o 2 per scegliere rispettivamente i due dataset presenti, oppure 'both' per mischiarli
+    :param datasets: Array contenente i percorsi dei dataset, se si passano più percorsi i dataset verranno concatenati
+    insieme
     :param three_classes: Per convertire le 5 classi in 3 classi (1,2 = 1 | 3 = 2 | 4,5 = 3)
     :return: Restituisce l'ndarray di input e le label
     """
-    d1 = False
-    d2 = False
-    if dataset == 1:
-        d1 = True
-    if dataset == 2:
-        d2 = True
-    if dataset == "both":
-        d1 = True
-        d2 = True
 
+    assert isinstance(datasets, list), "Il parametro dataset deve essere un array, passare il percorso/i all'interno " \
+                                       "di parentesi quadre"
+    inputs = np.empty((0, bins*3))
+    outputs = np.array([])
     colorspace = colorspace.lower()
-    if d1:
+
+    for path in datasets:
         if masked:
-            x1 = np.loadtxt("dataset1/{0}_{1}bin_masked.txt".format(colorspace, bins), int)
-            y1 = np.loadtxt("dataset1/masked_ripening.txt", int)
+            x = np.loadtxt(path+"{0}_{1}bin_masked.txt".format(colorspace, bins), int)
+            y = np.loadtxt(path+"masked_ripening.txt", int)
         else:
-            x1 = np.loadtxt("dataset1/{0}_{1}bin.txt".format(colorspace, bins), int)
-            y1 = load_ripening_stages("dataset1/")
+            x = np.loadtxt(path+"{0}_{1}bin.txt".format(colorspace, bins), int)
+            y = load_ripening_stages("dataset1/")
 
         if three_classes:
-            y1 = np.where(y1 == 2, 1, y1)
-            y1 = np.where(y1 == 3, 2, y1)
-            y1 = np.where(y1 >= 4, 3, y1)
-    if d2:
-        if masked:
-            x2 = np.loadtxt("dataset2/{0}_{1}bin_masked.txt".format(colorspace, bins), int)
-            y2 = np.loadtxt("dataset2/masked_ripening.txt", int)
-        else:
-            x2 = np.loadtxt("dataset2/{0}_{1}bin.txt".format(colorspace, bins), int)
-            y2 = load_ripening_stages("dataset2/")
+            y = np.where(y == 2, 1, y)
+            y = np.where(y == 3, 2, y)
+            y = np.where(y >= 4, 3, y)
 
-        if three_classes:
-            y2 = np.where(y2 == 2, 1, y2)
-            y2 = np.where(y2 == 3, 2, y2)
-            y2 = np.where(y2 >= 4, 3, y2)
+        inputs = np.concatenate([inputs, x])
+        outputs = np.concatenate([outputs, y])
 
-    if d1 and not d2:
-        return x1, y1
-    if d2 and not d1:
-        return x2, y2
-    if d1 and d2:
-        x = np.concatenate((x1, x2))
-        y = np.concatenate((y1, y2))
-        return x, y
+    return inputs, outputs
 
 
 def split_data(x, y):

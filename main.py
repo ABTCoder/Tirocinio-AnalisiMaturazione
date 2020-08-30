@@ -52,10 +52,8 @@ def extract_histograms(file, box, min_mask=0,  hsv=True, bins=32, plot=False, ma
 
     fruits = cv.imread(file)
     (H, W) = fruits.shape[:2]
-    # boxes = utils.read_json(box, H, W, 10)  # CON PADDING
-    # real_boxes = utils.read_json(box, H, W)  # SENZA PADDING
-    boxes = utils.darknet_bbox(box, H, W, 10)
-    real_boxes = utils.darknet_bbox(box, H, W)
+    boxes = utils.darknet_bbox(box, H, W, 10)  # CON PADDING
+    real_boxes = utils.darknet_bbox(box, H, W)  # SENZA PADDING
     i = 0
     success = 0
     for box, r_box in zip(boxes, real_boxes):
@@ -186,14 +184,14 @@ def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra):
     if mask is not None:
         for g in range(3, 6):
             bins = pow(2, g)
-            file = open("rgb_" + str(bins) + "bin_masked.txt", 'a')
+            file = open("generated/rgb_" + str(bins) + "bin_masked.txt", 'a')
             rgb_full = calc_histogram(roi_bgr_extra, bins)
             hsv_full = calc_histogram(roi_hsv_extra, bins)
             for f in rgb_full:
                 file.write(str(int(f)) + " ")
             file.write("\n")
             file.close()
-            file = open("hsv_" + str(bins) + "bin_masked.txt", 'a')
+            file = open("generated/hsv_" + str(bins) + "bin_masked.txt", 'a')
             for f in hsv_full:
                 file.write(str(int(f)) + " ")
             file.write("\n")
@@ -201,14 +199,14 @@ def write_dataset(mask, roi_bgr, roi_hsv, roi_bgr_extra, roi_hsv_extra):
 
     for g in range(3, 6):
         bins = pow(2, g)
-        file = open("rgb_" + str(bins) + "bin.txt", 'a')
+        file = open("generated/rgb_" + str(bins) + "bin.txt", 'a')
         rgb_full = calc_histogram(roi_bgr, bins)
         hsv_full = calc_histogram(roi_hsv, bins)
         for f in rgb_full:
             file.write(str(int(f)) + " ")
         file.write("\n")
         file.close()
-        file = open("hsv_" + str(bins) + "bin.txt", 'a')
+        file = open("generated/hsv_" + str(bins) + "bin.txt", 'a')
         for f in hsv_full:
             file.write(str(int(f)) + " ")
         file.write("\n")
@@ -304,11 +302,12 @@ def test_classifiers(x_train, x_test, y_train, y_test, bins, mask, colorspace, c
         plt.close('all')
 
 
-def calc_f1_score(dataset):
+def calc_f1_score(datasets):
     """
     Funzione per calcolare rapidamente tutti i punteggi F1 e le matrici di confusione
 
-    :param dataset: 1 o 2 per scegliere rispettivamente i due dataset presenti, oppure 'both' per mischiarli
+    :param datasets: Array contenente i percorsi dei dataset, se si passano più percorsi i dataset verranno concatenati
+    insieme
     """
     mask = True
     for u in range(2):
@@ -318,7 +317,7 @@ def calc_f1_score(dataset):
             for k in range(2):
                 for j in range(3, 6):
                     bins = pow(2, j)
-                    x1, y1 = utils.load_training_data(bins, cs, masked=mask, dataset=dataset, three_classes=three_c)
+                    x1, y1 = utils.load_training_data(bins, cs, masked=mask, datasets=datasets, three_classes=three_c)
                     print(x1.shape[0])
                     x_train, x_test, y_train, y_test = utils.split_data(x1, y1)
                     print("[INFO] testing...")
@@ -332,10 +331,11 @@ def calc_f1_score(dataset):
         mask = False
 
 
+"""
 successes = 0
 total = 0
 for k in range(1):
-    _, s, t = extract_histograms("images/{0}.jpg".format(k+1), "labels/{0}.txt".format(k+1), min_mask=20)
+    _, s, t = extract_histograms("images/{0}.jpg".format(k+1), "labels/{0}.txt".format(k+1), min_mask=20, writedataset=True)
     successes = successes + s
     total = total + t
 
@@ -343,5 +343,6 @@ percent = (successes / total) * 100
 result = open("result.txt", 'a')
 result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
 result.close()
+"""
 
 

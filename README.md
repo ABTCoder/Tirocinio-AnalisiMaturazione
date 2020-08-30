@@ -21,7 +21,7 @@ e selezionare il compilatore di Visual Studio.
 Dopo di che compilare il file `generateEllipseCandidates.cpp` in MATLAB seguendo le istruzioni nella pagina Github del codice [https://github.com/AlanLuSun/High-quality-ellipse-detection](https://github.com/AlanLuSun/High-quality-ellipse-detection).
 
 # Generazione del dataset
-Se si desidera ricreare uno dei due dataset una volta modificati i parametri delle varie funzioni di rilevamento o miglioramento eseguire il seguente codice in **main<span>.py</span>**:
+Se si desidera generare un dataset una volta modificati i parametri delle varie funzioni di rilevamento o miglioramento eseguire il seguente codice in **main<span>.py</span>**:
 
 	successes = 0  
 	total = 0  
@@ -34,16 +34,14 @@ Se si desidera ricreare uno dei due dataset una volta modificati i parametri del
 	result = open("result.txt", 'a')  
 	result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")  
 	result.close()
-Utilizzare `"images/{0}.jpg".format(k+1)` e `"labels/{0}.txt".format(k+1)` per il primo dataset.
-Utilizzare `"images/olives{0}.jpg".format(k)` e `"labels/olives{0}.txt".format(k)` per il secondo dataset.
-Spostare i file generati nelle rispettive cartelle dei dataset.
+Modificare adeguatamente i percorsi e i nomi delle immagini e label che si intendono usare.
 
 Se si vogliono anche ridefinire i gradi di maturazione eseguire questo codice:
 
 	for k in range(70):
 		utils.write_ripening_csv("images/{0}.jpg".format(k+1), "labels/{0}.txt".format(k+1))
 	utils.create_masked_ripening():
-E nuovamente spostare i file generati (*maturazioni.csv*, *masked_ripening.txt* e *log2.txt*) nella rispettiva cartella.
+Tutti i file generati dai due blocchi di codice precedenti verranno salvati nella cartella `generated`.
 
 # TEST DEI CLASSIFICATORI
-Per testare i classificatori eseguire la funzione `calc_f1_score(dataset)` in  **main<span>.py</span>** dove `dataset` può essere 1, 2 o *'both'* per unire entrambi i dataset. Verranno salvato i punteggi nella cartella *scores* e le matrici di confusione in *confusion_matrixes*.
+Per testare i classificatori eseguire la funzione `calc_f1_score(datasets)` in  **main<span>.py</span>** dove `datasets` è un array contenenente i percorsi dei dataset, se si passano dunque più percorsi i dataset verranno concatenati insieme. I punteggi verranno salvati nella cartella *scores* e le matrici di confusione in *confusion_matrixes*.
