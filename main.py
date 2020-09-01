@@ -344,5 +344,3 @@ result = open("result.txt", 'a')
 result.write(str(successes)+" SU "+str(total)+" SUCCESSI, {:.2f}".format(percent)+"%\n")
 result.close()
 """
-
-

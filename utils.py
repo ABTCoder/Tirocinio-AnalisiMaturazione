@@ -46,6 +46,25 @@ def load_ripening_stages(datasetpath):
     return np.array(stages)
 
 
+def time_log():
+    """
+    Funzione per estrarre solo i tempi di esecuzione dal file di log principale
+    """
+    tot = 0
+    tottime = 0
+    log3 = open("generated/log3.txt", 'w')
+    with open('generated/log.txt', 'r') as f:
+        for line in f:
+            words = line.split()
+            if len(words) != 0 and words[0] == "Oliva":
+                tot = tot + 1
+            if len(words) != 0 and words[0] == "RILEVAMENTI:":
+                tottime = tottime + float(words[5])
+                log3.write(line)
+    avtime = tottime / tot
+    log3.write("\n OLIVE: {0} TEMPO: {1} MEDIA: {2}".format(tot, tottime, avtime))
+
+
 def simple_log():
     """
     Funzione per semplificare il file di log eliminando le righe vuote, trattini e info generali lasciando solamente i
